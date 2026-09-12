@@ -134,6 +134,9 @@ The staged value persists while the panel is closed — it is a country variable
 | Add a research slot | slot count rises by one |
 | Add 1,000 XP | army, navy and air XP each rise by 1,000 |
 
+Neither research option may show a "technology researched" window. Every `set_technology` block
+carries `popup = no`; if even one popup appears, a block lost the line — regenerate the list.
+
 Run the date-limited option in a 2000 start: anything with a `start_year` above 2000 must stay
 locked. If future tech appears, the date guard is wrong.
 

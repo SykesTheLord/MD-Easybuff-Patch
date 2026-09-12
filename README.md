@@ -59,8 +59,9 @@ equivalent, and is how Millennium Dawn drives its own rate controls.
 `common/scripted_effects/zz_ebmd_tech_generated.txt` is produced by
 `python3 tools/gen_tech_effect.py` from Millennium Dawn's own tech tree — HOI4 script cannot
 iterate technologies, so each of the 1395 dated techs is named explicitly and grouped by
-`start_year` behind a date trigger. Regenerate it after an MD update; `package.sh` refuses to
-build a stale list.
+`start_year` behind a date trigger. Every block carries `popup = no`, so granting hundreds of
+technologies does not bury the screen in "technology researched" windows. Regenerate the list
+after an MD update; `package.sh` refuses to build a stale one.
 
 ## Packaging for the Steam Workshop
 

@@ -26,6 +26,8 @@ HEADER = """# +Easybuff - MD Systems
 # Source: {n} technologies across {b} start years, from MD's common/technologies/.
 # Technologies without a start_year are deliberately excluded: they are unlocked by a
 # specific country's focuses, or are hidden special-project techs.
+# Every block carries popup = no: without it the engine shows one "technology
+# researched" window per tech, which is unusable when granting hundreds at once.
 
 """
 
@@ -65,7 +67,12 @@ def render(techs):
     out = [HEADER.format(n=len(techs), b=len(buckets))]
 
     def block(names, indent="\t\t"):
-        """set_technology takes many at once; wrap so lines stay readable."""
+        """set_technology takes many at once; wrap so lines stay readable.
+
+        popup = no suppresses the "technology researched" window the engine would
+        otherwise throw for every single tech - unusable when granting hundreds at
+        once. It is a per-block key, so one line covers every tech in the block.
+        """
         lines, row = [], []
         for n in names:
             row.append("%s = 1" % n)
@@ -74,6 +81,7 @@ def render(techs):
                 row = []
         if row:
             lines.append(indent + "\t" + " ".join(row))
+        lines.append(indent + "\tpopup = no")
         return indent + "set_technology = {\n" + "\n".join(lines) + "\n" + indent + "}"
 
     out.append("# Grants every technology whose start_year has already been reached.\n")

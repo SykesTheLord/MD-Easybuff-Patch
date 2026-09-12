@@ -20,6 +20,7 @@ Content:
  - Added repair decisions for the economy, politics, counter-terror and energy variable sets
  - Added a Value Setter panel in the decision tab: step a value with buttons and apply it as the inflation rate, corporate tax or central bank rate
  - Added a Technology page: research everything available by the current in-game date, the full dated tree, a research slot, or 1,000 army/navy/air experience
+ - Research options no longer open a technology unlocked window for every technology they grant
  - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
  - Added idea slot icons for the four cheat columns
  - Repair politics now covers all 23 internal factions

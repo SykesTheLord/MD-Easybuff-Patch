@@ -93,6 +93,10 @@ Two things that are easy to get wrong, both silent in-game:
 script cannot loop over technologies, so all 1395 of MD's dated techs are written out
 explicitly, bucketed by `start_year` behind a `date` trigger.
 
+Every `set_technology` block carries `popup = no` - without it the engine opens one
+"technology researched" window per technology, which is unusable at this volume. It is a
+per-block key, so one line covers the whole block.
+
 Regenerate after any MD update: `python3 tools/gen_tech_effect.py`. `package.sh` refuses to
 package a stale list. Techs with no `start_year` are excluded on purpose - they belong to a
 specific country's focus tree, or are hidden special-project techs.
