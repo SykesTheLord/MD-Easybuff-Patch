@@ -40,3 +40,20 @@
  ebmd_energy_lv3: "Lv3 Power Grid"
  ebmd_energy_lv4: "Lv4 Power Grid"
  ebmd_energy_insane: "Insane Power Grid"
+
+ # Value Setter scripted GUI
+ # The readout is live: [?var|2] renders the variable at 2 decimal places.
+ ebmd_gui_title: "Value Setter"
+ ebmd_gui_readout: "Staged value: §Y[?ebmd_staged_value|2]§!"
+ ebmd_gui_sub_10: "-10"
+ ebmd_gui_sub_1: "-1"
+ ebmd_gui_sub_01: "-0.1"
+ ebmd_gui_sub_001: "-0.01"
+ ebmd_gui_add_001: "+0.01"
+ ebmd_gui_add_01: "+0.1"
+ ebmd_gui_add_1: "+1"
+ ebmd_gui_add_10: "+10"
+ ebmd_gui_reset: "Reset"
+ ebmd_gui_apply_inflation: "Apply as Inflation Rate"
+ ebmd_gui_apply_corp_tax: "Apply as Corporate Tax % (0-50)"
+ ebmd_gui_apply_cb_rate: "Apply as Central Bank Rate % (0-20)"

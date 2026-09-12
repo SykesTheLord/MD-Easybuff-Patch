@@ -21,7 +21,7 @@ case "$f" in
 	*/localisation/*.yml)
 		has_bom || add "missing UTF-8 BOM (the game silently ignores localisation without one)"
 		;;
-	*.txt|*.mod)
+	*.txt|*.mod|*.gfx|*.gui)
 		o=$(tr -cd '{' < "$f" | wc -c)
 		c=$(tr -cd '}' < "$f" | wc -c)
 		[ "$o" != "$c" ] && add "unbalanced braces: $o open vs $c close"

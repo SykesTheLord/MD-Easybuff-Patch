@@ -49,6 +49,10 @@ country_event = {
 		country_event = ebmd.40
 	}
 	option = {
+		name = ebmd.1.i
+		country_event = ebmd.50
+	}
+	option = {
 		name = ebmd.1.h
 		country_event = ebmd.90
 	}
@@ -696,6 +700,43 @@ country_event = {
 		name = ebmd.40.g
 		ebmd_refresh_energy = yes
 		country_event = ebmd.1
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.1
+	}
+}
+
+# Technology 50
+country_event = {
+	id = ebmd.50
+	title = ebmd.50.t
+	desc = ebmd.50.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.50.a
+		ebmd_research_techs_to_date = yes
+		country_event = ebmd.50
+	}
+	option = {
+		name = ebmd.50.b
+		ebmd_research_all_techs = yes
+		country_event = ebmd.50
+	}
+	option = {
+		name = ebmd.50.c
+		add_research_slot = 1
+		country_event = ebmd.50
+	}
+	option = {
+		name = ebmd.50.d
+		army_experience = 1000
+		navy_experience = 1000
+		air_experience = 1000
+		country_event = ebmd.50
 	}
 	option = {
 		name = ebmdback

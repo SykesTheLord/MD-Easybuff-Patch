@@ -44,6 +44,24 @@ Uninstalling removes the link, never the files it points at.
 
 After installing, enable the mod in the launcher and set the load order below.
 
+## Value Setter panel
+
+The decision tab carries a small scripted GUI: step a staged value with `±0.01 / ±0.1 / ±1 / ±10`
+buttons, watch it update live, then apply it as the inflation rate, corporate tax percentage or
+central bank rate. It calls the same effects as the menu, so both routes behave identically.
+
+This exists because **HOI4 offers scripted GUIs no text input** — `editBoxType` is engine-internal
+and scripted GUIs can bind only clicks and visibility. Stepping a value is the closest available
+equivalent, and is how Millennium Dawn drives its own rate controls.
+
+## Generated technology list
+
+`common/scripted_effects/zz_ebmd_tech_generated.txt` is produced by
+`python3 tools/gen_tech_effect.py` from Millennium Dawn's own tech tree — HOI4 script cannot
+iterate technologies, so each of the 1395 dated techs is named explicitly and grouped by
+`start_year` behind a date trigger. Regenerate it after an MD update; `package.sh` refuses to
+build a stale list.
+
 ## Packaging for the Steam Workshop
 
 ```bash

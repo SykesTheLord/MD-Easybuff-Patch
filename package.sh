@@ -26,7 +26,7 @@ VANILLA="${VANILLA:-$HOME/.local/share/Steam/steamapps/common/Hearts of Iron IV}
 
 # Only these are shipped. Add to this list when the mod gains a new content dir
 # (gfx/, interface/, music/ ...), or the game will not see it.
-CONTENT=(common events localisation descriptor.mod thumbnail.png)
+CONTENT=(common events localisation interface descriptor.mod thumbnail.png)
 
 red=$'\033[31m'; grn=$'\033[32m'; ylw=$'\033[33m'; bld=$'\033[1m'; rst=$'\033[0m'
 die()   { printf '%serror:%s %s\n' "$red" "$rst" "$*" >&2; exit 1; }
@@ -66,7 +66,7 @@ fi
 # Same checks as /validate. A package is the worst place to discover these.
 head2 "Validating content"
 
-for f in $(find common events -name "*.txt" 2>/dev/null) descriptor.mod; do
+for f in $(find common events interface -name "*.txt" -o -name "*.gfx" -o -name "*.gui" 2>/dev/null) descriptor.mod; do
 	o=$(tr -cd '{' < "$f" | wc -c); c=$(tr -cd '}' < "$f" | wc -c)
 	[ "$o" != "$c" ] && fail "unbalanced braces in $f ($o open / $c close)"
 done
@@ -85,6 +85,16 @@ if [ -d "$MD_SRC/common/scripted_effects" ]; then
 			|| { fail "calls an effect that does not exist in MD 2.0: $e"; unresolved=1; }
 	done < <(comm -23 "$tmp/calls" "$tmp/ours")
 	[ "$unresolved" -eq 0 ] && ok "every MD effect call resolves"
+
+	# The generated tech list is a snapshot of MD's tree; a stale one silently grants
+	# the wrong set, or names techs that no longer exist.
+	if [ -f tools/gen_tech_effect.py ]; then
+		if python3 tools/gen_tech_effect.py --md "$MD_SRC" --check >/dev/null 2>&1; then
+			ok "generated technology list matches MD"
+		else
+			fail "technology list is stale - run: python3 tools/gen_tech_effect.py"
+		fi
+	fi
 else
 	printf '  %s!%s MD source not at %s - skipped effect resolution\n' "$ylw" "$rst" "$MD_SRC"
 	note "set MD_SRC=/path/to/Millennium-Dawn to enable this check"
@@ -93,7 +103,7 @@ fi
 encbad=0
 while IFS= read -r f; do
 	[ "$(head -c3 "$f" | xxd -p)" = "efbbbf" ] && { fail "$f has a UTF-8 BOM (script files must not)"; encbad=1; }
-done < <(find common events -name "*.txt")
+done < <(find common events interface -name "*.txt" -o -name "*.gfx" -o -name "*.gui")
 for f in localisation/english/*.yml; do
 	[ "$(head -c3 "$f" | xxd -p)" != "efbbbf" ] && { fail "$f is missing its UTF-8 BOM"; encbad=1; }
 done
@@ -111,6 +121,25 @@ if [ -s "$tmp2/missing" ]; then
 fi
 rm -rf "$tmp2"
 [ "$locmiss" -eq 0 ] && ok "localisation coverage"
+
+# A button with no handler does nothing when clicked; a handler with no button never
+# fires. Neither produces an error in-game, so cross-check the two sides.
+guibad=0
+for g in interface/*.gui; do
+	[ -e "$g" ] || continue
+	sg="common/scripted_guis/$(basename "${g%.gui}").txt"
+	[ -f "$sg" ] || continue
+	awk '/buttonType = \{/{inb=1} inb && /name = "/{gsub(/.*name = "|".*/,""); print; inb=0}' "$g" | sort -u > /tmp/ebmd-btn
+	grep -oE "^[[:space:]]+ebmd_[a-z_0-9]+_click = \{" "$sg" | sed -E 's/^[[:space:]]+//; s/_click = \{//' | sort -u > /tmp/ebmd-hdl
+	while read -r n; do
+		[ -n "$n" ] && { fail "button with no handler: $n ($g)"; guibad=1; }
+	done < <(comm -23 /tmp/ebmd-btn /tmp/ebmd-hdl)
+	while read -r n; do
+		[ -n "$n" ] && { fail "handler with no button: $n ($sg)"; guibad=1; }
+	done < <(comm -13 /tmp/ebmd-btn /tmp/ebmd-hdl)
+	rm -f /tmp/ebmd-btn /tmp/ebmd-hdl
+done
+[ "$guibad" -eq 0 ] && [ -d common/scripted_guis ] && ok "scripted GUI bindings"
 
 [ "$ERRORS" -gt 0 ] && die "$ERRORS content problem(s) above - fix before packaging"
 

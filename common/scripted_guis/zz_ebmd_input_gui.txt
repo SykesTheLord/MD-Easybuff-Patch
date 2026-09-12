@@ -1,0 +1,75 @@
+# +Easybuff - MD Systems
+# Drives interface/zz_ebmd_input_gui.gui. Each button steps ebmd_staged_value; the
+# Apply buttons hand that value to the same scripted effects the event menu uses, so
+# both entry points share one implementation.
+#
+# dirty = ebmd_gui_dirty forces the readout to redraw; without it the text only
+# refreshes when the game happens to repaint the panel.
+scripted_gui = {
+	ebmd_input_gui = {
+		context_type = decision_category
+		window_name = "ebmd_input_window"
+		dirty = ebmd_gui_dirty
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		effects = {
+			ebmd_sub_10_click = {
+				set_temp_variable = { ebmd_step = -10 }
+				ebmd_gui_step = yes
+			}
+			ebmd_sub_1_click = {
+				set_temp_variable = { ebmd_step = -1 }
+				ebmd_gui_step = yes
+			}
+			ebmd_sub_01_click = {
+				set_temp_variable = { ebmd_step = -0.1 }
+				ebmd_gui_step = yes
+			}
+			ebmd_sub_001_click = {
+				set_temp_variable = { ebmd_step = -0.01 }
+				ebmd_gui_step = yes
+			}
+
+			ebmd_add_001_click = {
+				set_temp_variable = { ebmd_step = 0.01 }
+				ebmd_gui_step = yes
+			}
+			ebmd_add_01_click = {
+				set_temp_variable = { ebmd_step = 0.1 }
+				ebmd_gui_step = yes
+			}
+			ebmd_add_1_click = {
+				set_temp_variable = { ebmd_step = 1 }
+				ebmd_gui_step = yes
+			}
+			ebmd_add_10_click = {
+				set_temp_variable = { ebmd_step = 10 }
+				ebmd_gui_step = yes
+			}
+
+			ebmd_reset_click = {
+				set_variable = { ebmd_staged_value = 0 }
+				ebmd_gui_refresh = yes
+			}
+
+			ebmd_apply_inflation_click = {
+				set_temp_variable = { ebmd_target = ebmd_staged_value }
+				ebmd_set_inflation = yes
+				ebmd_gui_refresh = yes
+			}
+			ebmd_apply_corp_tax_click = {
+				set_temp_variable = { ebmd_target = ebmd_staged_value }
+				ebmd_set_corporate_tax = yes
+				ebmd_gui_refresh = yes
+			}
+			ebmd_apply_cb_rate_click = {
+				set_temp_variable = { ebmd_target = ebmd_staged_value }
+				ebmd_set_cb_rate = yes
+				ebmd_gui_refresh = yes
+			}
+		}
+	}
+}

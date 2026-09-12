@@ -1,0 +1,25 @@
+# +Easybuff - MD Systems
+# Icons for the four idea slots declared in common/idea_tags/zz_ebmd_idea_tags.txt.
+# A slot with no sprite falls back to a blank header, so each one reuses an existing
+# vanilla texture rather than shipping new art.
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_slot_ebmd_menu"
+		textureFile = "gfx/interface/idea_slot_political_advisor.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_slot_ebmd_economy"
+		textureFile = "gfx/interface/idea_slot_industrial_concern.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_slot_ebmd_ct"
+		textureFile = "gfx/interface/idea_slot_high_command.dds"
+	}
+
+	spriteType = {
+		name = "GFX_idea_slot_ebmd_energy"
+		textureFile = "gfx/interface/idea_slot_materiel_manufacturer.dds"
+	}
+}

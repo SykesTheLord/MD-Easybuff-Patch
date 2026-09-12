@@ -108,6 +108,35 @@ Use `tdebug` to read variables on hover, or
 | 3 nuclear reactors | reactors appear and generation rises after the recalculation |
 | Recalculate the grid | panel figures refresh without waiting for the daily tick |
 
+### Value Setter (scripted GUI)
+
+Open the **Millennium Dawn — Economy & Politics** decision tab; the panel sits above the
+decisions.
+
+| Step | Confirm |
+|---|---|
+| Click `+1` | the readout changes to 1.00 **immediately** — if it only updates after reopening the tab, the `dirty` variable is not wired |
+| Click `-0.01` four times | readout reads 0.96, proving fractional steps accumulate |
+| Click `-10` repeatedly | readout stops at 0.00, never negative |
+| Stage 0.05 → *Apply as Inflation Rate* | inflation reads 5% and the derived penalties move |
+| Stage 35 → *Apply as Corporate Tax* | budget tab shows 35% |
+| Stage 90 → *Apply as Central Bank Rate* | clamps to 20, MD's own maximum |
+| Reset | readout returns to 0.00 |
+
+The staged value persists while the panel is closed — it is a country variable, not scratch state.
+
+### Technology
+
+| Option | Confirm |
+|---|---|
+| Research everything available by date | research screen fills in up to the current era; technologies dated in the future are **still unresearched** |
+| Research every dated technology | the whole dated tree completes, future tiers included |
+| Add a research slot | slot count rises by one |
+| Add 1,000 XP | army, navy and air XP each rise by 1,000 |
+
+Run the date-limited option in a 2000 start: anything with a `start_year` above 2000 must stay
+locked. If future tech appears, the date guard is wrong.
+
 ### Repair
 
 For each of the four repair decisions, break the value first, then repair:

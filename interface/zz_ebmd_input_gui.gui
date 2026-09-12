@@ -1,0 +1,121 @@
+# +Easybuff - MD Systems
+# Value Setter panel, embedded in the mod's decision category.
+#
+# HOI4 has no scripted-GUI text input: editBoxType exists in the engine but is wired
+# only to hardcoded systems (chat, unit renaming), and scripted GUIs can bind nothing
+# but _click, _click_enabled and _visible. Stepping a staged value with buttons and
+# showing it live is the closest equivalent, and is what MD itself does for its own
+# central bank rate and tax controls.
+guiTypes = {
+	containerWindowType = {
+		name = "ebmd_input_window"
+		position = { x = 0 y = 0 }
+		size = { width = 520 height = 340 }
+
+		instantTextBoxType = {
+			name = "ebmd_input_title"
+			position = { x = 10 y = 6 }
+			font = "hoi_18mbs"
+			text = ebmd_gui_title
+			maxWidth = 500
+			format = center
+		}
+
+		instantTextBoxType = {
+			name = "ebmd_input_readout"
+			position = { x = 10 y = 32 }
+			font = "hoi_18mbs"
+			text = ebmd_gui_readout
+			maxWidth = 500
+			format = center
+		}
+
+		buttonType = {
+			name = "ebmd_sub_10"
+			position = { x = 10 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_sub_10
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_sub_1"
+			position = { x = 136 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_sub_1
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_sub_01"
+			position = { x = 262 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_sub_01
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_sub_001"
+			position = { x = 388 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_sub_001
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_add_001"
+			position = { x = 10 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_add_001
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_add_01"
+			position = { x = 136 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_add_01
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_add_1"
+			position = { x = 262 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_add_1
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_add_10"
+			position = { x = 388 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_add_10
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_reset"
+			position = { x = 198 y = 140 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_reset
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_apply_inflation"
+			position = { x = 80 y = 186 }
+			quadTextureSprite = "GFX_button_359x34"
+			buttonText = ebmd_gui_apply_inflation
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_apply_corp_tax"
+			position = { x = 80 y = 224 }
+			quadTextureSprite = "GFX_button_359x34"
+			buttonText = ebmd_gui_apply_corp_tax
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_apply_cb_rate"
+			position = { x = 80 y = 262 }
+			quadTextureSprite = "GFX_button_359x34"
+			buttonText = ebmd_gui_apply_cb_rate
+			buttonFont = "hoi_18mbs"
+		}
+	}
+}

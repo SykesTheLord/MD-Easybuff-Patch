@@ -98,7 +98,7 @@ if [ "$MODE" = "link" ]; then
 else
 	mkdir -p "$DEST"
 	# Ship only what the game reads.
-	for item in common events localisation descriptor.mod thumbnail.png; do
+	for item in common events localisation interface descriptor.mod thumbnail.png; do
 		[ -e "$SRC/$item" ] && cp -R "$SRC/$item" "$DEST/"
 	done
 	ok "copied mod files to $DEST"

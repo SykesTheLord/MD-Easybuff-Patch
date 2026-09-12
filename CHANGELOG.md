@@ -18,3 +18,8 @@ Content:
  - Added tiered national idea columns for the economy, counter-terror capability and the power grid
  - Added free battery park, hydroelectric and nuclear reactor construction, with an immediate grid recalculation
  - Added repair decisions for the economy, politics, counter-terror and energy variable sets
+ - Added a Value Setter panel in the decision tab: step a value with buttons and apply it as the inflation rate, corporate tax or central bank rate
+ - Added a Technology page: research everything available by the current in-game date, the full dated tree, a research slot, or 1,000 army/navy/air experience
+ - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
+ - Added idea slot icons for the four cheat columns
+ - Repair politics now covers all 23 internal factions

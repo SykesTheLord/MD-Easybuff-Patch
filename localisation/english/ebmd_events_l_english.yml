@@ -10,6 +10,7 @@
  ebmd.1.e: "Fire / Suppress Events"
  ebmd.1.f: "Counter-Terrorism"
  ebmd.1.g: "Power Grid"
+ ebmd.1.i: "Technology"
  ebmd.1.h: "Repair Variables"
 
  # Economy
@@ -155,6 +156,15 @@
  ebmd.40.e: "Add hydroelectric capacity to a random state"
  ebmd.40.f: "Build 3 nuclear reactors"
  ebmd.40.g: "Recalculate the grid now"
+
+ # Technology
+ ebmd.50: "Technology"
+ ebmd.50.t: "Technology"
+ ebmd.50.desc: "Millennium Dawn dates most technologies with a §Ystart_year§!. \"Available now\" grants each one the tree already considers reachable, leaving future tiers alone - which keeps the research screen looking like a plausible save rather than a finished one.\n\nBoth options cover the §Y1395§! dated technologies. Around 86 undated ones are skipped on purpose: they are unlocked by another country's national focuses, or are hidden special-project techs that should not simply be handed out."
+ ebmd.50.a: "Research everything available by the current date"
+ ebmd.50.b: "Research every dated technology (including future ones)"
+ ebmd.50.c: "Add a research slot"
+ ebmd.50.d: "Add 1,000 army, navy and air experience"
 
  # Repair
  ebmd.90: "Repair Variables"

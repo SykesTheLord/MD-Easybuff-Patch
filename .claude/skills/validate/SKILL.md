@@ -22,7 +22,7 @@ mkdir -p /tmp/ebmd-validate
 A mismatch breaks Clausewitz parsing with no error until load.
 
 ```bash
-for f in $(find . -name "*.txt" -o -name "*.mod"); do
+for f in $(find . -name "*.txt" -o -name "*.mod" -o -name "*.gfx" -o -name "*.gui"); do
   o=$(tr -cd '{' < "$f" | wc -c); c=$(tr -cd '}' < "$f" | wc -c)
   [ "$o" != "$c" ] && echo "MISMATCH $f: $o open / $c close"
 done; echo "braces ok"
@@ -94,13 +94,26 @@ grep -rhoE "picture = [a-z_0-9]+" common/ideas/*.txt | sed 's/picture = //' | so
     done; echo "pictures ok"
 ```
 
+## 5b. Idea slot sprites
+
+Every slot declared in `common/idea_tags/` needs a `GFX_idea_slot_<name>` sprite, or the column
+header in the national ideas view renders blank.
+
+```bash
+grep -ohE "slot = [a-z_]+" common/idea_tags/*.txt | sed 's/slot = //' | sort -u \
+  | while read -r s; do
+      grep -rqs "GFX_idea_slot_$s" interface/ "$MD/interface/" \
+        || echo "  NO SPRITE: $s"
+    done; echo "slot sprites ok"
+```
+
 ## 6. Encodings
 
 `.txt` must have no BOM; localisation `.yml` must have one. Backwards either way and the game
 silently ignores the file.
 
 ```bash
-for f in $(find . -name "*.txt"); do
+for f in $(find . -name "*.txt" -o -name "*.gfx" -o -name "*.gui"); do
   [ "$(head -c3 "$f" | xxd -p)" = "efbbbf" ] && echo "  BAD BOM: $f"
 done
 for f in localisation/english/*.yml; do

@@ -250,6 +250,29 @@ ebmd_refresh_energy = {
 }
 
 # ---------------------------------------------------------------------------
+# Value Setter GUI
+# ---------------------------------------------------------------------------
+
+# Bumping a variable the scripted GUI declares as `dirty` is what makes the readout
+# redraw. Wrapping it keeps every button from having to remember.
+ebmd_gui_refresh = {
+	add_to_variable = { ebmd_gui_dirty = 1 }
+	if = {
+		limit = { check_variable = { ebmd_gui_dirty > 1000000 } }
+		set_variable = { ebmd_gui_dirty = 0 }
+	}
+}
+
+# Required input: ebmd_step - amount to add to the staged value.
+# Clamped 0-100: it feeds inflation (0-1), corporate tax (0-50) and the central bank
+# rate (0-20), and a negative staged value is meaningless for all three.
+ebmd_gui_step = {
+	add_to_variable = { ebmd_staged_value = ebmd_step }
+	clamp_variable = { var = ebmd_staged_value min = 0 max = 100 }
+	ebmd_gui_refresh = yes
+}
+
+# ---------------------------------------------------------------------------
 # Repair - restore MD's own invariants after a bad value
 # ---------------------------------------------------------------------------
 
@@ -355,6 +378,41 @@ ebmd_repair_faction_opinions = {
 		limit = { has_idea = chaebols }
 		clamp_variable = { var = chaebols_opinion min = 0 max = 100 }
 		apply_chaebols_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = the_priesthood }
+		clamp_variable = { var = the_priesthood_opinion min = 0 max = 100 }
+		apply_the_priesthood_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = the_ulema }
+		clamp_variable = { var = the_ulema_opinion min = 0 max = 100 }
+		apply_the_ulema_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = wahabi_ulema }
+		clamp_variable = { var = wahabi_ulema_opinion min = 0 max = 100 }
+		apply_wahabi_ulema_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = the_donju }
+		clamp_variable = { var = the_donju_opinion min = 0 max = 100 }
+		apply_the_donju_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = saudi_royal_family }
+		clamp_variable = { var = saudi_royal_family_opinion min = 0 max = 100 }
+		apply_saudi_royal_family_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = iranian_quds_force }
+		clamp_variable = { var = iranian_quds_force_opinion min = 0 max = 100 }
+		apply_irgc_iranian_quds_force_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = foreign_jihadis }
+		clamp_variable = { var = foreign_jihadis_opinion min = 0 max = 100 }
+		apply_foreign_jihadis_effect_DYNMOD = yes
 	}
 }
 

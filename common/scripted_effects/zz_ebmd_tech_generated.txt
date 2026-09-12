@@ -1,0 +1,939 @@
+# +Easybuff - MD Systems
+# GENERATED FILE - do not edit by hand.
+# Regenerate with: python3 tools/gen_tech_effect.py
+#
+# HOI4 script cannot loop over technologies, so each one is named explicitly.
+# Techs are grouped by MD's start_year and guarded by a vanilla date trigger, so
+# "to date" means what the tech tree itself considers available now.
+# Source: 1395 technologies across 29 start years, from MD's common/technologies/.
+# Technologies without a start_year are deliberately excluded: they are unlocked by a
+# specific country's focuses, or are hidden special-project techs.
+
+# Grants every technology whose start_year has already been reached.
+ebmd_research_techs_to_date = {
+	if = {
+		limit = { date > 1944.12.31 }
+		set_technology = {
+			Early_APC = 1 air_defense = 1 air_defense_non_got = 1 aircraft_carrier_engineering = 1
+			ballistic_missile = 1 basic_computing = 1 cruise_missile = 1 cruise_missile_non_got = 1
+			early_bomber = 1 early_fighter = 1 helo_ops_tech = 1 mbt_tech_ops = 1
+			radar = 1 small_autocannon_tech = 1 small_medium_gun_tech = 1 tech_early_naval_weapon_systems = 1
+			tech_naval_systems_engineering = 1 tech_submarine_engineering_1 = 1
+		}
+	}
+	if = {
+		limit = { date > 1954.12.31 }
+		set_technology = {
+			GLCM = 1 GLCM_non_got = 1 ICBM = 1 IRBM = 1
+			SAM = 1 SAM_non_got = 1 TEL_launched_missiles = 1 TEL_launched_missiles_non_got = 1
+			early_airframe_designs = 1 early_weapons = 1 integrated_circuit = 1
+		}
+	}
+	if = {
+		limit = { date > 1959.12.31 }
+		set_technology = {
+			gen_3_large = 1 gen_3_light = 1 gen_3_medium = 1
+		}
+	}
+	if = {
+		limit = { date > 1964.12.31 }
+		set_technology = {
+			APC_1 = 1 AS_Fighter1 = 1 Anti_Air_0 = 1 Anti_tank_0 = 1
+			COMSAT1 = 1 GLCM1 = 1 GLCM1_non_got = 1 GNSS1 = 1
+			Heavy_Anti_tank_0 = 1 ICBM1 = 1 IFV_1 = 1 IRBM1 = 1
+			L_Strike_fighter1 = 1 MBT_1 = 1 MR_Fighter1 = 1 OLV1 = 1
+			Rec_tank_0 = 1 SAM0 = 1 SAM0_non_got = 1 SPYSAT1 = 1
+			Strike_fighter1 = 1 TEL_3 = 1 TEL_3_non_got = 1 ag_weapons_1 = 1
+			air_weapons_1 = 1 aircraft_heli_engineering_1 = 1 armor_tech = 1 assault_gun_tech = 1
+			attack_helicopter_1 = 1 attack_submarine_hull_1 = 1 battleship_hull_1 = 1 big_autocannon_tech = 1
+			carrier_hull_1 = 1 combat_eng_equipment = 1 computing1 = 1 corvette_hull_1 = 1
+			countermeasures_1 = 1 cruiser_hull_1 = 1 decryption1 = 1 destroyer_hull_1 = 1
+			diesel_engine_tech = 1 encryption1 = 1 frigate_hull_1 = 1 infantry_weapons_1 = 1
+			mbt_tech = 1 medium_gun_tech = 1 missile_submarine_hull_1 = 1 naval_plane1 = 1
+			naval_weapons_1 = 1 night_vision_1 = 1 nsb_AA_autocannon_0 = 1 nsb_Anti_Air_0 = 1
+			nsb_SHORAD_missile_0 = 1 nsb_artillery_0 = 1 nsb_artillery_ammo_1 = 1 nsb_atgm_tech_1 = 1
+			nsb_attack_helicopter_tech_1 = 1 nsb_barrel_conversions = 1 nsb_dual_role_missile_0 = 1 nsb_engine_tech_1 = 1
+			nsb_gun_pods_tech_1 = 1 nsb_gun_technology_1 = 1 nsb_heavy_atgm_tech_1 = 1 nsb_light_nose_gun_tech_1 = 1
+			nsb_multiple_atgm_tech_1 = 1 nsb_rocket_pods_tech_1 = 1 nsb_special_ammo_0 = 1 nsb_transport_helicopter_1 = 1
+			special_forces_tech_1 = 1 strategic_bomber1 = 1 support_weapons = 1 tank_components_tech = 1
+			tech_arty_0 = 1 tech_combat_support_systems = 1 tech_diesel_power_systems_1 = 1 tech_fire_control_1 = 1
+			tech_landing_craft_1 = 1 tech_naval_weapon_systems = 1 tech_nuclear_power_systems_1 = 1 tech_power_systems_1 = 1
+			tech_submarine_engineering_2 = 1 transport_helicopter_1 = 1 transport_plane1 = 1 util_vehicle_1 = 1
+		}
+	}
+	if = {
+		limit = { date > 1969.12.31 }
+		set_technology = {
+			camouflage_1 = 1 defensive_systems = 1 flying_wing_design = 1 gunship_1 = 1
+			special_mad_1 = 1 tank_ammo_1 = 1 tech_point_defense_chain_gun = 1 tgp_recon_1 = 1
+		}
+	}
+	if = {
+		limit = { date > 1974.12.31 }
+		set_technology = {
+			APC_2 = 1 COMSAT2 = 1 GLCM2 = 1 GLCM2_non_got = 1
+			GNSS2 = 1 ICBM2 = 1 IFV_2 = 1 IRBM2 = 1
+			MBT_2 = 1 NIRBM1 = 1 OLV2 = 1 SAM1 = 1
+			SAM1_non_got = 1 SPYSAT2 = 1 TEL_4 = 1 TEL_4_non_got = 1
+			awacs_plane1 = 1 cas1 = 1 cnc_equipment_1 = 1 cv_awacs_plane1 = 1
+			diesel_engine_tech_2 = 1 electric_engine_tech_1 = 1 engines_2 = 1 era_tech = 1
+			helicopter_operator_hull_1 = 1 improved_building_constructions_1 = 1 infantry_weapons_2 = 1 internet1 = 1
+			mbt_tech_1 = 1 microchip_production_1 = 1 microprocessors = 1 naval_plane2 = 1
+			night_vision_2 = 1 production_line_improvements_1 = 1 small_autocannon_tech_2 = 1 special_forces_tech_2 = 1
+			squad_automatic_weapon = 1 strategic_bomber2 = 1 tandem_charge_warheads = 1 tank_components_tech_2 = 1
+			tech_light_guns_1 = 1 tech_point_defense_system_1 = 1 tech_torpedoes_1 = 1 tech_turret_missiles_aa_1 = 1
+			tech_turret_missiles_surface_1 = 1 tech_vls_aa_1 = 1 tech_vls_surface_1 = 1 turbine_engine_tech = 1
+			util_vehicle_2 = 1
+		}
+	}
+	if = {
+		limit = { date > 1979.12.31 }
+		set_technology = {
+			AT_upgrade_1 = 1 attack_submarine_hull_2 = 1 avionics_1 = 1 body_armor_1 = 1
+			camouflage_2 = 1 corvette_hull_2 = 1 defensive_systems_2 = 1 frigate_hull_2 = 1
+			gen_4_large = 1 gen_4_light = 1 gen_4_medium = 1 missile_submarine_hull_2 = 1
+			nsb_AA_upgrade_1 = 1 nsb_Arty_upgrade_1 = 1 refueling_1 = 1 tech_combat_radar_1 = 1
+			tech_combat_sonar_1 = 1
+		}
+	}
+	if = {
+		limit = { date > 1984.12.31 }
+		set_technology = {
+			AA_upgrade_1 = 1 APC_3 = 1 AS_Fighter2 = 1 Anti_Air_1 = 1
+			Anti_tank_1 = 1 Arty_upgrade_1 = 1 COMSAT3 = 1 CZE_engine_tech = 1
+			GLCM3 = 1 GLCM3_non_got = 1 GNSS3 = 1 Heavy_Anti_tank_1 = 1
+			ICBM3 = 1 IFV_3 = 1 IRBM3 = 1 KILLSAT1 = 1
+			MBT_3 = 1 MR_Fighter2 = 1 NIRBM2 = 1 OLV3 = 1
+			Rec_tank_1 = 1 SAM2 = 1 SAM2_non_got = 1 SPYSAT3 = 1
+			SP_arty_1 = 1 Strike_fighter2 = 1 TEL_5 = 1 TEL_5_non_got = 1
+			aircraft_heli_engineering_2 = 1 armor_tech_2 = 1 artificial_intelligence_1 = 1 assault_gun_tech_2 = 1
+			awacs_1 = 1 big_autocannon_tech_2 = 1 carrier_hull_2 = 1 cnc_equipment_2 = 1
+			computing2 = 1 construction1 = 1 cruiser_hull_2 = 1 decryption2 = 1
+			diesel_engine_tech_3 = 1 drone_1 = 1 encryption2 = 1 era_tech_2 = 1
+			excavation1 = 1 fuel_silos = 1 genetics_1 = 1 infantry_weapons_3 = 1
+			integrated_transportation_system = 1 land_drone_equipment_type = 1 medium_gun_tech_2 = 1 nanofibers_1 = 1
+			naval_plane3 = 1 nera_armor_tech_1 = 1 night_vision_3 = 1 nsb_AA_autocannon_1 = 1
+			nsb_Anti_Air_1 = 1 nsb_SHORAD_missile_1 = 1 nsb_artillery_1 = 1 nsb_artillery_ammo_2 = 1
+			nsb_atgm_tech_2 = 1 nsb_attack_helicopter_tech_2 = 1 nsb_defense_tech_1 = 1 nsb_dual_role_missile_1 = 1
+			nsb_engine_tech_2 = 1 nsb_fire_modes_1 = 1 nsb_gun_pods_tech_2 = 1 nsb_gun_technology_2 = 1
+			nsb_heavy_atgm_tech_2 = 1 nsb_light_nose_gun_tech_2 = 1 nsb_multiple_atgm_tech_2 = 1 nsb_rocket_pods_tech_2 = 1
+			nsb_special_ammo_1 = 1 nuclear_engines = 1 nuclear_technology = 1 patrol_boat_hull_1_tech = 1
+			printing_1 = 1 redundant_1 = 1 small_medium_gun_tech_2 = 1 special_forces_tech_3 = 1
+			strategic_bomber3 = 1 support_weapons2 = 1 tank_ammo_2 = 1 tech_arty_1 = 1
+			tech_landing_craft_2 = 1 tech_turret_missiles_aa_2 = 1 tech_turret_missiles_surface_2 = 1 tech_vls_aa_2 = 1
+			tech_vls_surface_2 = 1 transport_plane2 = 1 turbine_engine_tech_2 = 1 util_vehicle_3 = 1
+		}
+	}
+	if = {
+		limit = { date > 1989.12.31 }
+		set_technology = {
+			ag_weapons_2 = 1 air_weapons_2 = 1 artificial_intelligence_2 = 1 composite_production_1 = 1
+			countermeasures_2 = 1 destroyer_hull_2 = 1 early_renewables = 1 energy_efficiency = 1
+			fuel_efficiency = 1 fuel_refining = 1 fwdswept_wing_design = 1 genetics_2 = 1
+			gps_agricultural_applications = 1 internet2 = 1 land_fort_building_1 = 1 nanofibers_2 = 1
+			naval_weapons_2 = 1 post_conventional_rail = 1 printing_2 = 1 reactor1 = 1
+			stronghold_building_1 = 1 suicide_drone_1 = 1 tech_diesel_power_systems_2 = 1 tech_fire_control_2 = 1
+			tech_landing_craft_3 = 1 tech_nuclear_power_systems_2 = 1 tech_point_defense_system_2 = 1 tech_power_systems_2 = 1
+			tech_submarine_engineering_3 = 1 tech_torpedoes_2 = 1 variable_wing_design = 1
+		}
+	}
+	if = {
+		limit = { date > 1994.12.31 }
+		set_technology = {
+			APC_4 = 1 AS_Fighter3 = 1 AS_upgrade_1 = 1 Air_UAV1 = 1
+			COMSAT4 = 1 CZE_engine_tech_2 = 1 CZE_engine_tech_7 = 1 GLCM4 = 1
+			GLCM4_non_got = 1 GNSS4 = 1 ICBM4 = 1 IFV_4 = 1
+			IRBM4 = 1 KILLSAT2 = 1 L_Strike_fighter2 = 1 MBT_4 = 1
+			MR_Fighter3 = 1 MR_upgrade_1 = 1 NIRBM3 = 1 OLV4 = 1
+			SAM3 = 1 SPYSAT4 = 1 Strike_fighter3 = 1 Strike_upgrade_1 = 1
+			TEL_6 = 1 TEL_6_non_got = 1 artificial_intelligence_3 = 1 attack_helicopter_2 = 1
+			attack_submarine_hull_3 = 1 automated_irrigation_systems = 1 cas2 = 1 cnc_equipment_3 = 1
+			computing3 = 1 construction2 = 1 corvette_hull_3 = 1 decryption3 = 1
+			defensive_systems_3 = 1 diesel_engine_tech_4 = 1 early_freight_locomotive = 1 electric_engine_tech_2 = 1
+			electrification_1 = 1 encryption3 = 1 energy_efficiency2 = 1 excavation2 = 1
+			frigate_hull_3 = 1 fuel_refining2 = 1 genetics_3 = 1 gprs = 1
+			gunship_2 = 1 helicopter_operator_hull_2 = 1 improved_building_constructions_2 = 1 infantry_weapons_4 = 1
+			land_drone_equipment_1 = 1 large_gun_tech = 1 mbt_tech_2 = 1 microchip_production_2 = 1
+			missile_submarine_hull_3 = 1 nanofibers_3 = 1 nsb_transport_helicopter_2 = 1 printing_3 = 1
+			production_line_improvements_2 = 1 renewables = 1 special_forces_tech_4 = 1 special_mad_2 = 1
+			support_weapons3 = 1 tank_components_tech_3 = 1 tech_combat_radar_2 = 1 tech_combat_sonar_2 = 1
+			tgp_recon_2 = 1 transport_helicopter_2 = 1 transport_plane3 = 1 turbine_engine_tech_3 = 1
+			util_vehicle_4 = 1
+		}
+	}
+	if = {
+		limit = { date > 1999.12.31 }
+		set_technology = {
+			AFG_donkey_logistics_tech = 1 AFG_donkey_logistics_tech2 = 1 AFG_donkey_logistics_tech3 = 1 AT_upgrade_2 = 1
+			artificial_intelligence_4 = 1 avionics_2 = 1 body_armor_2 = 1 camouflage_3 = 1
+			composite_production_2 = 1 construction3 = 1 crispr_1 = 1 early_high_speed_rail = 1
+			electrification_2 = 1 energy_efficiency3 = 1 excavation3 = 1 farming_data_analytic_softwares = 1
+			fuel_efficiency2 = 1 fuel_refining3 = 1 genetics_4 = 1 improved_renewables = 1
+			internal_weapons_1 = 1 internet3 = 1 land_fort_building_2 = 1 nanofibers_4 = 1
+			nsb_AA_upgrade_2 = 1 nsb_Arty_upgrade_2 = 1 printing_4 = 1 reactor2 = 1
+			redundant_2 = 1 sp_double_shot_rifle_tech = 1 special_project_tech_multipurpose_warhead = 1 special_project_tech_smart_grid = 1
+			tech_landing_craft_4 = 1 tech_light_guns_2 = 1 tech_turret_missiles_aa_3 = 1 tech_turret_missiles_surface_3 = 1
+			tech_vls_aa_3 = 1 tech_vls_surface_3 = 1 utility_scale_battery_storage = 1 wifi = 1
+		}
+	}
+	if = {
+		limit = { date > 2004.12.31 }
+		set_technology = {
+			AA_upgrade_2 = 1 AA_upgrade_3 = 1 APC_5 = 1 AS_Fighter4 = 1
+			Air_UAV2 = 1 Anti_Air_2 = 1 Anti_tank_2 = 1 Arty_upgrade_2 = 1
+			Arty_upgrade_3 = 1 COMSAT5 = 1 CZE_engine_tech_3 = 1 CZE_engine_tech_4 = 1
+			GLCM5 = 1 GLCM5_non_got = 1 GNSS5 = 1 Heavy_Anti_tank_2 = 1
+			ICBM5 = 1 IFV_5 = 1 IRBM5 = 1 KILLSAT3 = 1
+			L_Strike_fighter3 = 1 MR_Fighter4 = 1 NIRBM4 = 1 OLV5 = 1
+			Rec_tank_2 = 1 SAM4 = 1 SPYSAT5 = 1 SP_arty_2 = 1
+			Strike_fighter4 = 1 TEL_7 = 1 TEL_7_non_got = 1 advanced_renewables = 1
+			aircraft_heli_engineering_3 = 1 armor_tech_3 = 1 artificial_intelligence_5 = 1 attack_helicopter_3 = 1
+			awacs_2 = 1 battleship_hull_2 = 1 carrier_hull_3 = 1 cnc_equipment_4 = 1
+			composite_production_3 = 1 computing4 = 1 construction4 = 1 crispr_2 = 1
+			cruiser_hull_3 = 1 decryption4 = 1 destroyer_hull_3 = 1 diesel_engine_tech_5 = 1
+			drone_2 = 1 edge = 1 electrification_3 = 1 encryption4 = 1
+			energy_efficiency4 = 1 era_tech_3 = 1 excavation4 = 1 genetics_5 = 1
+			high_speed_rail = 1 improved_building_constructions_3 = 1 infantry_weapons_5 = 1 land_drone_equipment_tech_2 = 1
+			limited_automated_harvesting_software = 1 microchip_production_3 = 1 nanofibers_5 = 1 nera_armor_tech_2 = 1
+			nsb_AA_autocannon_2 = 1 nsb_Anti_Air_2 = 1 nsb_SHORAD_missile_2 = 1 nsb_artillery_2 = 1
+			nsb_artillery_ammo_3 = 1 nsb_atgm_tech_3 = 1 nsb_attack_helicopter_tech_3 = 1 nsb_defense_tech_2 = 1
+			nsb_drone_tech_1 = 1 nsb_dual_role_missile_2 = 1 nsb_engine_tech_3 = 1 nsb_fire_modes_2 = 1
+			nsb_gun_pods_tech_3 = 1 nsb_gun_technology_3 = 1 nsb_heavy_atgm_tech_3 = 1 nsb_light_nose_gun_tech_3 = 1
+			nsb_multiple_atgm_tech_3 = 1 nsb_rocket_pods_tech_3 = 1 nsb_special_ammo_2 = 1 nsb_transport_helicopter_3 = 1
+			patrol_boat_hull_2_tech = 1 printing_5 = 1 production_line_improvements_3 = 1 reactor3 = 1
+			refueling_2 = 1 robotics_1 = 1 small_medium_gun_tech_3 = 1 special_forces_tech_5 = 1
+			stealth_tech_1 = 1 support_weapons4 = 1 tank_ammo_3 = 1 tech_arty_2 = 1
+			tech_combat_radar_3 = 1 tech_combat_sonar_3 = 1 tech_point_defense_system_3 = 1 tech_radar_jammer_1 = 1
+			transport_helicopter_3 = 1 turbine_engine_tech_4 = 1 umts = 1 util_vehicle_5 = 1
+		}
+	}
+	if = {
+		limit = { date > 2009.12.31 }
+		set_technology = {
+			CZE_el_engine_tech = 1 CZE_engine_tech_8 = 1 artificial_intelligence_6 = 1 attack_submarine_hull_4 = 1
+			body_armor_3 = 1 construction5 = 1 corvette_hull_4 = 1 crispr_3 = 1
+			delta_wing_design = 1 diamond_wing_design = 1 electrification_4 = 1 energy_efficiency5 = 1
+			engines_3 = 1 excavation5 = 1 frigate_hull_4 = 1 fuel_efficiency3 = 1
+			fuel_refining4 = 1 genetics_6 = 1 hsupa = 1 internet4 = 1
+			land_fort_building_3 = 1 missile_submarine_hull_4 = 1 modern_high_speed_rail = 1 modern_renewables = 1
+			nanofibers_6 = 1 nsb_Arty_upgrade_3 = 1 printing_6 = 1 robotics_2 = 1
+			satellite_based_agricultural_planning = 1 stealth_corvette_hull_1 = 1 stealth_frigate_hull_1 = 1 suicide_drone_2 = 1
+			tech_torpedoes_3 = 1 utility_scale_battery_storage2 = 1
+		}
+	}
+	if = {
+		limit = { date > 2014.12.31 }
+		set_technology = {
+			APC_6 = 1 AS_Fighter5 = 1 AS_upgrade_2 = 1 Air_UAV3 = 1
+			COMSAT6 = 1 CZE_engine_tech_5 = 1 CZE_engine_tech_6 = 1 GLCM6 = 1
+			GLCM6_non_got = 1 GNSS6 = 1 HSCM = 1 HSCM_non_got = 1
+			ICBM6 = 1 IFV_6 = 1 IRBM6 = 1 KILLSAT4 = 1
+			L_Strike_fighter4 = 1 MBT_5 = 1 MR_Fighter5 = 1 MR_upgrade_2 = 1
+			NIRBM5 = 1 OLV6 = 1 Rec_tank_3 = 1 SAM5 = 1
+			SPYSAT6 = 1 Strike_fighter5 = 1 Strike_upgrade_2 = 1 artificial_intelligence_7 = 1
+			assault_gun_tech_3 = 1 attack_helicopter_4 = 1 awacs_plane2 = 1 big_autocannon_tech_3 = 1
+			cas3 = 1 cnc_equipment_5 = 1 composite_production_4 = 1 computing5 = 1
+			construction6 = 1 cv_awacs_plane2 = 1 decryption5 = 1 defensive_systems_4 = 1
+			diesel_engine_tech_6 = 1 electrification_5 = 1 encryption5 = 1 energy_efficiency6 = 1
+			excavation6 = 1 exoskeleton_1 = 1 freight_locomotive = 1 gen_5_large = 1
+			gen_5_light = 1 gen_5_medium = 1 genetics_7 = 1 improved_building_constructions_4 = 1
+			improved_modern_renewables = 1 infantry_weapons_6 = 1 land_drone_equipment_tech_3 = 1 large_gun_tech_2 = 1
+			lte = 1 medium_gun_tech_3 = 1 microchip_production_4 = 1 nanofibers_7 = 1
+			naval_plane4 = 1 night_vision_4 = 1 nsb_atgm_tech_4 = 1 nsb_attack_helicopter_tech_4 = 1
+			nsb_defense_tech_3 = 1 nsb_drone_tech_2 = 1 nsb_engine_tech_4 = 1 nsb_gun_pods_tech_4 = 1
+			nsb_heavy_atgm_tech_4 = 1 nsb_multiple_atgm_tech_4 = 1 nsb_rocket_pods_tech_4 = 1 nsb_transport_helicopter_4 = 1
+			printing_7 = 1 production_line_improvements_4 = 1 programmable_harvesters = 1 reactor4 = 1
+			robotics_3 = 1 small_autocannon_tech_3 = 1 stealth_destroyer_hull_1 = 1 strategic_bomber4 = 1
+			support_weapons5 = 1 tank_components_tech_4 = 1 tech_air_anti_ship_drone_1 = 1 tech_air_hypersonic_engine_upgrade_1 = 1
+			tech_anti_torpedoes_1 = 1 tech_diesel_power_systems_3 = 1 tech_fire_control_3 = 1 tech_landing_craft_5 = 1
+			tech_naval_recon_drones_1 = 1 tech_nuclear_power_systems_3 = 1 tech_power_systems_3 = 1 tech_rail_guns_1 = 1
+			tech_submarine_engineering_4 = 1 tech_turret_missiles_aa_4 = 1 tech_turret_missiles_drone_1 = 1 tech_turret_missiles_surface_4 = 1
+			tech_vls_aa_4 = 1 tech_vls_surface_4 = 1 transport_helicopter_4 = 1 transport_plane4 = 1
+			turbine_engine_tech_5 = 1 util_vehicle_6 = 1 wimax = 1
+		}
+	}
+	if = {
+		limit = { date > 2019.12.31 }
+		set_technology = {
+			AT_upgrade_3 = 1 CZE_el_engine_tech_2 = 1 CZE_engine_tech_10 = 1 CZE_engine_tech_9 = 1
+			advanced_modern_renewables = 1 ag_weapons_3 = 1 air_tech_pdl_1 = 1 air_weapons_3 = 1
+			artificial_intelligence_8 = 1 avionics_3 = 1 battleship_hull_3 = 1 camouflage_4 = 1
+			countermeasures_3 = 1 crispr_4 = 1 electrification_6 = 1 fuel_efficiency4 = 1
+			fuel_refining5 = 1 genetics_8 = 1 helicopter_operator_hull_3 = 1 improved_harvesting_automation = 1
+			internet5 = 1 land_fort_building_4 = 1 lifi = 1 mbt_tech_3 = 1
+			naval_weapons_3 = 1 part_reusable_OLV6 = 1 reactor5 = 1 robotics_4 = 1
+			solar_engines_1 = 1 tech_combat_radar_4 = 1 tech_combat_sonar_4 = 1 tech_drone_torpedoes_1 = 1
+			tech_nuclear_torpedoes_1 = 1 tech_point_defense_system_4 = 1 tech_radar_jammer_2 = 1 tech_torpedoes_4 = 1
+			utility_scale_battery_storage3 = 1
+		}
+	}
+	if = {
+		limit = { date > 2024.12.31 }
+		set_technology = {
+			APC_7 = 1 AS_Fighter6 = 1 Air_UAV4 = 1 Anti_Air_3 = 1
+			Anti_tank_3 = 1 Arty_upgrade_4 = 1 COMSAT7 = 1 GLCM7 = 1
+			GLCM7_non_got = 1 GNSS7 = 1 HSCM1 = 1 HSCM1_non_got = 1
+			Heavy_Anti_tank_3 = 1 ICBM7 = 1 IFV_7 = 1 IRBM7 = 1
+			KILLSAT5 = 1 L_Strike_fighter5 = 1 MBT_7 = 1 MR_Fighter6 = 1
+			NIRBM6 = 1 OLV7 = 1 Rec_tank_4 = 1 SAM6 = 1
+			SPYSAT7 = 1 SP_arty_3 = 1 Strike_fighter6 = 1 attack_submarine_hull_5 = 1
+			augmented_vision_1 = 1 awacs_3 = 1 carrier_hull_4 = 1 cas4 = 1
+			cnc_equipment_6 = 1 construction7 = 1 corvette_hull_5 = 1 cruiser_hull_4 = 1
+			destroyer_hull_4 = 1 drone_3 = 1 early_maglev_rail = 1 electric_engine_tech_3 = 1
+			electrification_7 = 1 energy_efficiency7 = 1 era_tech_4 = 1 excavation7 = 1
+			exoskeleton_2 = 1 frigate_hull_5 = 1 genetics_9 = 1 improved_building_constructions_5 = 1
+			infantry_weapons_7 = 1 internal_weapons_2 = 1 land_drone_equipment_4 = 1 microchip_production_5 = 1
+			missile_submarine_hull_5 = 1 naval_plane5 = 1 nsb_AA_autocannon_3 = 1 nsb_AA_upgrade_3 = 1
+			nsb_Anti_Air_3 = 1 nsb_SHORAD_missile_3 = 1 nsb_artillery_3 = 1 nsb_artillery_ammo_4 = 1
+			nsb_drone_artillery_ammo_1 = 1 nsb_dual_role_missile_3 = 1 nsb_fire_modes_3 = 1 nsb_gun_technology_4 = 1
+			nsb_special_ammo_3 = 1 printing_8 = 1 production_line_improvements_5 = 1 rapid_dragon = 1
+			rc_fire_support_drone = 1 robotic_harvesters = 1 robotics_5 = 1 small_medium_gun_tech_4 = 1
+			special_mad_3 = 1 stealth_corvette_hull_2 = 1 stealth_frigate_hull_2 = 1 stealth_tech_2 = 1
+			strategic_bomber5 = 1 tank_ammo_4 = 1 tech_arty_3 = 1 tech_fusion_power_systems_1 = 1
+			tech_landing_craft_6 = 1 tech_light_guns_3 = 1 tech_naval_recon_drones_2 = 1 tech_rail_guns_2 = 1
+			tech_tank_nuclear_engine_1 = 1 tgp_recon_3 = 1 transport_plane5 = 1 util_vehicle_7 = 1
+		}
+	}
+	if = {
+		limit = { date > 2029.12.31 }
+		set_technology = {
+			AT_upgrade_4 = 1 agi_maintained_agricultural_developments = 1 artificial_intelligence_9 = 1 body_armor_4 = 1
+			composite_production_5 = 1 computing6 = 1 decryption6 = 1 early_renewables_9 = 1
+			electrification_8 = 1 encryption6 = 1 engines_4 = 1 fuel_efficiency5 = 1
+			fuel_refining6 = 1 full_reusable_OLV7 = 1 future_wingform_designs = 1 genetics_10 = 1
+			internet6 = 1 modern_satelite_internet = 1 nsb_Arty_upgrade_4 = 1 patrol_boat_hull_3_tech = 1
+			reactor6 = 1 robotics_6 = 1 special_forces_tech_6 = 1 stealth_destroyer_hull_2 = 1
+			suicide_drone_3 = 1 tech_air_anti_ship_drone_2 = 1 tech_anti_drone_laser_1 = 1 tech_anti_torpedoes_2 = 1
+			tech_drone_torpedoes_2 = 1 tech_rail_battery_1 = 1 tech_turret_missiles_aa_5 = 1 tech_turret_missiles_surface_5 = 1
+			tech_vls_aa_5 = 1 tech_vls_surface_5 = 1 utility_scale_battery_storage4 = 1
+		}
+	}
+	if = {
+		limit = { date > 2034.12.31 }
+		set_technology = {
+			AA_upgrade_4 = 1 APC_8 = 1 AS_Fighter7 = 1 AS_upgrade_3 = 1
+			Anti_Air_4 = 1 Anti_tank_4 = 1 Arty_upgrade_5 = 1 COMSAT8 = 1
+			GLCM8 = 1 GLCM8_non_got = 1 GNSS8 = 1 HSCM2 = 1
+			HSCM2_non_got = 1 Heavy_Anti_tank_4 = 1 ICBM8 = 1 IFV_8 = 1
+			IRBM8 = 1 KILLSAT6 = 1 MBT_8 = 1 MR_Fighter7 = 1
+			MR_upgrade_3 = 1 NIRBM7 = 1 OLV8 = 1 Rec_tank_5 = 1
+			SAM7 = 1 SPYSAT8 = 1 SP_arty_4 = 1 Strike_fighter7 = 1
+			Strike_upgrade_3 = 1 afs_drone_1 = 1 air_tech_gunship_railgun_1 = 1 air_tech_pdl_2 = 1
+			air_tech_railgun_cannons_1 = 1 armor_tech_4 = 1 assault_gun_tech_4 = 1 attack_helicopter_5 = 1
+			augmented_vision_2 = 1 big_autocannon_tech_4 = 1 camouflage_5 = 1 cas5 = 1
+			cnc_equipment_7 = 1 construction8 = 1 defensive_systems_5 = 1 diesel_engine_tech_7 = 1
+			electric_engine_tech_4 = 1 electrification_9 = 1 energy_efficiency8 = 1 excavation8 = 1
+			gen_6_large = 1 gen_6_light = 1 gen_6_medium = 1 genetics_11 = 1
+			improved_building_constructions_6 = 1 infantry_weapons_8 = 1 land_drone_equipment_5 = 1 large_gun_tech_3 = 1
+			mbt_tech_4 = 1 medium_gun_tech_4 = 1 microchip_production_6 = 1 naval_plane6 = 1
+			nera_armor_tech_3 = 1 nsb_AA_autocannon_4 = 1 nsb_AA_upgrade_4 = 1 nsb_Anti_Air_4 = 1
+			nsb_SHORAD_missile_4 = 1 nsb_atgm_tech_5 = 1 nsb_attack_helicopter_tech_5 = 1 nsb_defense_tech_4 = 1
+			nsb_drone_tech_3 = 1 nsb_dual_role_missile_4 = 1 nsb_engine_tech_5 = 1 nsb_gun_pods_tech_5 = 1
+			nsb_heavy_atgm_tech_5 = 1 nsb_light_nose_gun_tech_4 = 1 nsb_multiple_atgm_tech_5 = 1 nsb_rocket_pods_tech_5 = 1
+			nsb_transport_helicopter_5 = 1 printing_9 = 1 production_line_improvements_6 = 1 small_autocannon_tech_4 = 1
+			standardised_maglev_rail = 1 strategic_bomber6 = 1 tank_ammo_5 = 1 tank_components_tech_5 = 1
+			tech_arty_4 = 1 tech_combat_radar_5 = 1 tech_combat_sonar_5 = 1 tech_helicopter_hover_engine_1 = 1
+			tech_landing_craft_7 = 1 tech_naval_recon_drones_3 = 1 tech_nuclear_torpedoes_2 = 1 tech_point_defense_system_5 = 1
+			tech_radar_jammer_3 = 1 tech_rail_guns_3 = 1 tech_torpedoes_5 = 1 tech_turret_missiles_drone_2 = 1
+			transport_helicopter_5 = 1 transport_plane6 = 1 turbine_engine_tech_6 = 1 util_vehicle_8 = 1
+		}
+	}
+	if = {
+		limit = { date > 2039.12.31 }
+		set_technology = {
+			ag_weapons_4 = 1 air_weapons_4 = 1 artificial_intelligence_10 = 1 attack_submarine_hull_6 = 1
+			avionics_4 = 1 body_armor_5 = 1 computing7 = 1 corvette_hull_6 = 1
+			countermeasures_4 = 1 electrification_10 = 1 exoskeleton_3 = 1 frigate_hull_6 = 1
+			fuel_efficiency6 = 1 fuel_refining7 = 1 full_reusable_OLV8 = 1 internet7 = 1
+			internet_access_4 = 1 missile_submarine_hull_6 = 1 naval_weapons_4 = 1 reactor7 = 1
+			renewables_9 = 1 robotics_7 = 1 solar_engines_2 = 1 special_forces_tech_7 = 1
+			stealth_corvette_hull_3 = 1 stealth_frigate_hull_3 = 1 tech_diesel_power_systems_4 = 1 tech_drone_torpedoes_3 = 1
+			tech_fire_control_4 = 1 tech_nuclear_power_systems_4 = 1 tech_power_systems_4 = 1 tech_submarine_engineering_5 = 1
+			utility_scale_battery_storage5 = 1
+		}
+	}
+	if = {
+		limit = { date > 2044.12.31 }
+		set_technology = {
+			AT_upgrade_5 = 1 Anti_tank_5 = 1 COMSAT9 = 1 GLCM9 = 1
+			GNSS9 = 1 HSCM3 = 1 Heavy_Anti_tank_5 = 1 ICBM9 = 1
+			IRBM9 = 1 KILLSAT7 = 1 NIRBM8 = 1 OLV9 = 1
+			SAM8 = 1 SPYSAT9 = 1 afs_drone_2 = 1 agriculture_10 = 1
+			air_tech_gunship_railgun_2 = 1 augmented_vision_3 = 1 awacs_4 = 1 battleship_hull_4 = 1
+			carrier_hull_5 = 1 cnc_equipment_8 = 1 composite_production_6 = 1 construction9 = 1
+			cruiser_hull_5 = 1 destroyer_hull_5 = 1 drone_4 = 1 electrification_11 = 1
+			energy_efficiency_9 = 1 era_tech_5 = 1 excavation9 = 1 genetics_12 = 1
+			helicopter_operator_hull_4 = 1 improved_building_constructions_7 = 1 infantry_weapons_9 = 1 internal_weapons_3 = 1
+			land_drone_equipment_6 = 1 microchip_production_7 = 1 modern_freight_locomotive = 1 nsb_AA_autocannon_5 = 1
+			nsb_AA_upgrade_5 = 1 nsb_Anti_Air_5 = 1 nsb_Arty_upgrade_5 = 1 nsb_SHORAD_missile_5 = 1
+			nsb_artillery_4 = 1 nsb_artillery_ammo_5 = 1 nsb_drone_artillery_ammo_2 = 1 nsb_dual_role_missile_5 = 1
+			nsb_fire_modes_4 = 1 nsb_gun_technology_5 = 1 nsb_special_ammo_4 = 1 printing_10 = 1
+			production_line_improvements_7 = 1 reactor8 = 1 small_medium_gun_tech_5 = 1 special_mad_4 = 1
+			stealth_destroyer_hull_3 = 1 stealth_tech_3 = 1 tank_ammo_6 = 1 tech_anti_drone_laser_2 = 1
+			tech_anti_torpedoes_3 = 1 tech_combat_radar_6 = 1 tech_combat_sonar_6 = 1 tech_fusion_power_systems_2 = 1
+			tech_landing_craft_8 = 1 tech_light_guns_4 = 1 tech_naval_recon_drones_4 = 1 tech_point_defense_system_6 = 1
+			tech_rail_battery_2 = 1 tech_rail_guns_4 = 1 tech_tank_nuclear_engine_2 = 1 tech_tank_walker_chassis_1 = 1
+			tech_torpedoes_6 = 1 tech_turret_missiles_aa_6 = 1 tech_turret_missiles_surface_6 = 1 tech_vls_aa_6 = 1
+			tech_vls_surface_6 = 1 tgp_recon_4 = 1 util_vehicle_9 = 1
+		}
+	}
+	if = {
+		limit = { date > 2049.12.31 }
+		set_technology = {
+			air_tech_pdl_3 = 1 artificial_intelligence_11 = 1 body_armor_6 = 1 camouflage_6 = 1
+			computing8 = 1 fuel_efficiency_7 = 1 fuel_refining8 = 1 future_wingform_designs_2 = 1
+			genetics_13 = 1 internet8 = 1 internet_access_5 = 1 rail_8 = 1
+			renewables_10 = 1 robotics_8 = 1 special_forces_tech_8 = 1 suicide_drone_4 = 1
+			tech_air_anti_ship_drone_3 = 1 tech_nuclear_torpedoes_3 = 1 tech_radar_jammer_4 = 1 tech_tank_hover_suspension_1 = 1
+			tech_tank_hover_suspension_2 = 1 tech_tank_hover_suspension_3 = 1
+		}
+	}
+	if = {
+		limit = { date > 2052.12.31 }
+		set_technology = {
+			aircraft_carrier_engineering_2 = 1 aircraft_heli_engineering_4 = 1
+		}
+	}
+	if = {
+		limit = { date > 2054.12.31 }
+		set_technology = {
+			AT_upgrade_6 = 1 Anti_tank_6 = 1 COMSAT10 = 1 GLCM10 = 1
+			GNSS10 = 1 HSCM4 = 1 Heavy_Anti_tank_6 = 1 ICBM10 = 1
+			IRBM10 = 1 KILLSAT8 = 1 NIRBM9 = 1 OLV10 = 1
+			SAM9 = 1 SPYSAT10 = 1 afs_drone_3 = 1 agriculture_11 = 1
+			air_tech_gunship_railgun_3 = 1 air_tech_railgun_cannons_2 = 1 armor_tech_5 = 1 assault_gun_tech_5 = 1
+			attack_helicopter_6 = 1 attack_submarine_hull_7 = 1 augmented_vision_4 = 1 big_autocannon_tech_5 = 1
+			cnc_equipment_9 = 1 construction10 = 1 corvette_hull_7 = 1 defensive_systems_6 = 1
+			diesel_engine_tech_8 = 1 electric_engine_tech_5 = 1 electrification_12 = 1 energy_efficiency_10 = 1
+			engines_5 = 1 excavation10 = 1 exoskeleton_4 = 1 frigate_hull_7 = 1
+			gen_7_large = 1 gen_7_light = 1 gen_7_medium = 1 improved_building_constructions_8 = 1
+			infantry_weapons_10 = 1 land_drone_equipment_7 = 1 large_gun_tech_4 = 1 mbt_tech_5 = 1
+			medium_gun_tech_5 = 1 microchip_production_8 = 1 missile_submarine_hull_7 = 1 nera_armor_tech_4 = 1
+			nsb_AA_autocannon_6 = 1 nsb_AA_upgrade_6 = 1 nsb_Anti_Air_6 = 1 nsb_SHORAD_missile_6 = 1
+			nsb_atgm_tech_6 = 1 nsb_attack_helicopter_tech_6 = 1 nsb_defense_tech_5 = 1 nsb_drone_tech_4 = 1
+			nsb_dual_role_missile_6 = 1 nsb_engine_tech_6 = 1 nsb_gun_pods_tech_6 = 1 nsb_heavy_atgm_tech_6 = 1
+			nsb_light_nose_gun_tech_5 = 1 nsb_multiple_atgm_tech_6 = 1 nsb_rocket_pods_tech_6 = 1 nsb_transport_helicopter_6 = 1
+			patrol_boat_hull_4_tech = 1 printing_11 = 1 production_line_improvements_8 = 1 reactor9 = 1
+			small_autocannon_tech_5 = 1 stealth_corvette_hull_4 = 1 stealth_frigate_hull_4 = 1 tank_ammo_7 = 1
+			tank_components_tech_6 = 1 tech_drone_torpedoes_4 = 1 tech_fire_control_5 = 1 tech_helicopter_hover_engine_2 = 1
+			tech_naval_recon_drones_5 = 1 tech_submarine_engineering_6 = 1 tech_turret_missiles_drone_3 = 1 transport_helicopter_6 = 1
+			turbine_engine_tech_7 = 1 util_vehicle_10 = 1 utility_scale_battery_storage_6 = 1
+		}
+	}
+	if = {
+		limit = { date > 2059.12.31 }
+		set_technology = {
+			ag_weapons_5 = 1 air_weapons_5 = 1 artificial_intelligence_12 = 1 avionics_5 = 1
+			body_armor_7 = 1 carrier_hull_6 = 1 composite_production_7 = 1 computing9 = 1
+			countermeasures_5 = 1 cruiser_hull_6 = 1 destroyer_hull_6 = 1 fuel_efficiency_8 = 1
+			fuel_refining9 = 1 genetics_14 = 1 helicopter_operator_hull_5 = 1 internet9 = 1
+			internet_access_6 = 1 naval_weapons_5 = 1 rail_9 = 1 reactor10 = 1
+			renewables_11 = 1 robotics_9 = 1 solar_engines_3 = 1 special_forces_tech_9 = 1
+			stealth_destroyer_hull_4 = 1 tech_anti_drone_laser_3 = 1 tech_anti_torpedoes_4 = 1 tech_combat_radar_7 = 1
+			tech_combat_sonar_7 = 1 tech_diesel_power_systems_5 = 1 tech_landing_craft_9 = 1 tech_light_guns_5 = 1
+			tech_nuclear_power_systems_5 = 1 tech_point_defense_system_7 = 1 tech_power_systems_5 = 1 tech_rail_guns_5 = 1
+			tech_torpedoes_7 = 1 tech_turret_missiles_aa_7 = 1 tech_turret_missiles_surface_7 = 1 tech_vls_aa_7 = 1
+			tech_vls_surface_7 = 1
+		}
+	}
+	if = {
+		limit = { date > 2064.12.31 }
+		set_technology = {
+			AT_upgrade_7 = 1 Anti_tank_7 = 1 COMSAT11 = 1 GLCM11 = 1
+			GNSS11 = 1 HSCM5 = 1 Heavy_Anti_tank_7 = 1 ICBM11 = 1
+			IRBM11 = 1 KILLSAT9 = 1 NIRBM10 = 1 OLV11 = 1
+			SAM10 = 1 SPYSAT11 = 1 afs_drone_4 = 1 agriculture_12 = 1
+			air_tech_gunship_railgun_4 = 1 air_tech_pdl_4 = 1 augmented_vision_5 = 1 awacs_5 = 1
+			camouflage_7 = 1 cnc_equipment_10 = 1 construction11 = 1 drone_5 = 1
+			electrification_13 = 1 energy_efficiency_11 = 1 era_tech_6 = 1 excavation11 = 1
+			improved_building_constructions_9 = 1 infantry_weapons_11 = 1 internal_weapons_4 = 1 land_drone_equipment_8 = 1
+			microchip_production_9 = 1 nsb_AA_autocannon_7 = 1 nsb_AA_upgrade_7 = 1 nsb_Anti_Air_7 = 1
+			nsb_Arty_upgrade_6 = 1 nsb_SHORAD_missile_7 = 1 nsb_artillery_5 = 1 nsb_artillery_ammo_6 = 1
+			nsb_drone_artillery_ammo_3 = 1 nsb_dual_role_missile_7 = 1 nsb_fire_modes_5 = 1 nsb_gun_technology_6 = 1
+			nsb_special_ammo_5 = 1 printing_12 = 1 production_line_improvements_9 = 1 small_medium_gun_tech_6 = 1
+			special_mad_5 = 1 stealth_tech_4 = 1 tank_ammo_8 = 1 tech_fusion_power_systems_3 = 1
+			tech_naval_recon_drones_6 = 1 tech_nuclear_torpedoes_4 = 1 tech_radar_jammer_5 = 1 tech_rail_battery_3 = 1
+			tech_tank_nuclear_engine_3 = 1 tgp_recon_5 = 1 util_vehicle_11 = 1
+		}
+	}
+	if = {
+		limit = { date > 2069.12.31 }
+		set_technology = {
+			artificial_intelligence_13 = 1 attack_submarine_hull_8 = 1 body_armor_8 = 1 computing10 = 1
+			corvette_hull_8 = 1 exoskeleton_5 = 1 frigate_hull_8 = 1 fuel_efficiency_9 = 1
+			fuel_refining10 = 1 future_wingform_designs_3 = 1 genetics_15 = 1 internet10 = 1
+			internet_access_7 = 1 missile_submarine_hull_8 = 1 rail_10 = 1 reactor11 = 1
+			renewables_12 = 1 robotics_10 = 1 special_forces_tech_10 = 1 stealth_corvette_hull_5 = 1
+			stealth_frigate_hull_5 = 1 suicide_drone_5 = 1 tech_drone_torpedoes_5 = 1 tech_fire_control_6 = 1
+			tech_submarine_engineering_7 = 1 utility_scale_battery_storage_7 = 1
+		}
+	}
+	if = {
+		limit = { date > 2074.12.31 }
+		set_technology = {
+			AT_upgrade_8 = 1 Anti_tank_8 = 1 COMSAT12 = 1 GLCM12 = 1
+			GNSS12 = 1 HSCM6 = 1 Heavy_Anti_tank_8 = 1 ICBM12 = 1
+			IRBM12 = 1 KILLSAT10 = 1 NIRBM11 = 1 OLV12 = 1
+			SAM11 = 1 SPYSAT12 = 1 afs_drone_5 = 1 agriculture_13 = 1
+			air_tech_gunship_railgun_5 = 1 armor_tech_6 = 1 assault_gun_tech_6 = 1 attack_helicopter_7 = 1
+			augmented_vision_6 = 1 battleship_hull_5 = 1 big_autocannon_tech_6 = 1 carrier_hull_7 = 1
+			cnc_equipment_11 = 1 composite_production_8 = 1 construction12 = 1 cruiser_hull_7 = 1
+			defensive_systems_7 = 1 destroyer_hull_7 = 1 diesel_engine_tech_9 = 1 electric_engine_tech_6 = 1
+			electrification_14 = 1 energy_efficiency_12 = 1 engines_6 = 1 excavation12 = 1
+			gen_8_large = 1 gen_8_light = 1 gen_8_medium = 1 helicopter_operator_hull_6 = 1
+			improved_building_constructions_10 = 1 infantry_weapons_12 = 1 land_drone_equipment_9 = 1 large_gun_tech_5 = 1
+			mbt_tech_6 = 1 medium_gun_tech_6 = 1 microchip_production_10 = 1 nera_armor_tech_5 = 1
+			nsb_AA_autocannon_8 = 1 nsb_AA_upgrade_8 = 1 nsb_Anti_Air_8 = 1 nsb_SHORAD_missile_8 = 1
+			nsb_atgm_tech_7 = 1 nsb_attack_helicopter_tech_7 = 1 nsb_defense_tech_6 = 1 nsb_drone_tech_5 = 1
+			nsb_dual_role_missile_8 = 1 nsb_engine_tech_7 = 1 nsb_gun_pods_tech_7 = 1 nsb_heavy_atgm_tech_7 = 1
+			nsb_light_nose_gun_tech_6 = 1 nsb_multiple_atgm_tech_7 = 1 nsb_rocket_pods_tech_7 = 1 nsb_transport_helicopter_7 = 1
+			printing_13 = 1 production_line_improvements_10 = 1 small_autocannon_tech_6 = 1 stealth_destroyer_hull_5 = 1
+			tank_ammo_9 = 1 tank_components_tech_7 = 1 tech_anti_drone_laser_4 = 1 tech_anti_torpedoes_5 = 1
+			tech_combat_radar_8 = 1 tech_combat_sonar_8 = 1 tech_helicopter_hover_engine_3 = 1 tech_landing_craft_10 = 1
+			tech_light_guns_6 = 1 tech_naval_recon_drones_7 = 1 tech_point_defense_system_8 = 1 tech_rail_guns_6 = 1
+			tech_torpedoes_8 = 1 tech_turret_missiles_aa_8 = 1 tech_turret_missiles_drone_4 = 1 tech_turret_missiles_surface_8 = 1
+			tech_vls_aa_8 = 1 tech_vls_surface_8 = 1 train_equipment_4 = 1 transport_helicopter_7 = 1
+			turbine_engine_tech_8 = 1 util_vehicle_12 = 1
+		}
+	}
+	if = {
+		limit = { date > 2079.12.31 }
+		set_technology = {
+			ag_weapons_6 = 1 air_tech_pdl_5 = 1 air_weapons_6 = 1 artificial_intelligence_14 = 1
+			body_armor_9 = 1 camouflage_8 = 1 computing11 = 1 countermeasures_6 = 1
+			drone_6 = 1 fuel_efficiency_10 = 1 fuel_refining11 = 1 genetics_16 = 1
+			internet11 = 1 internet_access_8 = 1 naval_weapons_6 = 1 patrol_boat_hull_5_tech = 1
+			rail_11 = 1 reactor12 = 1 renewables_13 = 1 robotics_11 = 1
+			solar_engines_4 = 1 special_forces_tech_11 = 1 tech_diesel_power_systems_6 = 1 tech_nuclear_power_systems_6 = 1
+			tech_power_systems_6 = 1 tech_tank_nuclear_engine_4 = 1 tech_tank_walker_chassis_2 = 1
+		}
+	}
+	if = {
+		limit = { date > 2084.12.31 }
+		set_technology = {
+			air_tech_gunship_railgun_6 = 1 internal_weapons_5 = 1 special_mad_6 = 1 stealth_tech_5 = 1
+			suicide_drone_6 = 1 tgp_recon_6 = 1
+		}
+	}
+}
+
+# Grants the entire tree, including technologies dated in the future.
+ebmd_research_all_techs = {
+	set_technology = {
+		Early_APC = 1 air_defense = 1 air_defense_non_got = 1 aircraft_carrier_engineering = 1
+		ballistic_missile = 1 basic_computing = 1 cruise_missile = 1 cruise_missile_non_got = 1
+		early_bomber = 1 early_fighter = 1 helo_ops_tech = 1 mbt_tech_ops = 1
+		radar = 1 small_autocannon_tech = 1 small_medium_gun_tech = 1 tech_early_naval_weapon_systems = 1
+		tech_naval_systems_engineering = 1 tech_submarine_engineering_1 = 1
+	}
+	set_technology = {
+		GLCM = 1 GLCM_non_got = 1 ICBM = 1 IRBM = 1
+		SAM = 1 SAM_non_got = 1 TEL_launched_missiles = 1 TEL_launched_missiles_non_got = 1
+		early_airframe_designs = 1 early_weapons = 1 integrated_circuit = 1
+	}
+	set_technology = {
+		gen_3_large = 1 gen_3_light = 1 gen_3_medium = 1
+	}
+	set_technology = {
+		APC_1 = 1 AS_Fighter1 = 1 Anti_Air_0 = 1 Anti_tank_0 = 1
+		COMSAT1 = 1 GLCM1 = 1 GLCM1_non_got = 1 GNSS1 = 1
+		Heavy_Anti_tank_0 = 1 ICBM1 = 1 IFV_1 = 1 IRBM1 = 1
+		L_Strike_fighter1 = 1 MBT_1 = 1 MR_Fighter1 = 1 OLV1 = 1
+		Rec_tank_0 = 1 SAM0 = 1 SAM0_non_got = 1 SPYSAT1 = 1
+		Strike_fighter1 = 1 TEL_3 = 1 TEL_3_non_got = 1 ag_weapons_1 = 1
+		air_weapons_1 = 1 aircraft_heli_engineering_1 = 1 armor_tech = 1 assault_gun_tech = 1
+		attack_helicopter_1 = 1 attack_submarine_hull_1 = 1 battleship_hull_1 = 1 big_autocannon_tech = 1
+		carrier_hull_1 = 1 combat_eng_equipment = 1 computing1 = 1 corvette_hull_1 = 1
+		countermeasures_1 = 1 cruiser_hull_1 = 1 decryption1 = 1 destroyer_hull_1 = 1
+		diesel_engine_tech = 1 encryption1 = 1 frigate_hull_1 = 1 infantry_weapons_1 = 1
+		mbt_tech = 1 medium_gun_tech = 1 missile_submarine_hull_1 = 1 naval_plane1 = 1
+		naval_weapons_1 = 1 night_vision_1 = 1 nsb_AA_autocannon_0 = 1 nsb_Anti_Air_0 = 1
+		nsb_SHORAD_missile_0 = 1 nsb_artillery_0 = 1 nsb_artillery_ammo_1 = 1 nsb_atgm_tech_1 = 1
+		nsb_attack_helicopter_tech_1 = 1 nsb_barrel_conversions = 1 nsb_dual_role_missile_0 = 1 nsb_engine_tech_1 = 1
+		nsb_gun_pods_tech_1 = 1 nsb_gun_technology_1 = 1 nsb_heavy_atgm_tech_1 = 1 nsb_light_nose_gun_tech_1 = 1
+		nsb_multiple_atgm_tech_1 = 1 nsb_rocket_pods_tech_1 = 1 nsb_special_ammo_0 = 1 nsb_transport_helicopter_1 = 1
+		special_forces_tech_1 = 1 strategic_bomber1 = 1 support_weapons = 1 tank_components_tech = 1
+		tech_arty_0 = 1 tech_combat_support_systems = 1 tech_diesel_power_systems_1 = 1 tech_fire_control_1 = 1
+		tech_landing_craft_1 = 1 tech_naval_weapon_systems = 1 tech_nuclear_power_systems_1 = 1 tech_power_systems_1 = 1
+		tech_submarine_engineering_2 = 1 transport_helicopter_1 = 1 transport_plane1 = 1 util_vehicle_1 = 1
+	}
+	set_technology = {
+		camouflage_1 = 1 defensive_systems = 1 flying_wing_design = 1 gunship_1 = 1
+		special_mad_1 = 1 tank_ammo_1 = 1 tech_point_defense_chain_gun = 1 tgp_recon_1 = 1
+	}
+	set_technology = {
+		APC_2 = 1 COMSAT2 = 1 GLCM2 = 1 GLCM2_non_got = 1
+		GNSS2 = 1 ICBM2 = 1 IFV_2 = 1 IRBM2 = 1
+		MBT_2 = 1 NIRBM1 = 1 OLV2 = 1 SAM1 = 1
+		SAM1_non_got = 1 SPYSAT2 = 1 TEL_4 = 1 TEL_4_non_got = 1
+		awacs_plane1 = 1 cas1 = 1 cnc_equipment_1 = 1 cv_awacs_plane1 = 1
+		diesel_engine_tech_2 = 1 electric_engine_tech_1 = 1 engines_2 = 1 era_tech = 1
+		helicopter_operator_hull_1 = 1 improved_building_constructions_1 = 1 infantry_weapons_2 = 1 internet1 = 1
+		mbt_tech_1 = 1 microchip_production_1 = 1 microprocessors = 1 naval_plane2 = 1
+		night_vision_2 = 1 production_line_improvements_1 = 1 small_autocannon_tech_2 = 1 special_forces_tech_2 = 1
+		squad_automatic_weapon = 1 strategic_bomber2 = 1 tandem_charge_warheads = 1 tank_components_tech_2 = 1
+		tech_light_guns_1 = 1 tech_point_defense_system_1 = 1 tech_torpedoes_1 = 1 tech_turret_missiles_aa_1 = 1
+		tech_turret_missiles_surface_1 = 1 tech_vls_aa_1 = 1 tech_vls_surface_1 = 1 turbine_engine_tech = 1
+		util_vehicle_2 = 1
+	}
+	set_technology = {
+		AT_upgrade_1 = 1 attack_submarine_hull_2 = 1 avionics_1 = 1 body_armor_1 = 1
+		camouflage_2 = 1 corvette_hull_2 = 1 defensive_systems_2 = 1 frigate_hull_2 = 1
+		gen_4_large = 1 gen_4_light = 1 gen_4_medium = 1 missile_submarine_hull_2 = 1
+		nsb_AA_upgrade_1 = 1 nsb_Arty_upgrade_1 = 1 refueling_1 = 1 tech_combat_radar_1 = 1
+		tech_combat_sonar_1 = 1
+	}
+	set_technology = {
+		AA_upgrade_1 = 1 APC_3 = 1 AS_Fighter2 = 1 Anti_Air_1 = 1
+		Anti_tank_1 = 1 Arty_upgrade_1 = 1 COMSAT3 = 1 CZE_engine_tech = 1
+		GLCM3 = 1 GLCM3_non_got = 1 GNSS3 = 1 Heavy_Anti_tank_1 = 1
+		ICBM3 = 1 IFV_3 = 1 IRBM3 = 1 KILLSAT1 = 1
+		MBT_3 = 1 MR_Fighter2 = 1 NIRBM2 = 1 OLV3 = 1
+		Rec_tank_1 = 1 SAM2 = 1 SAM2_non_got = 1 SPYSAT3 = 1
+		SP_arty_1 = 1 Strike_fighter2 = 1 TEL_5 = 1 TEL_5_non_got = 1
+		aircraft_heli_engineering_2 = 1 armor_tech_2 = 1 artificial_intelligence_1 = 1 assault_gun_tech_2 = 1
+		awacs_1 = 1 big_autocannon_tech_2 = 1 carrier_hull_2 = 1 cnc_equipment_2 = 1
+		computing2 = 1 construction1 = 1 cruiser_hull_2 = 1 decryption2 = 1
+		diesel_engine_tech_3 = 1 drone_1 = 1 encryption2 = 1 era_tech_2 = 1
+		excavation1 = 1 fuel_silos = 1 genetics_1 = 1 infantry_weapons_3 = 1
+		integrated_transportation_system = 1 land_drone_equipment_type = 1 medium_gun_tech_2 = 1 nanofibers_1 = 1
+		naval_plane3 = 1 nera_armor_tech_1 = 1 night_vision_3 = 1 nsb_AA_autocannon_1 = 1
+		nsb_Anti_Air_1 = 1 nsb_SHORAD_missile_1 = 1 nsb_artillery_1 = 1 nsb_artillery_ammo_2 = 1
+		nsb_atgm_tech_2 = 1 nsb_attack_helicopter_tech_2 = 1 nsb_defense_tech_1 = 1 nsb_dual_role_missile_1 = 1
+		nsb_engine_tech_2 = 1 nsb_fire_modes_1 = 1 nsb_gun_pods_tech_2 = 1 nsb_gun_technology_2 = 1
+		nsb_heavy_atgm_tech_2 = 1 nsb_light_nose_gun_tech_2 = 1 nsb_multiple_atgm_tech_2 = 1 nsb_rocket_pods_tech_2 = 1
+		nsb_special_ammo_1 = 1 nuclear_engines = 1 nuclear_technology = 1 patrol_boat_hull_1_tech = 1
+		printing_1 = 1 redundant_1 = 1 small_medium_gun_tech_2 = 1 special_forces_tech_3 = 1
+		strategic_bomber3 = 1 support_weapons2 = 1 tank_ammo_2 = 1 tech_arty_1 = 1
+		tech_landing_craft_2 = 1 tech_turret_missiles_aa_2 = 1 tech_turret_missiles_surface_2 = 1 tech_vls_aa_2 = 1
+		tech_vls_surface_2 = 1 transport_plane2 = 1 turbine_engine_tech_2 = 1 util_vehicle_3 = 1
+	}
+	set_technology = {
+		ag_weapons_2 = 1 air_weapons_2 = 1 artificial_intelligence_2 = 1 composite_production_1 = 1
+		countermeasures_2 = 1 destroyer_hull_2 = 1 early_renewables = 1 energy_efficiency = 1
+		fuel_efficiency = 1 fuel_refining = 1 fwdswept_wing_design = 1 genetics_2 = 1
+		gps_agricultural_applications = 1 internet2 = 1 land_fort_building_1 = 1 nanofibers_2 = 1
+		naval_weapons_2 = 1 post_conventional_rail = 1 printing_2 = 1 reactor1 = 1
+		stronghold_building_1 = 1 suicide_drone_1 = 1 tech_diesel_power_systems_2 = 1 tech_fire_control_2 = 1
+		tech_landing_craft_3 = 1 tech_nuclear_power_systems_2 = 1 tech_point_defense_system_2 = 1 tech_power_systems_2 = 1
+		tech_submarine_engineering_3 = 1 tech_torpedoes_2 = 1 variable_wing_design = 1
+	}
+	set_technology = {
+		APC_4 = 1 AS_Fighter3 = 1 AS_upgrade_1 = 1 Air_UAV1 = 1
+		COMSAT4 = 1 CZE_engine_tech_2 = 1 CZE_engine_tech_7 = 1 GLCM4 = 1
+		GLCM4_non_got = 1 GNSS4 = 1 ICBM4 = 1 IFV_4 = 1
+		IRBM4 = 1 KILLSAT2 = 1 L_Strike_fighter2 = 1 MBT_4 = 1
+		MR_Fighter3 = 1 MR_upgrade_1 = 1 NIRBM3 = 1 OLV4 = 1
+		SAM3 = 1 SPYSAT4 = 1 Strike_fighter3 = 1 Strike_upgrade_1 = 1
+		TEL_6 = 1 TEL_6_non_got = 1 artificial_intelligence_3 = 1 attack_helicopter_2 = 1
+		attack_submarine_hull_3 = 1 automated_irrigation_systems = 1 cas2 = 1 cnc_equipment_3 = 1
+		computing3 = 1 construction2 = 1 corvette_hull_3 = 1 decryption3 = 1
+		defensive_systems_3 = 1 diesel_engine_tech_4 = 1 early_freight_locomotive = 1 electric_engine_tech_2 = 1
+		electrification_1 = 1 encryption3 = 1 energy_efficiency2 = 1 excavation2 = 1
+		frigate_hull_3 = 1 fuel_refining2 = 1 genetics_3 = 1 gprs = 1
+		gunship_2 = 1 helicopter_operator_hull_2 = 1 improved_building_constructions_2 = 1 infantry_weapons_4 = 1
+		land_drone_equipment_1 = 1 large_gun_tech = 1 mbt_tech_2 = 1 microchip_production_2 = 1
+		missile_submarine_hull_3 = 1 nanofibers_3 = 1 nsb_transport_helicopter_2 = 1 printing_3 = 1
+		production_line_improvements_2 = 1 renewables = 1 special_forces_tech_4 = 1 special_mad_2 = 1
+		support_weapons3 = 1 tank_components_tech_3 = 1 tech_combat_radar_2 = 1 tech_combat_sonar_2 = 1
+		tgp_recon_2 = 1 transport_helicopter_2 = 1 transport_plane3 = 1 turbine_engine_tech_3 = 1
+		util_vehicle_4 = 1
+	}
+	set_technology = {
+		AFG_donkey_logistics_tech = 1 AFG_donkey_logistics_tech2 = 1 AFG_donkey_logistics_tech3 = 1 AT_upgrade_2 = 1
+		artificial_intelligence_4 = 1 avionics_2 = 1 body_armor_2 = 1 camouflage_3 = 1
+		composite_production_2 = 1 construction3 = 1 crispr_1 = 1 early_high_speed_rail = 1
+		electrification_2 = 1 energy_efficiency3 = 1 excavation3 = 1 farming_data_analytic_softwares = 1
+		fuel_efficiency2 = 1 fuel_refining3 = 1 genetics_4 = 1 improved_renewables = 1
+		internal_weapons_1 = 1 internet3 = 1 land_fort_building_2 = 1 nanofibers_4 = 1
+		nsb_AA_upgrade_2 = 1 nsb_Arty_upgrade_2 = 1 printing_4 = 1 reactor2 = 1
+		redundant_2 = 1 sp_double_shot_rifle_tech = 1 special_project_tech_multipurpose_warhead = 1 special_project_tech_smart_grid = 1
+		tech_landing_craft_4 = 1 tech_light_guns_2 = 1 tech_turret_missiles_aa_3 = 1 tech_turret_missiles_surface_3 = 1
+		tech_vls_aa_3 = 1 tech_vls_surface_3 = 1 utility_scale_battery_storage = 1 wifi = 1
+	}
+	set_technology = {
+		AA_upgrade_2 = 1 AA_upgrade_3 = 1 APC_5 = 1 AS_Fighter4 = 1
+		Air_UAV2 = 1 Anti_Air_2 = 1 Anti_tank_2 = 1 Arty_upgrade_2 = 1
+		Arty_upgrade_3 = 1 COMSAT5 = 1 CZE_engine_tech_3 = 1 CZE_engine_tech_4 = 1
+		GLCM5 = 1 GLCM5_non_got = 1 GNSS5 = 1 Heavy_Anti_tank_2 = 1
+		ICBM5 = 1 IFV_5 = 1 IRBM5 = 1 KILLSAT3 = 1
+		L_Strike_fighter3 = 1 MR_Fighter4 = 1 NIRBM4 = 1 OLV5 = 1
+		Rec_tank_2 = 1 SAM4 = 1 SPYSAT5 = 1 SP_arty_2 = 1
+		Strike_fighter4 = 1 TEL_7 = 1 TEL_7_non_got = 1 advanced_renewables = 1
+		aircraft_heli_engineering_3 = 1 armor_tech_3 = 1 artificial_intelligence_5 = 1 attack_helicopter_3 = 1
+		awacs_2 = 1 battleship_hull_2 = 1 carrier_hull_3 = 1 cnc_equipment_4 = 1
+		composite_production_3 = 1 computing4 = 1 construction4 = 1 crispr_2 = 1
+		cruiser_hull_3 = 1 decryption4 = 1 destroyer_hull_3 = 1 diesel_engine_tech_5 = 1
+		drone_2 = 1 edge = 1 electrification_3 = 1 encryption4 = 1
+		energy_efficiency4 = 1 era_tech_3 = 1 excavation4 = 1 genetics_5 = 1
+		high_speed_rail = 1 improved_building_constructions_3 = 1 infantry_weapons_5 = 1 land_drone_equipment_tech_2 = 1
+		limited_automated_harvesting_software = 1 microchip_production_3 = 1 nanofibers_5 = 1 nera_armor_tech_2 = 1
+		nsb_AA_autocannon_2 = 1 nsb_Anti_Air_2 = 1 nsb_SHORAD_missile_2 = 1 nsb_artillery_2 = 1
+		nsb_artillery_ammo_3 = 1 nsb_atgm_tech_3 = 1 nsb_attack_helicopter_tech_3 = 1 nsb_defense_tech_2 = 1
+		nsb_drone_tech_1 = 1 nsb_dual_role_missile_2 = 1 nsb_engine_tech_3 = 1 nsb_fire_modes_2 = 1
+		nsb_gun_pods_tech_3 = 1 nsb_gun_technology_3 = 1 nsb_heavy_atgm_tech_3 = 1 nsb_light_nose_gun_tech_3 = 1
+		nsb_multiple_atgm_tech_3 = 1 nsb_rocket_pods_tech_3 = 1 nsb_special_ammo_2 = 1 nsb_transport_helicopter_3 = 1
+		patrol_boat_hull_2_tech = 1 printing_5 = 1 production_line_improvements_3 = 1 reactor3 = 1
+		refueling_2 = 1 robotics_1 = 1 small_medium_gun_tech_3 = 1 special_forces_tech_5 = 1
+		stealth_tech_1 = 1 support_weapons4 = 1 tank_ammo_3 = 1 tech_arty_2 = 1
+		tech_combat_radar_3 = 1 tech_combat_sonar_3 = 1 tech_point_defense_system_3 = 1 tech_radar_jammer_1 = 1
+		transport_helicopter_3 = 1 turbine_engine_tech_4 = 1 umts = 1 util_vehicle_5 = 1
+	}
+	set_technology = {
+		CZE_el_engine_tech = 1 CZE_engine_tech_8 = 1 artificial_intelligence_6 = 1 attack_submarine_hull_4 = 1
+		body_armor_3 = 1 construction5 = 1 corvette_hull_4 = 1 crispr_3 = 1
+		delta_wing_design = 1 diamond_wing_design = 1 electrification_4 = 1 energy_efficiency5 = 1
+		engines_3 = 1 excavation5 = 1 frigate_hull_4 = 1 fuel_efficiency3 = 1
+		fuel_refining4 = 1 genetics_6 = 1 hsupa = 1 internet4 = 1
+		land_fort_building_3 = 1 missile_submarine_hull_4 = 1 modern_high_speed_rail = 1 modern_renewables = 1
+		nanofibers_6 = 1 nsb_Arty_upgrade_3 = 1 printing_6 = 1 robotics_2 = 1
+		satellite_based_agricultural_planning = 1 stealth_corvette_hull_1 = 1 stealth_frigate_hull_1 = 1 suicide_drone_2 = 1
+		tech_torpedoes_3 = 1 utility_scale_battery_storage2 = 1
+	}
+	set_technology = {
+		APC_6 = 1 AS_Fighter5 = 1 AS_upgrade_2 = 1 Air_UAV3 = 1
+		COMSAT6 = 1 CZE_engine_tech_5 = 1 CZE_engine_tech_6 = 1 GLCM6 = 1
+		GLCM6_non_got = 1 GNSS6 = 1 HSCM = 1 HSCM_non_got = 1
+		ICBM6 = 1 IFV_6 = 1 IRBM6 = 1 KILLSAT4 = 1
+		L_Strike_fighter4 = 1 MBT_5 = 1 MR_Fighter5 = 1 MR_upgrade_2 = 1
+		NIRBM5 = 1 OLV6 = 1 Rec_tank_3 = 1 SAM5 = 1
+		SPYSAT6 = 1 Strike_fighter5 = 1 Strike_upgrade_2 = 1 artificial_intelligence_7 = 1
+		assault_gun_tech_3 = 1 attack_helicopter_4 = 1 awacs_plane2 = 1 big_autocannon_tech_3 = 1
+		cas3 = 1 cnc_equipment_5 = 1 composite_production_4 = 1 computing5 = 1
+		construction6 = 1 cv_awacs_plane2 = 1 decryption5 = 1 defensive_systems_4 = 1
+		diesel_engine_tech_6 = 1 electrification_5 = 1 encryption5 = 1 energy_efficiency6 = 1
+		excavation6 = 1 exoskeleton_1 = 1 freight_locomotive = 1 gen_5_large = 1
+		gen_5_light = 1 gen_5_medium = 1 genetics_7 = 1 improved_building_constructions_4 = 1
+		improved_modern_renewables = 1 infantry_weapons_6 = 1 land_drone_equipment_tech_3 = 1 large_gun_tech_2 = 1
+		lte = 1 medium_gun_tech_3 = 1 microchip_production_4 = 1 nanofibers_7 = 1
+		naval_plane4 = 1 night_vision_4 = 1 nsb_atgm_tech_4 = 1 nsb_attack_helicopter_tech_4 = 1
+		nsb_defense_tech_3 = 1 nsb_drone_tech_2 = 1 nsb_engine_tech_4 = 1 nsb_gun_pods_tech_4 = 1
+		nsb_heavy_atgm_tech_4 = 1 nsb_multiple_atgm_tech_4 = 1 nsb_rocket_pods_tech_4 = 1 nsb_transport_helicopter_4 = 1
+		printing_7 = 1 production_line_improvements_4 = 1 programmable_harvesters = 1 reactor4 = 1
+		robotics_3 = 1 small_autocannon_tech_3 = 1 stealth_destroyer_hull_1 = 1 strategic_bomber4 = 1
+		support_weapons5 = 1 tank_components_tech_4 = 1 tech_air_anti_ship_drone_1 = 1 tech_air_hypersonic_engine_upgrade_1 = 1
+		tech_anti_torpedoes_1 = 1 tech_diesel_power_systems_3 = 1 tech_fire_control_3 = 1 tech_landing_craft_5 = 1
+		tech_naval_recon_drones_1 = 1 tech_nuclear_power_systems_3 = 1 tech_power_systems_3 = 1 tech_rail_guns_1 = 1
+		tech_submarine_engineering_4 = 1 tech_turret_missiles_aa_4 = 1 tech_turret_missiles_drone_1 = 1 tech_turret_missiles_surface_4 = 1
+		tech_vls_aa_4 = 1 tech_vls_surface_4 = 1 transport_helicopter_4 = 1 transport_plane4 = 1
+		turbine_engine_tech_5 = 1 util_vehicle_6 = 1 wimax = 1
+	}
+	set_technology = {
+		AT_upgrade_3 = 1 CZE_el_engine_tech_2 = 1 CZE_engine_tech_10 = 1 CZE_engine_tech_9 = 1
+		advanced_modern_renewables = 1 ag_weapons_3 = 1 air_tech_pdl_1 = 1 air_weapons_3 = 1
+		artificial_intelligence_8 = 1 avionics_3 = 1 battleship_hull_3 = 1 camouflage_4 = 1
+		countermeasures_3 = 1 crispr_4 = 1 electrification_6 = 1 fuel_efficiency4 = 1
+		fuel_refining5 = 1 genetics_8 = 1 helicopter_operator_hull_3 = 1 improved_harvesting_automation = 1
+		internet5 = 1 land_fort_building_4 = 1 lifi = 1 mbt_tech_3 = 1
+		naval_weapons_3 = 1 part_reusable_OLV6 = 1 reactor5 = 1 robotics_4 = 1
+		solar_engines_1 = 1 tech_combat_radar_4 = 1 tech_combat_sonar_4 = 1 tech_drone_torpedoes_1 = 1
+		tech_nuclear_torpedoes_1 = 1 tech_point_defense_system_4 = 1 tech_radar_jammer_2 = 1 tech_torpedoes_4 = 1
+		utility_scale_battery_storage3 = 1
+	}
+	set_technology = {
+		APC_7 = 1 AS_Fighter6 = 1 Air_UAV4 = 1 Anti_Air_3 = 1
+		Anti_tank_3 = 1 Arty_upgrade_4 = 1 COMSAT7 = 1 GLCM7 = 1
+		GLCM7_non_got = 1 GNSS7 = 1 HSCM1 = 1 HSCM1_non_got = 1
+		Heavy_Anti_tank_3 = 1 ICBM7 = 1 IFV_7 = 1 IRBM7 = 1
+		KILLSAT5 = 1 L_Strike_fighter5 = 1 MBT_7 = 1 MR_Fighter6 = 1
+		NIRBM6 = 1 OLV7 = 1 Rec_tank_4 = 1 SAM6 = 1
+		SPYSAT7 = 1 SP_arty_3 = 1 Strike_fighter6 = 1 attack_submarine_hull_5 = 1
+		augmented_vision_1 = 1 awacs_3 = 1 carrier_hull_4 = 1 cas4 = 1
+		cnc_equipment_6 = 1 construction7 = 1 corvette_hull_5 = 1 cruiser_hull_4 = 1
+		destroyer_hull_4 = 1 drone_3 = 1 early_maglev_rail = 1 electric_engine_tech_3 = 1
+		electrification_7 = 1 energy_efficiency7 = 1 era_tech_4 = 1 excavation7 = 1
+		exoskeleton_2 = 1 frigate_hull_5 = 1 genetics_9 = 1 improved_building_constructions_5 = 1
+		infantry_weapons_7 = 1 internal_weapons_2 = 1 land_drone_equipment_4 = 1 microchip_production_5 = 1
+		missile_submarine_hull_5 = 1 naval_plane5 = 1 nsb_AA_autocannon_3 = 1 nsb_AA_upgrade_3 = 1
+		nsb_Anti_Air_3 = 1 nsb_SHORAD_missile_3 = 1 nsb_artillery_3 = 1 nsb_artillery_ammo_4 = 1
+		nsb_drone_artillery_ammo_1 = 1 nsb_dual_role_missile_3 = 1 nsb_fire_modes_3 = 1 nsb_gun_technology_4 = 1
+		nsb_special_ammo_3 = 1 printing_8 = 1 production_line_improvements_5 = 1 rapid_dragon = 1
+		rc_fire_support_drone = 1 robotic_harvesters = 1 robotics_5 = 1 small_medium_gun_tech_4 = 1
+		special_mad_3 = 1 stealth_corvette_hull_2 = 1 stealth_frigate_hull_2 = 1 stealth_tech_2 = 1
+		strategic_bomber5 = 1 tank_ammo_4 = 1 tech_arty_3 = 1 tech_fusion_power_systems_1 = 1
+		tech_landing_craft_6 = 1 tech_light_guns_3 = 1 tech_naval_recon_drones_2 = 1 tech_rail_guns_2 = 1
+		tech_tank_nuclear_engine_1 = 1 tgp_recon_3 = 1 transport_plane5 = 1 util_vehicle_7 = 1
+	}
+	set_technology = {
+		AT_upgrade_4 = 1 agi_maintained_agricultural_developments = 1 artificial_intelligence_9 = 1 body_armor_4 = 1
+		composite_production_5 = 1 computing6 = 1 decryption6 = 1 early_renewables_9 = 1
+		electrification_8 = 1 encryption6 = 1 engines_4 = 1 fuel_efficiency5 = 1
+		fuel_refining6 = 1 full_reusable_OLV7 = 1 future_wingform_designs = 1 genetics_10 = 1
+		internet6 = 1 modern_satelite_internet = 1 nsb_Arty_upgrade_4 = 1 patrol_boat_hull_3_tech = 1
+		reactor6 = 1 robotics_6 = 1 special_forces_tech_6 = 1 stealth_destroyer_hull_2 = 1
+		suicide_drone_3 = 1 tech_air_anti_ship_drone_2 = 1 tech_anti_drone_laser_1 = 1 tech_anti_torpedoes_2 = 1
+		tech_drone_torpedoes_2 = 1 tech_rail_battery_1 = 1 tech_turret_missiles_aa_5 = 1 tech_turret_missiles_surface_5 = 1
+		tech_vls_aa_5 = 1 tech_vls_surface_5 = 1 utility_scale_battery_storage4 = 1
+	}
+	set_technology = {
+		AA_upgrade_4 = 1 APC_8 = 1 AS_Fighter7 = 1 AS_upgrade_3 = 1
+		Anti_Air_4 = 1 Anti_tank_4 = 1 Arty_upgrade_5 = 1 COMSAT8 = 1
+		GLCM8 = 1 GLCM8_non_got = 1 GNSS8 = 1 HSCM2 = 1
+		HSCM2_non_got = 1 Heavy_Anti_tank_4 = 1 ICBM8 = 1 IFV_8 = 1
+		IRBM8 = 1 KILLSAT6 = 1 MBT_8 = 1 MR_Fighter7 = 1
+		MR_upgrade_3 = 1 NIRBM7 = 1 OLV8 = 1 Rec_tank_5 = 1
+		SAM7 = 1 SPYSAT8 = 1 SP_arty_4 = 1 Strike_fighter7 = 1
+		Strike_upgrade_3 = 1 afs_drone_1 = 1 air_tech_gunship_railgun_1 = 1 air_tech_pdl_2 = 1
+		air_tech_railgun_cannons_1 = 1 armor_tech_4 = 1 assault_gun_tech_4 = 1 attack_helicopter_5 = 1
+		augmented_vision_2 = 1 big_autocannon_tech_4 = 1 camouflage_5 = 1 cas5 = 1
+		cnc_equipment_7 = 1 construction8 = 1 defensive_systems_5 = 1 diesel_engine_tech_7 = 1
+		electric_engine_tech_4 = 1 electrification_9 = 1 energy_efficiency8 = 1 excavation8 = 1
+		gen_6_large = 1 gen_6_light = 1 gen_6_medium = 1 genetics_11 = 1
+		improved_building_constructions_6 = 1 infantry_weapons_8 = 1 land_drone_equipment_5 = 1 large_gun_tech_3 = 1
+		mbt_tech_4 = 1 medium_gun_tech_4 = 1 microchip_production_6 = 1 naval_plane6 = 1
+		nera_armor_tech_3 = 1 nsb_AA_autocannon_4 = 1 nsb_AA_upgrade_4 = 1 nsb_Anti_Air_4 = 1
+		nsb_SHORAD_missile_4 = 1 nsb_atgm_tech_5 = 1 nsb_attack_helicopter_tech_5 = 1 nsb_defense_tech_4 = 1
+		nsb_drone_tech_3 = 1 nsb_dual_role_missile_4 = 1 nsb_engine_tech_5 = 1 nsb_gun_pods_tech_5 = 1
+		nsb_heavy_atgm_tech_5 = 1 nsb_light_nose_gun_tech_4 = 1 nsb_multiple_atgm_tech_5 = 1 nsb_rocket_pods_tech_5 = 1
+		nsb_transport_helicopter_5 = 1 printing_9 = 1 production_line_improvements_6 = 1 small_autocannon_tech_4 = 1
+		standardised_maglev_rail = 1 strategic_bomber6 = 1 tank_ammo_5 = 1 tank_components_tech_5 = 1
+		tech_arty_4 = 1 tech_combat_radar_5 = 1 tech_combat_sonar_5 = 1 tech_helicopter_hover_engine_1 = 1
+		tech_landing_craft_7 = 1 tech_naval_recon_drones_3 = 1 tech_nuclear_torpedoes_2 = 1 tech_point_defense_system_5 = 1
+		tech_radar_jammer_3 = 1 tech_rail_guns_3 = 1 tech_torpedoes_5 = 1 tech_turret_missiles_drone_2 = 1
+		transport_helicopter_5 = 1 transport_plane6 = 1 turbine_engine_tech_6 = 1 util_vehicle_8 = 1
+	}
+	set_technology = {
+		ag_weapons_4 = 1 air_weapons_4 = 1 artificial_intelligence_10 = 1 attack_submarine_hull_6 = 1
+		avionics_4 = 1 body_armor_5 = 1 computing7 = 1 corvette_hull_6 = 1
+		countermeasures_4 = 1 electrification_10 = 1 exoskeleton_3 = 1 frigate_hull_6 = 1
+		fuel_efficiency6 = 1 fuel_refining7 = 1 full_reusable_OLV8 = 1 internet7 = 1
+		internet_access_4 = 1 missile_submarine_hull_6 = 1 naval_weapons_4 = 1 reactor7 = 1
+		renewables_9 = 1 robotics_7 = 1 solar_engines_2 = 1 special_forces_tech_7 = 1
+		stealth_corvette_hull_3 = 1 stealth_frigate_hull_3 = 1 tech_diesel_power_systems_4 = 1 tech_drone_torpedoes_3 = 1
+		tech_fire_control_4 = 1 tech_nuclear_power_systems_4 = 1 tech_power_systems_4 = 1 tech_submarine_engineering_5 = 1
+		utility_scale_battery_storage5 = 1
+	}
+	set_technology = {
+		AT_upgrade_5 = 1 Anti_tank_5 = 1 COMSAT9 = 1 GLCM9 = 1
+		GNSS9 = 1 HSCM3 = 1 Heavy_Anti_tank_5 = 1 ICBM9 = 1
+		IRBM9 = 1 KILLSAT7 = 1 NIRBM8 = 1 OLV9 = 1
+		SAM8 = 1 SPYSAT9 = 1 afs_drone_2 = 1 agriculture_10 = 1
+		air_tech_gunship_railgun_2 = 1 augmented_vision_3 = 1 awacs_4 = 1 battleship_hull_4 = 1
+		carrier_hull_5 = 1 cnc_equipment_8 = 1 composite_production_6 = 1 construction9 = 1
+		cruiser_hull_5 = 1 destroyer_hull_5 = 1 drone_4 = 1 electrification_11 = 1
+		energy_efficiency_9 = 1 era_tech_5 = 1 excavation9 = 1 genetics_12 = 1
+		helicopter_operator_hull_4 = 1 improved_building_constructions_7 = 1 infantry_weapons_9 = 1 internal_weapons_3 = 1
+		land_drone_equipment_6 = 1 microchip_production_7 = 1 modern_freight_locomotive = 1 nsb_AA_autocannon_5 = 1
+		nsb_AA_upgrade_5 = 1 nsb_Anti_Air_5 = 1 nsb_Arty_upgrade_5 = 1 nsb_SHORAD_missile_5 = 1
+		nsb_artillery_4 = 1 nsb_artillery_ammo_5 = 1 nsb_drone_artillery_ammo_2 = 1 nsb_dual_role_missile_5 = 1
+		nsb_fire_modes_4 = 1 nsb_gun_technology_5 = 1 nsb_special_ammo_4 = 1 printing_10 = 1
+		production_line_improvements_7 = 1 reactor8 = 1 small_medium_gun_tech_5 = 1 special_mad_4 = 1
+		stealth_destroyer_hull_3 = 1 stealth_tech_3 = 1 tank_ammo_6 = 1 tech_anti_drone_laser_2 = 1
+		tech_anti_torpedoes_3 = 1 tech_combat_radar_6 = 1 tech_combat_sonar_6 = 1 tech_fusion_power_systems_2 = 1
+		tech_landing_craft_8 = 1 tech_light_guns_4 = 1 tech_naval_recon_drones_4 = 1 tech_point_defense_system_6 = 1
+		tech_rail_battery_2 = 1 tech_rail_guns_4 = 1 tech_tank_nuclear_engine_2 = 1 tech_tank_walker_chassis_1 = 1
+		tech_torpedoes_6 = 1 tech_turret_missiles_aa_6 = 1 tech_turret_missiles_surface_6 = 1 tech_vls_aa_6 = 1
+		tech_vls_surface_6 = 1 tgp_recon_4 = 1 util_vehicle_9 = 1
+	}
+	set_technology = {
+		air_tech_pdl_3 = 1 artificial_intelligence_11 = 1 body_armor_6 = 1 camouflage_6 = 1
+		computing8 = 1 fuel_efficiency_7 = 1 fuel_refining8 = 1 future_wingform_designs_2 = 1
+		genetics_13 = 1 internet8 = 1 internet_access_5 = 1 rail_8 = 1
+		renewables_10 = 1 robotics_8 = 1 special_forces_tech_8 = 1 suicide_drone_4 = 1
+		tech_air_anti_ship_drone_3 = 1 tech_nuclear_torpedoes_3 = 1 tech_radar_jammer_4 = 1 tech_tank_hover_suspension_1 = 1
+		tech_tank_hover_suspension_2 = 1 tech_tank_hover_suspension_3 = 1
+	}
+	set_technology = {
+		aircraft_carrier_engineering_2 = 1 aircraft_heli_engineering_4 = 1
+	}
+	set_technology = {
+		AT_upgrade_6 = 1 Anti_tank_6 = 1 COMSAT10 = 1 GLCM10 = 1
+		GNSS10 = 1 HSCM4 = 1 Heavy_Anti_tank_6 = 1 ICBM10 = 1
+		IRBM10 = 1 KILLSAT8 = 1 NIRBM9 = 1 OLV10 = 1
+		SAM9 = 1 SPYSAT10 = 1 afs_drone_3 = 1 agriculture_11 = 1
+		air_tech_gunship_railgun_3 = 1 air_tech_railgun_cannons_2 = 1 armor_tech_5 = 1 assault_gun_tech_5 = 1
+		attack_helicopter_6 = 1 attack_submarine_hull_7 = 1 augmented_vision_4 = 1 big_autocannon_tech_5 = 1
+		cnc_equipment_9 = 1 construction10 = 1 corvette_hull_7 = 1 defensive_systems_6 = 1
+		diesel_engine_tech_8 = 1 electric_engine_tech_5 = 1 electrification_12 = 1 energy_efficiency_10 = 1
+		engines_5 = 1 excavation10 = 1 exoskeleton_4 = 1 frigate_hull_7 = 1
+		gen_7_large = 1 gen_7_light = 1 gen_7_medium = 1 improved_building_constructions_8 = 1
+		infantry_weapons_10 = 1 land_drone_equipment_7 = 1 large_gun_tech_4 = 1 mbt_tech_5 = 1
+		medium_gun_tech_5 = 1 microchip_production_8 = 1 missile_submarine_hull_7 = 1 nera_armor_tech_4 = 1
+		nsb_AA_autocannon_6 = 1 nsb_AA_upgrade_6 = 1 nsb_Anti_Air_6 = 1 nsb_SHORAD_missile_6 = 1
+		nsb_atgm_tech_6 = 1 nsb_attack_helicopter_tech_6 = 1 nsb_defense_tech_5 = 1 nsb_drone_tech_4 = 1
+		nsb_dual_role_missile_6 = 1 nsb_engine_tech_6 = 1 nsb_gun_pods_tech_6 = 1 nsb_heavy_atgm_tech_6 = 1
+		nsb_light_nose_gun_tech_5 = 1 nsb_multiple_atgm_tech_6 = 1 nsb_rocket_pods_tech_6 = 1 nsb_transport_helicopter_6 = 1
+		patrol_boat_hull_4_tech = 1 printing_11 = 1 production_line_improvements_8 = 1 reactor9 = 1
+		small_autocannon_tech_5 = 1 stealth_corvette_hull_4 = 1 stealth_frigate_hull_4 = 1 tank_ammo_7 = 1
+		tank_components_tech_6 = 1 tech_drone_torpedoes_4 = 1 tech_fire_control_5 = 1 tech_helicopter_hover_engine_2 = 1
+		tech_naval_recon_drones_5 = 1 tech_submarine_engineering_6 = 1 tech_turret_missiles_drone_3 = 1 transport_helicopter_6 = 1
+		turbine_engine_tech_7 = 1 util_vehicle_10 = 1 utility_scale_battery_storage_6 = 1
+	}
+	set_technology = {
+		ag_weapons_5 = 1 air_weapons_5 = 1 artificial_intelligence_12 = 1 avionics_5 = 1
+		body_armor_7 = 1 carrier_hull_6 = 1 composite_production_7 = 1 computing9 = 1
+		countermeasures_5 = 1 cruiser_hull_6 = 1 destroyer_hull_6 = 1 fuel_efficiency_8 = 1
+		fuel_refining9 = 1 genetics_14 = 1 helicopter_operator_hull_5 = 1 internet9 = 1
+		internet_access_6 = 1 naval_weapons_5 = 1 rail_9 = 1 reactor10 = 1
+		renewables_11 = 1 robotics_9 = 1 solar_engines_3 = 1 special_forces_tech_9 = 1
+		stealth_destroyer_hull_4 = 1 tech_anti_drone_laser_3 = 1 tech_anti_torpedoes_4 = 1 tech_combat_radar_7 = 1
+		tech_combat_sonar_7 = 1 tech_diesel_power_systems_5 = 1 tech_landing_craft_9 = 1 tech_light_guns_5 = 1
+		tech_nuclear_power_systems_5 = 1 tech_point_defense_system_7 = 1 tech_power_systems_5 = 1 tech_rail_guns_5 = 1
+		tech_torpedoes_7 = 1 tech_turret_missiles_aa_7 = 1 tech_turret_missiles_surface_7 = 1 tech_vls_aa_7 = 1
+		tech_vls_surface_7 = 1
+	}
+	set_technology = {
+		AT_upgrade_7 = 1 Anti_tank_7 = 1 COMSAT11 = 1 GLCM11 = 1
+		GNSS11 = 1 HSCM5 = 1 Heavy_Anti_tank_7 = 1 ICBM11 = 1
+		IRBM11 = 1 KILLSAT9 = 1 NIRBM10 = 1 OLV11 = 1
+		SAM10 = 1 SPYSAT11 = 1 afs_drone_4 = 1 agriculture_12 = 1
+		air_tech_gunship_railgun_4 = 1 air_tech_pdl_4 = 1 augmented_vision_5 = 1 awacs_5 = 1
+		camouflage_7 = 1 cnc_equipment_10 = 1 construction11 = 1 drone_5 = 1
+		electrification_13 = 1 energy_efficiency_11 = 1 era_tech_6 = 1 excavation11 = 1
+		improved_building_constructions_9 = 1 infantry_weapons_11 = 1 internal_weapons_4 = 1 land_drone_equipment_8 = 1
+		microchip_production_9 = 1 nsb_AA_autocannon_7 = 1 nsb_AA_upgrade_7 = 1 nsb_Anti_Air_7 = 1
+		nsb_Arty_upgrade_6 = 1 nsb_SHORAD_missile_7 = 1 nsb_artillery_5 = 1 nsb_artillery_ammo_6 = 1
+		nsb_drone_artillery_ammo_3 = 1 nsb_dual_role_missile_7 = 1 nsb_fire_modes_5 = 1 nsb_gun_technology_6 = 1
+		nsb_special_ammo_5 = 1 printing_12 = 1 production_line_improvements_9 = 1 small_medium_gun_tech_6 = 1
+		special_mad_5 = 1 stealth_tech_4 = 1 tank_ammo_8 = 1 tech_fusion_power_systems_3 = 1
+		tech_naval_recon_drones_6 = 1 tech_nuclear_torpedoes_4 = 1 tech_radar_jammer_5 = 1 tech_rail_battery_3 = 1
+		tech_tank_nuclear_engine_3 = 1 tgp_recon_5 = 1 util_vehicle_11 = 1
+	}
+	set_technology = {
+		artificial_intelligence_13 = 1 attack_submarine_hull_8 = 1 body_armor_8 = 1 computing10 = 1
+		corvette_hull_8 = 1 exoskeleton_5 = 1 frigate_hull_8 = 1 fuel_efficiency_9 = 1
+		fuel_refining10 = 1 future_wingform_designs_3 = 1 genetics_15 = 1 internet10 = 1
+		internet_access_7 = 1 missile_submarine_hull_8 = 1 rail_10 = 1 reactor11 = 1
+		renewables_12 = 1 robotics_10 = 1 special_forces_tech_10 = 1 stealth_corvette_hull_5 = 1
+		stealth_frigate_hull_5 = 1 suicide_drone_5 = 1 tech_drone_torpedoes_5 = 1 tech_fire_control_6 = 1
+		tech_submarine_engineering_7 = 1 utility_scale_battery_storage_7 = 1
+	}
+	set_technology = {
+		AT_upgrade_8 = 1 Anti_tank_8 = 1 COMSAT12 = 1 GLCM12 = 1
+		GNSS12 = 1 HSCM6 = 1 Heavy_Anti_tank_8 = 1 ICBM12 = 1
+		IRBM12 = 1 KILLSAT10 = 1 NIRBM11 = 1 OLV12 = 1
+		SAM11 = 1 SPYSAT12 = 1 afs_drone_5 = 1 agriculture_13 = 1
+		air_tech_gunship_railgun_5 = 1 armor_tech_6 = 1 assault_gun_tech_6 = 1 attack_helicopter_7 = 1
+		augmented_vision_6 = 1 battleship_hull_5 = 1 big_autocannon_tech_6 = 1 carrier_hull_7 = 1
+		cnc_equipment_11 = 1 composite_production_8 = 1 construction12 = 1 cruiser_hull_7 = 1
+		defensive_systems_7 = 1 destroyer_hull_7 = 1 diesel_engine_tech_9 = 1 electric_engine_tech_6 = 1
+		electrification_14 = 1 energy_efficiency_12 = 1 engines_6 = 1 excavation12 = 1
+		gen_8_large = 1 gen_8_light = 1 gen_8_medium = 1 helicopter_operator_hull_6 = 1
+		improved_building_constructions_10 = 1 infantry_weapons_12 = 1 land_drone_equipment_9 = 1 large_gun_tech_5 = 1
+		mbt_tech_6 = 1 medium_gun_tech_6 = 1 microchip_production_10 = 1 nera_armor_tech_5 = 1
+		nsb_AA_autocannon_8 = 1 nsb_AA_upgrade_8 = 1 nsb_Anti_Air_8 = 1 nsb_SHORAD_missile_8 = 1
+		nsb_atgm_tech_7 = 1 nsb_attack_helicopter_tech_7 = 1 nsb_defense_tech_6 = 1 nsb_drone_tech_5 = 1
+		nsb_dual_role_missile_8 = 1 nsb_engine_tech_7 = 1 nsb_gun_pods_tech_7 = 1 nsb_heavy_atgm_tech_7 = 1
+		nsb_light_nose_gun_tech_6 = 1 nsb_multiple_atgm_tech_7 = 1 nsb_rocket_pods_tech_7 = 1 nsb_transport_helicopter_7 = 1
+		printing_13 = 1 production_line_improvements_10 = 1 small_autocannon_tech_6 = 1 stealth_destroyer_hull_5 = 1
+		tank_ammo_9 = 1 tank_components_tech_7 = 1 tech_anti_drone_laser_4 = 1 tech_anti_torpedoes_5 = 1
+		tech_combat_radar_8 = 1 tech_combat_sonar_8 = 1 tech_helicopter_hover_engine_3 = 1 tech_landing_craft_10 = 1
+		tech_light_guns_6 = 1 tech_naval_recon_drones_7 = 1 tech_point_defense_system_8 = 1 tech_rail_guns_6 = 1
+		tech_torpedoes_8 = 1 tech_turret_missiles_aa_8 = 1 tech_turret_missiles_drone_4 = 1 tech_turret_missiles_surface_8 = 1
+		tech_vls_aa_8 = 1 tech_vls_surface_8 = 1 train_equipment_4 = 1 transport_helicopter_7 = 1
+		turbine_engine_tech_8 = 1 util_vehicle_12 = 1
+	}
+	set_technology = {
+		ag_weapons_6 = 1 air_tech_pdl_5 = 1 air_weapons_6 = 1 artificial_intelligence_14 = 1
+		body_armor_9 = 1 camouflage_8 = 1 computing11 = 1 countermeasures_6 = 1
+		drone_6 = 1 fuel_efficiency_10 = 1 fuel_refining11 = 1 genetics_16 = 1
+		internet11 = 1 internet_access_8 = 1 naval_weapons_6 = 1 patrol_boat_hull_5_tech = 1
+		rail_11 = 1 reactor12 = 1 renewables_13 = 1 robotics_11 = 1
+		solar_engines_4 = 1 special_forces_tech_11 = 1 tech_diesel_power_systems_6 = 1 tech_nuclear_power_systems_6 = 1
+		tech_power_systems_6 = 1 tech_tank_nuclear_engine_4 = 1 tech_tank_walker_chassis_2 = 1
+	}
+	set_technology = {
+		air_tech_gunship_railgun_6 = 1 internal_weapons_5 = 1 special_mad_6 = 1 stealth_tech_5 = 1
+		suicide_drone_6 = 1 tgp_recon_6 = 1
+	}
+}

@@ -113,7 +113,7 @@ function Copy-ModContent {
     param([string]$From, [string]$To)
     New-Item -ItemType Directory -Path $To -Force | Out-Null
     # Ship only what the game reads - not the repo's docs, scripts or .claude config.
-    foreach ($item in @('common', 'events', 'localisation', 'descriptor.mod', 'thumbnail.png')) {
+    foreach ($item in @('common', 'events', 'localisation', 'interface', 'descriptor.mod', 'thumbnail.png')) {
         $p = Join-Path $From $item
         if (Test-Path -LiteralPath $p) { Copy-Item -LiteralPath $p -Destination $To -Recurse -Force }
     }

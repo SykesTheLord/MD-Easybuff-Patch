@@ -69,6 +69,34 @@ hooks still run. Convert "set to X" into the delta call MD exposes (see `ebmd_se
 - **Loop safety**: any `while_loop_effect` over an MD array needs a bounded counter guard — if an
   MD change makes the body a no-op, the loop hangs the game.
 
+## Scripted GUI
+
+`interface/zz_ebmd_input_gui.gui` + `common/scripted_guis/zz_ebmd_input_gui.txt` render the
+Value Setter inside the mod's decision category (`context_type = decision_category`, so it needs
+no parent window).
+
+**HOI4 has no scripted-GUI text input.** `editBoxType` exists in the engine but is wired only to
+hardcoded systems (chat, unit renaming); scripted GUIs can bind nothing but `_click`,
+`_click_enabled` and `_visible`. Stepping a staged value with buttons is the workaround, and is
+what MD does for its own central bank and tax controls. Do not try to add a numeric field.
+
+Two things that are easy to get wrong, both silent in-game:
+- Button names in the `.gui` must match `<name>_click` handlers exactly. `package.sh` checks both
+  directions.
+- A live readout needs the `dirty = <variable>` property plus a bump of that variable in every
+  handler, or the text will not redraw. Live values come from `[?variable|format]` in
+  localisation (`|2` = two decimals).
+
+## Generated content
+
+`common/scripted_effects/zz_ebmd_tech_generated.txt` is generated - never hand-edit it. HOI4
+script cannot loop over technologies, so all 1395 of MD's dated techs are written out
+explicitly, bucketed by `start_year` behind a `date` trigger.
+
+Regenerate after any MD update: `python3 tools/gen_tech_effect.py`. `package.sh` refuses to
+package a stale list. Techs with no `start_year` are excluded on purpose - they belong to a
+specific country's focus tree, or are hidden special-project techs.
+
 ## Load order
 
 `Millennium Dawn` → `+Easybuff` → this mod. MD declares `replace_path` for `events`,

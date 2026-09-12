@@ -3,6 +3,7 @@
 # can be loaded at once without their menus colliding.
 ebmd_systems_decision = {
 	icon = generic_political_actions
+	scripted_gui = ebmd_input_gui
 
 	allowed = {
 		always = yes
