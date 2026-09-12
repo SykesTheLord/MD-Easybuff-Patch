@@ -1,0 +1,16 @@
+# +Easybuff - MD Systems
+# Declares its own idea category rather than adding slots to Easybuff's zcheat_idea.
+# Redefining zcheat_idea in a later-loading file overrides it instead of merging, which
+# would silently delete Easybuff's own slots.
+idea_categories = {
+	zebmd_idea = {
+		slot = ebmd_menu
+		slot = ebmd_economy
+		slot = ebmd_ct
+		slot = ebmd_energy
+
+		cost = 0
+		removal_cost = 0
+		ledger = civilian
+	}
+}

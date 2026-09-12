@@ -1,0 +1,370 @@
+# +Easybuff - MD Systems
+# Thin wrappers over Millennium Dawn's own scripted effects. Nothing here reimplements MD
+# logic: every wrapper converts a "set to value" cheat into the "change by delta" call MD
+# already exposes, so MD's clamps, tooltips and refresh hooks all still run.
+#
+# Where a name below differs from MD's published scripted-effects reference
+# (millenniumdawn.github.io), the published page documents the released 1.12.x mod and this
+# patch targets 2.0. The 2.0 code name is used and the difference is noted at the call site.
+
+# ---------------------------------------------------------------------------
+# Economy
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_target - the debt value to end up at
+ebmd_set_debt = {
+	set_temp_variable = { debt_change = ebmd_target }
+	subtract_from_temp_variable = { debt_change = debt }
+	modify_debt_effect = yes
+	ingame_update_setup = yes
+}
+
+# Required input: ebmd_ratio - debt as a multiple of GDP. Used to push interest_rate across
+# the 15% and 25% thresholds through MD's real formula (debt / gdp_total * 10) rather than
+# by setting interest_rate, which calculate_interest_rate would overwrite without ever
+# applying the threshold penalties.
+ebmd_set_debt_gdp_ratio = {
+	set_temp_variable = { ebmd_target = gdp_total }
+	multiply_temp_variable = { ebmd_target = ebmd_ratio }
+	ebmd_set_debt = yes
+}
+
+# Required input: ebmd_target - the treasury value to end up at.
+# Clamped at 0: MD's automated_debt_taker turns a negative treasury into new debt plus a 1%
+# fee on the next weekly tick, which would silently undo the cheat and raise interest.
+ebmd_set_treasury = {
+	clamp_temp_variable = { var = ebmd_target min = 0 }
+	set_temp_variable = { treasury_change = ebmd_target }
+	subtract_from_temp_variable = { treasury_change = treasury }
+	modify_treasury_effect = yes
+}
+
+# Required input: ebmd_target - the corporate tax rate to end up at. MD clamps 0-50.
+ebmd_set_corporate_tax = {
+	enable_corporate_tax_rate_change = yes
+	set_temp_variable = { corp_change = ebmd_target }
+	subtract_from_temp_variable = { corp_change = corporate_tax_rate }
+	modify_corporate_tax_rate_effect = yes
+}
+
+ebmd_toggle_free_costs = {
+	if = {
+		limit = { has_country_flag = MD_skip_treasury_cost }
+		clr_country_flag = MD_skip_treasury_cost
+	}
+	else = {
+		set_country_flag = MD_skip_treasury_cost
+	}
+}
+
+# Corruption is an idea ladder (corruption_level_01..10), not a variable. MD's own swap
+# effects are called repeatedly rather than swapping ideas by hand; nine calls span the
+# full ladder and the chain is a no-op once the end is reached.
+ebmd_corruption_to_minimum = {
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	decrease_corruption = yes
+	ingame_update_setup = yes
+}
+
+ebmd_corruption_to_maximum = {
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	increase_corruption = yes
+	ingame_update_setup = yes
+}
+
+# Required input: ebmd_factor - multiplier applied to the current GDP.
+# Transient by design: calculate_gdp resets gdp_total to 0 and re-sums it from the
+# gdp_from_* sector terms on the next ingame_update_setup, then re-derives gdp_per_capita
+# from it. The caller fires ebmd.11 to explain this.
+ebmd_scale_gdp = {
+	multiply_variable = { gdp_total = ebmd_factor }
+	set_variable = {
+		gdp_per_capita = {
+			value = gdp_total
+			divide = population_total_m
+			clamp = { min = 0 max = 100000 }
+		}
+	}
+	update_money_dirty_variable = yes
+}
+
+# ---------------------------------------------------------------------------
+# Monetary gain and inflation
+# ---------------------------------------------------------------------------
+
+# MD's Expand Money Supply button grants monetary_expand_active_idea (seigniorage income
+# +25%) but charges currency_strength -0.05 plus a 545-730 day cooldown flag. This grants
+# the idea without either price.
+# Required input: ebmd_days - 0 for an untimed idea.
+ebmd_grant_monetary_expansion = {
+	if = {
+		limit = { check_variable = { ebmd_days > 0 } }
+		add_timed_idea = { idea = monetary_expand_active_idea days = ebmd_days }
+	}
+	else = {
+		add_ideas = monetary_expand_active_idea
+	}
+	ingame_update_setup = yes
+}
+
+ebmd_clear_monetary_cooldown = {
+	clr_country_flag = monetary_expand_cooldown
+	clr_country_flag = monetary_austerity_cooldown
+	clr_country_flag = printed_money_recently
+}
+
+# MD's Print Money button adds treasury but costs 50 PP, sets printed_money_recently and
+# accumulates print_money_base_add, which multiplies next quarter's inflation. This adds the
+# money and touches none of that.
+# Required input: ebmd_target - amount to add.
+ebmd_print_money_free = {
+	set_temp_variable = { treasury_change = ebmd_target }
+	modify_treasury_effect = yes
+}
+
+# Required input: ebmd_target - the inflation rate to end up at.
+# inflation_rate_var only recomputes quarterly (quarterly_inflation_calculation, from
+# calculate_gdp on months 3/6/9/12), so this holds for up to three months. The follow-up
+# call is required: without it the seven derived inflation variables keep their old values
+# and the cheat appears to do nothing.
+ebmd_set_inflation = {
+	set_variable = { inflation_rate_var = ebmd_target }
+	set_variable = { print_money_base_add = 0 }
+	calculate_inflation_effects = yes
+	ingame_update_setup = yes
+}
+
+# Required input: ebmd_target - the central bank policy rate to end up at. MD clamps 0-20.
+# Raising it lowers inflation next quarter but raises interest_rate immediately, because
+# cb_rate_premium = cb_policy_rate * 0.5 feeds interest_rate.
+ebmd_set_cb_rate = {
+	set_variable = { cb_policy_rate = ebmd_target }
+	clamp_variable = { var = cb_policy_rate min = 0 max = 20 }
+	ingame_update_setup = yes
+}
+
+# ---------------------------------------------------------------------------
+# Politics
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_target - opinion delta. MD's per-faction effects each no-op when the
+# country lacks that faction idea, and clamp the result 0-100.
+ebmd_shift_all_factions = {
+	set_temp_variable = { temp_all_opinion = ebmd_target }
+	change_all_internal_faction_opinion = yes
+}
+
+# Required inputs: ebmd_pct - influence percentage to apply toward each target.
+ebmd_influence_neighbours = {
+	every_neighbor_country = {
+		limit = { NOT = { tag = ROOT } }
+		set_temp_variable = { percent_change = ebmd_pct }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = THIS.id }
+		change_influence_percentage = yes
+	}
+	ROOT = { recalculate_influence = yes }
+}
+
+ebmd_influence_majors = {
+	every_country = {
+		limit = {
+			is_major = yes
+			NOT = { tag = ROOT }
+		}
+		set_temp_variable = { percent_change = ebmd_pct }
+		set_temp_variable = { tag_index = ROOT.id }
+		set_temp_variable = { influence_target = THIS.id }
+		change_influence_percentage = yes
+	}
+	ROOT = { recalculate_influence = yes }
+}
+
+# init_influence is MD's own array wipe. Without it, setting domestic influence to 100 leaves
+# every foreign influencer still listed and the pool renormalises straight back.
+ebmd_reset_domestic_influence = {
+	init_influence = yes
+	set_variable = { domestic_influence_amount = 100 }
+	recalculate_influence = yes
+}
+
+# ---------------------------------------------------------------------------
+# Counter-terrorism
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_target - the raw CT stat value to set.
+# These are open-ended accumulators with no clamp in MD, so "max" is a value chosen here,
+# not a documented ceiling.
+ebmd_set_ct_capability = {
+	set_variable = { ct_home_defense_var = ebmd_target }
+	set_variable = { ct_global_base_detect_var = ebmd_target }
+	calculate_national_global_threat_detection = yes
+}
+
+# remove_org fixes up eleven parallel global arrays plus every enrolled country's intel
+# arrays, so slots are always torn down from index 0 rather than edited directly.
+# The counter is a backstop: if a future MD change ever made remove_org a no-op here, the
+# array length would stop falling and the loop would hang the game.
+ebmd_clear_terror_orgs = {
+	set_temp_variable = { ebmd_guard = 0 }
+	while_loop_effect = {
+		limit = {
+			check_variable = { global.active_terror_orgs^num > 0 }
+			check_variable = { ebmd_guard < 64 }
+		}
+		set_temp_variable = { targeted_org = 0 }
+		remove_org = yes
+		add_to_temp_variable = { ebmd_guard = 1 }
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Energy
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_count - number of battery parks to add.
+# skip_payment = 1 is MD's own free-build path through build_battery_park_effect.
+ebmd_build_battery_parks = {
+	set_temp_variable = { temp_change = ebmd_count }
+	set_temp_variable = { skip_payment = 1 }
+	build_battery_park_effect = yes
+}
+
+ebmd_refresh_energy = {
+	calculate_energy_use = yes
+	update_global_energy_ui = yes
+}
+
+# ---------------------------------------------------------------------------
+# Repair - restore MD's own invariants after a bad value
+# ---------------------------------------------------------------------------
+
+# Treasury is deliberately not clamped here. A negative treasury is a legal MD state that
+# automated_debt_taker resolves into debt on the next weekly tick; forcing it to 0 would be
+# handing out money, not restoring an invariant. Use the Economy menu to set it explicitly.
+ebmd_repair_economy = {
+	clamp_variable = { var = debt min = 0 }
+	clamp_variable = { var = corporate_tax_rate min = 0 max = 50 }
+	clamp_variable = { var = population_tax_rate min = 0 max = 50 }
+	clamp_variable = { var = cb_policy_rate min = 0 max = 20 }
+	clamp_variable = { var = gdp_total min = 0.1 }
+	set_variable = { print_money_base_add = 0 }
+	calculate_inflation_effects = yes
+	ingame_update_setup = yes
+}
+
+ebmd_repair_politics = {
+	clamp_variable = { var = domestic_influence_amount min = 0 max = 100 }
+	ebmd_repair_faction_opinions = yes
+	recalculate_influence = yes
+}
+
+# Each clamp is paired with MD's own DYNMOD re-apply so the faction's modifier matches the
+# corrected opinion, and is guarded on the faction idea the same way MD guards its own.
+ebmd_repair_faction_opinions = {
+	if = {
+		limit = { has_idea = small_medium_business_owners }
+		clamp_variable = { var = small_medium_business_owners_opinion min = 0 max = 100 }
+		apply_small_medium_business_owner_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = international_bankers }
+		clamp_variable = { var = international_bankers_opinion min = 0 max = 100 }
+		apply_international_bankers_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = fossil_fuel_industry }
+		clamp_variable = { var = fossil_fuel_industry_opinion min = 0 max = 100 }
+		apply_fossil_fuel_industry_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = industrial_conglomerates }
+		clamp_variable = { var = industrial_conglomerates_opinion min = 0 max = 100 }
+		apply_industrial_conglomerates_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = oligarchs }
+		clamp_variable = { var = oligarchs_opinion min = 0 max = 100 }
+		apply_oligarchs_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = maritime_industry }
+		clamp_variable = { var = maritime_industry_opinion min = 0 max = 100 }
+		apply_maritime_industry_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = defense_industry }
+		clamp_variable = { var = defense_industry_opinion min = 0 max = 100 }
+		apply_defense_industry_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = landowners }
+		clamp_variable = { var = landowners_opinion min = 0 max = 100 }
+		apply_landowners_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = farmers }
+		clamp_variable = { var = farmers_opinion min = 0 max = 100 }
+		apply_farmers_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = labour_unions }
+		clamp_variable = { var = labour_unions_opinion min = 0 max = 100 }
+		apply_labour_unions_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = the_military }
+		clamp_variable = { var = the_military_opinion min = 0 max = 100 }
+		apply_the_military_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = intelligence_community }
+		clamp_variable = { var = intelligence_community_opinion min = 0 max = 100 }
+		apply_intelligence_community_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = communist_cadres }
+		clamp_variable = { var = communist_cadres_opinion min = 0 max = 100 }
+		apply_communist_cadres_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = the_clergy }
+		clamp_variable = { var = the_clergy_opinion min = 0 max = 100 }
+		apply_the_clergy_dynamic_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = wall_street }
+		clamp_variable = { var = wall_street_opinion min = 0 max = 100 }
+		apply_wall_street_effect_DYNMOD = yes
+	}
+	if = {
+		limit = { has_idea = chaebols }
+		clamp_variable = { var = chaebols_opinion min = 0 max = 100 }
+		apply_chaebols_effect_DYNMOD = yes
+	}
+}
+
+ebmd_repair_ct = {
+	clamp_variable = { var = ct_home_defense_var min = 0 }
+	clamp_variable = { var = ct_global_base_detect_var min = 0 }
+	calculate_national_global_threat_detection = yes
+}
+
+ebmd_repair_energy = {
+	clamp_variable = { var = stored_energy min = 0 }
+	ebmd_refresh_energy = yes
+}

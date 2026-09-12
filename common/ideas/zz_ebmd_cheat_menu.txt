@@ -1,0 +1,19 @@
+ideas = {
+	ebmd_menu = {
+		ebmd_open_menu = {
+			picture = generic_pp_unity_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 1
+			on_add = {
+				country_event = ebmd.1
+			}
+		}
+		ebmd_nothing_menu = {
+			picture = generic_pp_unity_bonus
+			available = { is_ai = no }
+			cancel_if_invalid = no
+			level = 9
+		}
+	}
+}

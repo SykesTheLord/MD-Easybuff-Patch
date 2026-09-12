@@ -1,0 +1,14 @@
+# +Easybuff - MD Systems
+# Millennium Dawn ships no "MD is loaded" flag or define, and documents no detection
+# convention for submods. This proxy is inferred, not an API: MD's economy startup
+# (ingame_startup_nations_effect, common/scripted_effects/00_scripted_effects.txt) sets
+# corporate_tax_rate on every country, so it is true in any MD game. Kept in one place so
+# an MD refactor is a one-line fix here. Fallbacks: gdp_total, or has_idea = no_currency_backing.
+ebmd_md_active = {
+	has_variable = corporate_tax_rate
+}
+
+ebmd_cheat_available = {
+	is_ai = no
+	ebmd_md_active = yes
+}

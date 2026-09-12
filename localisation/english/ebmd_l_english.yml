@@ -1,0 +1,42 @@
+﻿l_english:
+ zebmd_idea: "MD Cheats - Economy & Politics"
+
+ ebmd_systems_decision: "Millennium Dawn - Economy & Politics"
+ ebmd_open_menu_dec: "Open MD Systems Cheat Menu"
+ ebmd_open_menu: "Open MD Systems Cheat Menu"
+ ebmd_repair_economy_dec: "Repair: Economy Variables"
+ ebmd_repair_politics_dec: "Repair: Politics Variables"
+ ebmd_repair_ct_dec: "Repair: Counter-Terror Variables"
+ ebmd_repair_energy_dec: "Repair: Energy Variables"
+
+ ebmdclose: "Close"
+ ebmdback: "Back"
+
+ ebmd_menu: "Open MD Cheat Menu"
+ ebmd_economy: "MD Economy Cheats"
+ ebmd_ct: "MD Counter-Terror Cheats"
+ ebmd_energy: "MD Energy Cheats"
+
+ ebmd_nothing_menu: "Nothing"
+ ebmd_nothing_economy: "Nothing"
+ ebmd_nothing_ct: "Nothing"
+ ebmd_nothing_energy: "Nothing"
+
+ ebmd_economy_lv1: "Lv1 MD Economy"
+ ebmd_economy_lv2: "Lv2 MD Economy"
+ ebmd_economy_lv3: "Lv3 MD Economy"
+ ebmd_economy_lv4: "Lv4 MD Economy"
+ ebmd_economy_insane: "Insane MD Economy"
+
+ ebmd_ct_lv1: "Lv1 Counter-Terror"
+ ebmd_ct_lv2: "Lv2 Counter-Terror"
+ ebmd_ct_lv3: "Lv3 Counter-Terror"
+ ebmd_ct_lv4: "Lv4 Counter-Terror"
+ ebmd_ct_insane: "Insane Counter-Terror"
+ ebmd_ct_blind: "Blind Counter-Terror (no detection)"
+
+ ebmd_energy_lv1: "Lv1 Power Grid"
+ ebmd_energy_lv2: "Lv2 Power Grid"
+ ebmd_energy_lv3: "Lv3 Power Grid"
+ ebmd_energy_lv4: "Lv4 Power Grid"
+ ebmd_energy_insane: "Insane Power Grid"

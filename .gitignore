@@ -1,0 +1,23 @@
+# Claude Code local overrides (machine-specific permissions, not team-shared)
+.claude/settings.local.json
+
+# Personal instructions, if ever added
+CLAUDE.local.md
+
+# Packaged mod archives for Workshop upload
+*.zip
+
+# Validation scratch output
+/tmp-validate/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,90 @@
+# +Easybuff - MD Systems
+# Power grid. energy_consumption and energy_balance are rebuilt from scratch by
+# calculate_energy_use, so generation and demand are moved through MD's country-scope
+# energy modifiers. This reaches the grid, which Easybuff's generic building cheats do not.
+ideas = {
+	ebmd_energy = {
+		ebmd_energy_lv1 = {
+			picture = generic_production_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 1
+			modifier = {
+				energy_gain_multiplier = 0.25
+				energy_use_multiplier = -0.10
+				resource_storage_max_capacity = 0.20
+			}
+		}
+		ebmd_energy_lv2 = {
+			picture = generic_production_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 2
+			modifier = {
+				energy_gain_multiplier = 0.60
+				energy_use_multiplier = -0.25
+				pop_energy_use_multiplier = -0.25
+				resource_storage_max_capacity = 0.50
+				battery_park_storage_size_modifier = 0.50
+			}
+		}
+		ebmd_energy_lv3 = {
+			picture = generic_production_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 3
+			modifier = {
+				energy_gain_multiplier = 1.5
+				energy_use_multiplier = -0.50
+				pop_energy_use_multiplier = -0.50
+				renewable_energy_gain_multiplier = 1
+				nuclear_energy_generation_modifier = 1
+				fossil_pp_energy_generation_modifier = 1
+				resource_storage_max_capacity = 1
+				battery_park_storage_size_modifier = 1
+			}
+		}
+		ebmd_energy_lv4 = {
+			picture = generic_production_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 4
+			modifier = {
+				energy_gain = 500
+				energy_gain_multiplier = 3
+				energy_use_multiplier = -0.75
+				pop_energy_use_multiplier = -0.75
+				renewable_energy_gain_multiplier = 3
+				nuclear_energy_generation_modifier = 3
+				fossil_pp_energy_generation_modifier = 3
+				resource_storage_max_capacity = 3
+				battery_park_storage_size_modifier = 3
+			}
+		}
+		ebmd_energy_insane = {
+			picture = generic_production_bonus
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 8
+			modifier = {
+				energy_gain = 10000
+				energy_gain_multiplier = 10
+				energy_use_multiplier = -0.95
+				pop_energy_use_multiplier = -0.95
+				renewable_energy_gain_multiplier = 10
+				nuclear_energy_generation_modifier = 10
+				fossil_pp_energy_generation_modifier = 10
+				nuclear_fuel_consumption_modifier = -0.95
+				fossil_pp_fuel_consumption_modifier = -0.95
+				resource_storage_max_capacity = 10
+				battery_park_storage_size_modifier = 10
+			}
+		}
+		ebmd_nothing_energy = {
+			picture = generic_pp_unity_bonus
+			available = { is_ai = no }
+			cancel_if_invalid = no
+			level = 9
+		}
+	}
+}

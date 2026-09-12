@@ -1,0 +1,10 @@
+# +Easybuff - MD Systems
+# Deliberately distinct from the "+++Easybuff - Millennium Dawn" patch's category so both
+# can be loaded at once without their menus colliding.
+ebmd_systems_decision = {
+	icon = generic_political_actions
+
+	allowed = {
+		always = yes
+	}
+}

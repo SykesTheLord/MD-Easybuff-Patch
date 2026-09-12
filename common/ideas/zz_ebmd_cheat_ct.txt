@@ -1,0 +1,82 @@
+# +Easybuff - MD Systems
+# Counter-terror capability. ct_defense_total is derived every weekly CT bucket from
+# (terror_threat_base_defense_modifier + ct_home_defense_var) * (1 + terror_threat_detection_modifier),
+# so the durable lever is the modifier side rather than the raw variables.
+ideas = {
+	ebmd_ct = {
+		ebmd_ct_lv1 = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 1
+			modifier = {
+				terror_threat_detection_modifier = 0.25
+				terror_threat_base_detect_modifier = 5
+				terror_threat_base_defense_modifier = 5
+			}
+		}
+		ebmd_ct_lv2 = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 2
+			modifier = {
+				terror_threat_detection_modifier = 0.50
+				terror_threat_base_detect_modifier = 15
+				terror_threat_base_defense_modifier = 15
+			}
+		}
+		ebmd_ct_lv3 = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 3
+			modifier = {
+				terror_threat_detection_modifier = 1
+				terror_threat_base_detect_modifier = 30
+				terror_threat_base_defense_modifier = 30
+			}
+		}
+		ebmd_ct_lv4 = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 4
+			modifier = {
+				terror_threat_detection_modifier = 2
+				terror_threat_base_detect_modifier = 60
+				terror_threat_base_defense_modifier = 60
+			}
+		}
+		ebmd_ct_insane = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 8
+			modifier = {
+				terror_threat_detection_modifier = 10
+				terror_threat_base_detect_modifier = 500
+				terror_threat_base_defense_modifier = 500
+			}
+		}
+		# Strips detection and defence instead of merely removing a bonus, for testing the
+		# attack side of the CT chain.
+		ebmd_ct_blind = {
+			picture = counter_terror_spirit
+			available = { ebmd_cheat_available = yes }
+			cancel_if_invalid = no
+			level = 7
+			modifier = {
+				terror_threat_detection_modifier = -1
+				terror_threat_base_detect_modifier = -500
+				terror_threat_base_defense_modifier = -500
+			}
+		}
+		ebmd_nothing_ct = {
+			picture = generic_pp_unity_bonus
+			available = { is_ai = no }
+			cancel_if_invalid = no
+			level = 9
+		}
+	}
+}

@@ -1,0 +1,115 @@
+ebmd_systems_decision = {
+
+	ebmd_open_menu_dec = {
+
+		icon = generic_political_actions
+
+		fire_only_once = no
+
+		available = {
+			is_ai = no
+		}
+
+		cost = 0
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		complete_effect = {
+			country_event = ebmd.1
+		}
+
+	}
+
+	# Repair buttons are decisions rather than menu entries so a save with bad values can be
+	# fixed without opening the menu. Each restores MD's own clamps, not bounds of our own.
+	ebmd_repair_economy_dec = {
+
+		icon = generic_political_actions
+
+		fire_only_once = no
+
+		available = {
+			is_ai = no
+		}
+
+		cost = 0
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		complete_effect = {
+			ebmd_repair_economy = yes
+		}
+
+	}
+
+	ebmd_repair_politics_dec = {
+
+		icon = generic_political_actions
+
+		fire_only_once = no
+
+		available = {
+			is_ai = no
+		}
+
+		cost = 0
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		complete_effect = {
+			ebmd_repair_politics = yes
+		}
+
+	}
+
+	ebmd_repair_ct_dec = {
+
+		icon = generic_political_actions
+
+		fire_only_once = no
+
+		available = {
+			is_ai = no
+		}
+
+		cost = 0
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		complete_effect = {
+			ebmd_repair_ct = yes
+		}
+
+	}
+
+	ebmd_repair_energy_dec = {
+
+		icon = generic_political_actions
+
+		fire_only_once = no
+
+		available = {
+			is_ai = no
+		}
+
+		cost = 0
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		complete_effect = {
+			ebmd_repair_energy = yes
+		}
+
+	}
+
+}
