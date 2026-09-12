@@ -68,71 +68,18 @@ country_event = {
 
 	option = {
 		name = ebmd.10.a
-		set_temp_variable = { ebmd_target = 0 }
-		ebmd_set_debt = yes
-		country_event = ebmd.1
+		country_event = ebmd.13
 	}
 	option = {
 		name = ebmd.10.b
-		set_temp_variable = { ebmd_target = 100 }
-		ebmd_set_debt = yes
-		country_event = ebmd.1
+		country_event = ebmd.14
 	}
-	# Drives interest_rate over 15% through MD's real debt/GDP premium so the
-	# very_high_interest_country_modifiers penalties actually apply.
 	option = {
 		name = ebmd.10.c
-		set_temp_variable = { ebmd_ratio = 1.6 }
-		ebmd_set_debt_gdp_ratio = yes
-		country_event = ebmd.1
+		country_event = ebmd.15
 	}
 	option = {
 		name = ebmd.10.d
-		set_temp_variable = { ebmd_ratio = 2.6 }
-		ebmd_set_debt_gdp_ratio = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.e
-		set_temp_variable = { ebmd_target = 1000 }
-		ebmd_set_treasury = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.f
-		set_temp_variable = { ebmd_target = 100000 }
-		ebmd_set_treasury = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.g
-		ebmd_toggle_free_costs = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.h
-		set_temp_variable = { ebmd_target = 0 }
-		ebmd_set_corporate_tax = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.i
-		set_temp_variable = { ebmd_target = 50 }
-		ebmd_set_corporate_tax = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.j
-		ebmd_corruption_to_minimum = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.k
-		ebmd_corruption_to_maximum = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.10.l
 		country_event = ebmd.11
 	}
 	option = {
@@ -140,6 +87,115 @@ country_event = {
 		country_event = ebmd.1
 	}
 }
+
+# Debt and interest rate 13
+country_event = {
+	id = ebmd.13
+	title = ebmd.13.t
+	desc = ebmd.13.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.13.a
+		set_temp_variable = { ebmd_target = 0 }
+		ebmd_set_debt = yes
+		country_event = ebmd.13
+	}
+	option = {
+		name = ebmd.13.b
+		set_temp_variable = { ebmd_target = 100 }
+		ebmd_set_debt = yes
+		country_event = ebmd.13
+	}
+	option = {
+		name = ebmd.13.c
+		set_temp_variable = { ebmd_ratio = 1.6 }
+		ebmd_set_debt_gdp_ratio = yes
+		country_event = ebmd.13
+	}
+	option = {
+		name = ebmd.13.d
+		set_temp_variable = { ebmd_ratio = 2.6 }
+		ebmd_set_debt_gdp_ratio = yes
+		country_event = ebmd.13
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.10
+	}
+}
+
+# Treasury and costs 14
+country_event = {
+	id = ebmd.14
+	title = ebmd.14.t
+	desc = ebmd.14.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.14.a
+		set_temp_variable = { ebmd_target = 1000 }
+		ebmd_set_treasury = yes
+		country_event = ebmd.14
+	}
+	option = {
+		name = ebmd.14.b
+		set_temp_variable = { ebmd_target = 100000 }
+		ebmd_set_treasury = yes
+		country_event = ebmd.14
+	}
+	option = {
+		name = ebmd.14.c
+		ebmd_toggle_free_costs = yes
+		country_event = ebmd.14
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.10
+	}
+}
+
+# Tax and corruption 15
+country_event = {
+	id = ebmd.15
+	title = ebmd.15.t
+	desc = ebmd.15.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.15.a
+		set_temp_variable = { ebmd_target = 0 }
+		ebmd_set_corporate_tax = yes
+		country_event = ebmd.15
+	}
+	option = {
+		name = ebmd.15.b
+		set_temp_variable = { ebmd_target = 50 }
+		ebmd_set_corporate_tax = yes
+		country_event = ebmd.15
+	}
+	option = {
+		name = ebmd.15.c
+		ebmd_corruption_to_minimum = yes
+		country_event = ebmd.15
+	}
+	option = {
+		name = ebmd.15.d
+		ebmd_corruption_to_maximum = yes
+		country_event = ebmd.15
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.10
+	}
+}
+
 
 # GDP, with the desync warning 11
 country_event = {
@@ -154,25 +210,25 @@ country_event = {
 		name = ebmd.11.a
 		set_temp_variable = { ebmd_factor = 2 }
 		ebmd_scale_gdp = yes
-		country_event = ebmd.1
+		country_event = ebmd.11
 	}
 	option = {
 		name = ebmd.11.b
 		set_temp_variable = { ebmd_factor = 10 }
 		ebmd_scale_gdp = yes
-		country_event = ebmd.1
+		country_event = ebmd.11
 	}
 	option = {
 		name = ebmd.11.c
 		set_temp_variable = { ebmd_factor = 0.5 }
 		ebmd_scale_gdp = yes
-		country_event = ebmd.1
+		country_event = ebmd.11
 	}
 	# The route that survives the next recalculation.
 	option = {
 		name = ebmd.11.d
 		add_ideas = ebmd_economy_lv4
-		country_event = ebmd.1
+		country_event = ebmd.11
 	}
 	option = {
 		name = ebmd.11.e
@@ -180,7 +236,7 @@ country_event = {
 		# has to be on that scale - roughly a doubling - not the 0.025 the published doc shows.
 		set_temp_variable = { temp_productivity_change = 1000 }
 		flat_productivity_change_effect = yes
-		country_event = ebmd.1
+		country_event = ebmd.11
 	}
 	option = {
 		name = ebmdback
@@ -188,7 +244,7 @@ country_event = {
 	}
 }
 
-# Monetary gain and inflation 12
+# Money and inflation 12
 country_event = {
 	id = ebmd.12
 	title = ebmd.12.t
@@ -199,70 +255,11 @@ country_event = {
 
 	option = {
 		name = ebmd.12.a
-		set_temp_variable = { ebmd_days = 180 }
-		ebmd_grant_monetary_expansion = yes
-		ebmd_clear_monetary_cooldown = yes
-		country_event = ebmd.1
+		country_event = ebmd.16
 	}
 	option = {
 		name = ebmd.12.b
-		set_temp_variable = { ebmd_days = 0 }
-		ebmd_grant_monetary_expansion = yes
-		ebmd_clear_monetary_cooldown = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.c
-		remove_ideas = monetary_expand_active_idea
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.d
-		set_temp_variable = { ebmd_target = 500 }
-		ebmd_print_money_free = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.e
-		set_temp_variable = { ebmd_target = 5000 }
-		ebmd_print_money_free = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.f
-		ebmd_clear_monetary_cooldown = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.g
-		set_temp_variable = { ebmd_target = 0 }
-		ebmd_set_inflation = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.h
-		set_temp_variable = { ebmd_target = 0.02 }
-		ebmd_set_inflation = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.i
-		set_temp_variable = { ebmd_target = 0.25 }
-		ebmd_set_inflation = yes
-		country_event = ebmd.1
-	}
-	# Lowers inflation next quarter but raises interest_rate now, via cb_rate_premium.
-	option = {
-		name = ebmd.12.j
-		set_temp_variable = { ebmd_target = 15 }
-		ebmd_set_cb_rate = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.12.k
-		set_temp_variable = { ebmd_target = 0 }
-		ebmd_set_cb_rate = yes
-		country_event = ebmd.1
+		country_event = ebmd.17
 	}
 	option = {
 		name = ebmdback
@@ -270,7 +267,104 @@ country_event = {
 	}
 }
 
-# Internal factions 20
+# Monetary expansion and printing 16
+country_event = {
+	id = ebmd.16
+	title = ebmd.16.t
+	desc = ebmd.16.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.16.a
+		set_temp_variable = { ebmd_days = 180 }
+		ebmd_grant_monetary_expansion = yes
+		ebmd_clear_monetary_cooldown = yes
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmd.16.b
+		set_temp_variable = { ebmd_days = 0 }
+		ebmd_grant_monetary_expansion = yes
+		ebmd_clear_monetary_cooldown = yes
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmd.16.c
+		remove_ideas = monetary_expand_active_idea
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmd.16.d
+		set_temp_variable = { ebmd_target = 500 }
+		ebmd_print_money_free = yes
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmd.16.e
+		set_temp_variable = { ebmd_target = 5000 }
+		ebmd_print_money_free = yes
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmd.16.f
+		ebmd_clear_monetary_cooldown = yes
+		country_event = ebmd.16
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.12
+	}
+}
+
+# Inflation and central bank 17
+country_event = {
+	id = ebmd.17
+	title = ebmd.17.t
+	desc = ebmd.17.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.17.a
+		set_temp_variable = { ebmd_target = 0 }
+		ebmd_set_inflation = yes
+		country_event = ebmd.17
+	}
+	option = {
+		name = ebmd.17.b
+		set_temp_variable = { ebmd_target = 0.02 }
+		ebmd_set_inflation = yes
+		country_event = ebmd.17
+	}
+	option = {
+		name = ebmd.17.c
+		set_temp_variable = { ebmd_target = 0.25 }
+		ebmd_set_inflation = yes
+		country_event = ebmd.17
+	}
+	option = {
+		name = ebmd.17.d
+		set_temp_variable = { ebmd_target = 15 }
+		ebmd_set_cb_rate = yes
+		country_event = ebmd.17
+	}
+	option = {
+		name = ebmd.17.e
+		set_temp_variable = { ebmd_target = 0 }
+		ebmd_set_cb_rate = yes
+		country_event = ebmd.17
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.12
+	}
+}
+
+
+# Internal factions and parties 20
 country_event = {
 	id = ebmd.20
 	title = ebmd.20.t
@@ -282,83 +376,100 @@ country_event = {
 	option = {
 		name = ebmd.20.a
 		set_to_max_internal_faction_opinions = yes
-		country_event = ebmd.1
+		country_event = ebmd.20
 	}
 	option = {
 		name = ebmd.20.b
 		set_temp_variable = { ebmd_target = 25 }
 		ebmd_shift_all_factions = yes
-		country_event = ebmd.1
+		country_event = ebmd.20
 	}
 	option = {
 		name = ebmd.20.c
 		set_temp_variable = { ebmd_target = -25 }
 		ebmd_shift_all_factions = yes
-		country_event = ebmd.1
+		country_event = ebmd.20
 	}
 	option = {
 		name = ebmd.20.d
-		set_temp_variable = { temp_opinion = 50 }
-		change_oligarchs_opinion = yes
-		country_event = ebmd.1
+		country_event = ebmd.18
 	}
 	option = {
 		name = ebmd.20.e
-		set_temp_variable = { temp_opinion = -50 }
-		change_oligarchs_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.f
-		set_temp_variable = { temp_opinion = 50 }
-		change_the_military_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.g
-		set_temp_variable = { temp_opinion = -50 }
-		change_the_military_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.h
-		set_temp_variable = { temp_opinion = 50 }
-		change_labour_unions_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.i
-		set_temp_variable = { temp_opinion = 50 }
-		change_intelligence_community_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.j
-		set_temp_variable = { temp_opinion = 50 }
-		change_the_clergy_opinion = yes
-		country_event = ebmd.1
-	}
-	option = {
-		name = ebmd.20.k
-		set_temp_variable = { temp_opinion = 50 }
-		change_defense_industry_opinion = yes
-		country_event = ebmd.1
-	}
-	# party_index is left unset so MD defaults it to the ruling party. temp_outlook_increase is
-	# set explicitly rather than relied on to default: the effect branches on it, and an unset
-	# temp variable would leave that branch at the mercy of whatever ran before it.
-	option = {
-		name = ebmd.20.l
 		set_temp_variable = { party_popularity_increase = 0.50 }
 		set_temp_variable = { temp_outlook_increase = 0.50 }
 		change_relative_party_popularity = yes
-		country_event = ebmd.1
+		country_event = ebmd.20
 	}
 	option = {
 		name = ebmdback
 		country_event = ebmd.1
 	}
 }
+
+# Individual factions 18
+country_event = {
+	id = ebmd.18
+	title = ebmd.18.t
+	desc = ebmd.18.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.18.a
+		set_temp_variable = { temp_opinion = 50 }
+		change_oligarchs_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.b
+		set_temp_variable = { temp_opinion = -50 }
+		change_oligarchs_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.c
+		set_temp_variable = { temp_opinion = 50 }
+		change_the_military_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.d
+		set_temp_variable = { temp_opinion = -50 }
+		change_the_military_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.e
+		set_temp_variable = { temp_opinion = 50 }
+		change_labour_unions_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.f
+		set_temp_variable = { temp_opinion = 50 }
+		change_intelligence_community_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.g
+		set_temp_variable = { temp_opinion = 50 }
+		change_the_clergy_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmd.18.h
+		set_temp_variable = { temp_opinion = 50 }
+		change_defense_industry_opinion = yes
+		country_event = ebmd.18
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.20
+	}
+}
+
 
 # Influence 21
 country_event = {

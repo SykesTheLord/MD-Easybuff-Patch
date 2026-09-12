@@ -15,6 +15,15 @@ No automated harness exists for HOI4 script; everything below is an in-game chec
 
 ## Per-option checks
 
+The menu nests: the hub lists categories, and the larger categories open a sub-page
+(Economy -> Debt & Interest / Treasury & Costs / Tax & Corruption / GDP; Money & Inflation ->
+Monetary Expansion / Inflation & Central Bank; Internal Factions -> Individual Factions).
+Applying an option returns you to the page you were on, so several can be chained; Back steps
+up one level.
+
+**Check no page is cut off:** every page must show its Back row. If the bottom option is
+missing, that page is over the 11-option limit.
+
 Each economy row: open the decision → *Open MD Systems Cheat Menu* → the listed category.
 Use `tdebug` to read variables on hover, or
 `effect log = "debt=[?THIS.debt] ir=[?THIS.interest_rate]"` and read `logs/game.log`.

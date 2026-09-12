@@ -61,6 +61,11 @@ hooks still run. Convert "set to X" into the delta call MD exposes (see `ebmd_se
   space per key, plain `key: "value"` with no version numbers.
 - **Idea categories**: declare our own. Redefining Easybuff's `zcheat_idea` in a later-loading
   file overrides rather than merges, silently deleting its slots.
+- **Event option budget**: an event page fits **11 options at most**, including the Back/Close
+  row. Easybuff's `interface/zeasybuffevent.gui` sizes the options grid 406px tall with 35px
+  slots, and no Easybuff event exceeds 11. Anything beyond that is silently cut off with no
+  error - split into a sub-page instead (the menu already nests, e.g. Economy -> `ebmd.13-.15`).
+  Keep pages at 9 or fewer to leave room to grow.
 - **Loop safety**: any `while_loop_effect` over an MD array needs a bounded counter guard — if an
   MD change makes the body a no-op, the loop hangs the game.
 
