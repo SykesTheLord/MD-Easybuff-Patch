@@ -44,6 +44,33 @@ Uninstalling removes the link, never the files it points at.
 
 After installing, enable the mod in the launcher and set the load order below.
 
+## Packaging for the Steam Workshop
+
+```bash
+./package.sh            # build build/MD-Easybuff-Patch/
+./package.sh --zip      # also write build/MD-Easybuff-Patch-<version>.zip
+./package.sh -o DIR     # output somewhere else
+./package.sh --clean    # delete the output
+```
+
+The package contains only what the game reads — `common/`, `events/`, `localisation/`,
+`descriptor.mod`, `thumbnail.png`. The README, install scripts, `.claude/` config and `.git/`
+are left out.
+
+It validates before staging and **refuses to package** on a brace mismatch, a wrong BOM, a
+missing localisation key, or a call to an MD effect that doesn't exist in 2.0. All four are
+mistakes that produce no in-game error — the mod just silently loads nothing — so they must not
+reach a published upload. It then re-verifies the staged copy rather than trusting `cp`.
+
+**The name loses "Beta" on the way out.** The working copy is named
+`+Easybuff - MD Systems Beta`, so the launcher shows which build you have installed locally.
+`package.sh` rewrites only the staged `descriptor.mod` to `+Easybuff - MD Systems` — the repo
+keeps the Beta name. The strip is word-boundary matched and scoped to the `name=` line, so a
+dependency that legitimately contains "Beta" (Millennium Dawn ships *A Beta Test Mod*) is left
+alone. Drop "Beta" from `descriptor.mod` when you want the release name locally too.
+
+Point the Paradox launcher at the built folder to publish.
+
 ## Load order
 
 This mod must load **after both** of its dependencies:

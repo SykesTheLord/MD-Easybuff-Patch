@@ -113,6 +113,7 @@ ok "installed descriptor $DESCRIPTOR"
 
 printf '\n'
 ok "installed"
+DISPLAY_NAME=$(sed -n 's/^[[:space:]]*name[[:space:]]*=[[:space:]]*"\(.*\)".*/\1/p' "$SRC/descriptor.mod" | head -1)
 note "Enable in the launcher, then set load order:"
-note "  Millennium Dawn  ->  +Easybuff  ->  +Easybuff - MD Systems"
+note "  Millennium Dawn  ->  +Easybuff  ->  ${DISPLAY_NAME:-+Easybuff - MD Systems}"
 note "This mod must load LAST. Requires Millennium Dawn 2.0.x."

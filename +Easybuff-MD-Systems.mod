@@ -1,4 +1,4 @@
-name="+Easybuff - MD Systems"
+name="+Easybuff - MD Systems Beta"
 path="mod/MD-Easybuff-Patch"
 dependencies={
 	"+Easybuff"

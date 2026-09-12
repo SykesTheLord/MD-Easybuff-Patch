@@ -4,7 +4,8 @@
 # Personal instructions, if ever added
 CLAUDE.local.md
 
-# Packaged mod archives for Workshop upload
+# Workshop package output (regenerate with ./package.sh)
+/build/
 *.zip
 
 # Validation scratch output

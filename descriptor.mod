@@ -1,4 +1,4 @@
-name="+Easybuff - MD Systems"
+name="+Easybuff - MD Systems Beta"
 dependencies={
 	"+Easybuff"
 	"Millennium Dawn: A Modern Day Mod"

@@ -164,6 +164,8 @@ if (-not (Test-Path -LiteralPath (Join-Path $Dest 'common')) -or
 
 Write-Host ''
 Write-Ok 'installed'
+$m = Select-String -Path (Join-Path $Src 'descriptor.mod') -Pattern '^\s*name\s*=\s*"(.*)"' | Select-Object -First 1
+$DisplayName = if ($m) { $m.Matches.Groups[1].Value } else { '+Easybuff - MD Systems' }
 Write-Note 'Enable in the launcher, then set load order:'
-Write-Note '  Millennium Dawn  ->  +Easybuff  ->  +Easybuff - MD Systems'
+Write-Note "  Millennium Dawn  ->  +Easybuff  ->  $DisplayName"
 Write-Note 'This mod must load LAST. Requires Millennium Dawn 2.0.x.'
