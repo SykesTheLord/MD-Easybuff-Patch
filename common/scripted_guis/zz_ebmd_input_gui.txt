@@ -70,6 +70,23 @@ scripted_gui = {
 				ebmd_set_cb_rate = yes
 				ebmd_gui_refresh = yes
 			}
+
+			ebmd_party_prev_click = {
+				set_temp_variable = { ebmd_step = -1 }
+				ebmd_gui_party_step = yes
+			}
+			ebmd_party_next_click = {
+				set_temp_variable = { ebmd_step = 1 }
+				ebmd_gui_party_step = yes
+			}
+			# The staged value is a percentage (0-100); MD stores popularity as a 0-1 share.
+			ebmd_apply_party_pop_click = {
+				set_temp_variable = { ebmd_target = ebmd_staged_value }
+				divide_temp_variable = { ebmd_target = 100 }
+				set_temp_variable = { ebmd_party = ebmd_selected_party }
+				ebmd_set_party_popularity = yes
+				ebmd_gui_refresh = yes
+			}
 		}
 	}
 }

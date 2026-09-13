@@ -50,6 +50,11 @@ The decision tab carries a small scripted GUI: step a staged value with `±0.01 
 buttons, watch it update live, then apply it as the inflation rate, corporate tax percentage or
 central bank rate. It calls the same effects as the menu, so both routes behave identically.
 
+A second row sets **party popularity**: step through the 24 parties with *Previous / Next* (shown
+with this country's own party names and their current popularity), then apply the staged value as
+that party's share of the country. It uses MD's own `change_relative_party_popularity`, raising or
+lowering the party's outlook by the same amount so the party lands exactly on the target.
+
 This exists because **HOI4 offers scripted GUIs no text input** — `editBoxType` is engine-internal
 and scripted GUIs can bind only clicks and visibility. Stepping a value is the closest available
 equivalent, and is how Millennium Dawn drives its own rate controls.

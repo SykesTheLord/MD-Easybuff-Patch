@@ -57,6 +57,10 @@
  ebmd_gui_apply_inflation: "Apply as Inflation Rate"
  ebmd_gui_apply_corp_tax: "Apply as Corporate Tax % (0-50)"
  ebmd_gui_apply_cb_rate: "Apply as Central Bank Rate % (0-20)"
+ ebmd_gui_party_readout: "Party: §Y[ebmd_selected_party_name]§! - now §Y[?party_pop_array^ebmd_selected_party|%1]§!"
+ ebmd_gui_party_prev: "< Previous"
+ ebmd_gui_party_next: "Next >"
+ ebmd_gui_apply_party_pop: "Apply as Party Popularity % (0-100)"
 
  ebmd_buildings_decision: "Millennium Dawn - Off-Map Buildings"
  ebmd_buildings_decision_desc: "Off-map buildings belong to your country but to no state, so they need no building slots and cannot be bombed or captured.\n\nOnly types that still work off-map are listed. Microchip and composite plants, offices, renewables and enrichment facilities produce nothing without a state, so they are left out.\n\n§YMillennium Dawn's GDP and taxes count buildings state by state§!, so off-map factories add real production but no GDP or tax income. Off-map reactors and power plants do add energy, and burn fuel like any other."

@@ -20,7 +20,7 @@ Repair, and the larger categories open sub-pages:
 - Economy -> Debt & Interest / Treasury & Costs / Tax & Corruption / GDP / Workforce /
   Monetary Expansion / Inflation & Central Bank
 - Politics -> Internal Factions & Parties (-> Individual Factions) / Foreign Influence /
-  Fire / Suppress Events
+  Fire / Suppress Events / Ruling Party (-> five outlook pages)
 - Power Grid -> Power Construction
 Applying an option returns you to the page you were on, so several can be chained; Back steps
 up one level.
@@ -93,6 +93,17 @@ countries is expected.
 | Oligarchs / Military ±50 | that faction's bar moves; play a country **without** that faction and confirm the option is silently ignored rather than erroring |
 | Ruling party +50% | the ruling party's popularity rises in the politics view |
 
+### Ruling party
+
+Politics -> Ruling Party.
+
+| Option | Confirm |
+|---|---|
+| Open any outlook page | each option shows this country's own party name followed by MD's generic name, e.g. "Republican Party (Conservatism)"; a country with no named party still shows the generic name |
+| Pick a party | the politics view shows it ruling; its popularity rose; the page's "Currently in power" line updates when it reopens |
+| Pick a party in a country without elections | elections are **still disabled** afterwards (MD's own cheat would have re-enabled them) |
+| Put the largest party in power | the most popular party in the politics view takes over, with popularity unchanged; if it already rules, nothing visible changes |
+
 ### Influence
 
 | Option | Confirm |
@@ -151,6 +162,9 @@ decisions.
 | Stage 35 → *Apply as Corporate Tax* | budget tab shows 35% |
 | Stage 90 → *Apply as Central Bank Rate* | clamps to 20, MD's own maximum |
 | Reset | readout returns to 0.00 |
+| *Next >* / *< Previous* | the party line shows this country's own party name and its current popularity; *< Previous* from the first party wraps to the last |
+| Stage 40 → *Apply as Party Popularity %* | the politics view shows that party at 40%; other parties in its outlook keep their share; the other outlooks shrink in proportion; the party line updates immediately |
+| Stage 0 → *Apply as Party Popularity %* on the ruling party | it drops to 0% - MD may then change the government at its next political update |
 
 The staged value persists while the panel is closed — it is a country variable, not scratch state.
 

@@ -718,3 +718,78 @@ ebmd_enrichment_every_state = {
 	ingame_update_setup = yes
 	ebmd_refresh_energy = yes
 }
+
+# ---------------------------------------------------------------------------
+# Ruling party
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_party - party index 0-23 (MD's subideology slot, as used by
+# party_pop_array and party_name_by_index).
+# The same sequence as MD's own cheat_decisions_party_* (Cheat Decisions.txt): install the
+# party through change_ruling_party_effect, then +50% relative popularity so it is not
+# voted straight back out. One deliberate difference: MD's cheat always re-enables
+# elections; this keeps whatever election setting the country already has.
+ebmd_set_ruling_party = {
+	set_temp_variable = { rul_party_temp = ebmd_party }
+	set_temp_variable = { disable_elections = 0 }
+	if = {
+		limit = { has_elections = no }
+		set_temp_variable = { disable_elections = 1 }
+	}
+	change_ruling_party_effect = yes
+	set_temp_variable = { party_index = ebmd_party }
+	set_temp_variable = { party_popularity_increase = 0.50 }
+	set_temp_variable = { temp_outlook_increase = 0.50 }
+	change_relative_party_popularity = yes
+}
+
+# Puts the most popular party in power, whichever it is - including the current ruling
+# party or a coalition partner. MD's put_the_largest_opposition_party_in_power is not used:
+# it skips the ruling party and the coalition, so it would install the runner-up.
+# No popularity boost: this party is already the largest.
+ebmd_largest_party_to_power = {
+	find_highest_in_array = {
+		array = party_pop_array
+		value = ebmd_party_pop
+		index = ebmd_party_idx
+	}
+	set_temp_variable = { rul_party_temp = ebmd_party_idx }
+	set_temp_variable = { disable_elections = 0 }
+	if = {
+		limit = { has_elections = no }
+		set_temp_variable = { disable_elections = 1 }
+	}
+	change_ruling_party_effect = yes
+}
+
+# Required inputs: ebmd_party - party index 0-23; ebmd_target - popularity as a share of
+# the whole country, 0-1.
+# party_pop_array^i is each party's share of the country, and MD's add_up_party_totals
+# rescales every party so an outlook's parties sum to that outlook's real popularity.
+# Passing the same delta as both the party and the outlook increase (MD's optional
+# temp_outlook_increase branch) raises the outlook by exactly what the party gains, so the
+# party lands on the target; the outlook's other parties are untouched and the engine's
+# add_popularity shrinks the other outlooks proportionally.
+ebmd_set_party_popularity = {
+	clamp_temp_variable = { var = ebmd_target min = 0 max = 1 }
+	set_temp_variable = { ebmd_delta = ebmd_target }
+	subtract_from_temp_variable = { ebmd_delta = party_pop_array^ebmd_party }
+	set_temp_variable = { party_index = ebmd_party }
+	set_temp_variable = { party_popularity_increase = ebmd_delta }
+	set_temp_variable = { temp_outlook_increase = ebmd_delta }
+	change_relative_party_popularity = yes
+}
+
+# Required input: ebmd_step - +1 or -1. Cycles the Value Setter's selected party, wrapping 0-23.
+ebmd_gui_party_step = {
+	add_to_variable = { ebmd_selected_party = ebmd_step }
+	if = {
+		limit = { check_variable = { ebmd_selected_party < 0 } }
+		set_variable = { ebmd_selected_party = 23 }
+	}
+	else_if = {
+		limit = { check_variable = { ebmd_selected_party > 23 } }
+		set_variable = { ebmd_selected_party = 0 }
+	}
+	ebmd_gui_refresh = yes
+}

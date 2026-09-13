@@ -10,7 +10,7 @@ guiTypes = {
 	containerWindowType = {
 		name = "ebmd_input_window"
 		position = { x = 0 y = 0 }
-		size = { width = 520 height = 340 }
+		size = { width = 520 height = 414 }
 
 		instantTextBoxType = {
 			name = "ebmd_input_title"
@@ -115,6 +115,37 @@ guiTypes = {
 			position = { x = 80 y = 262 }
 			quadTextureSprite = "GFX_button_359x34"
 			buttonText = ebmd_gui_apply_cb_rate
+			buttonFont = "hoi_18mbs"
+		}
+
+		# Party popularity: pick a party, then apply the staged value as its popularity %.
+		instantTextBoxType = {
+			name = "ebmd_party_readout"
+			position = { x = 10 y = 306 }
+			font = "hoi_18mbs"
+			text = ebmd_gui_party_readout
+			maxWidth = 500
+			format = center
+		}
+		buttonType = {
+			name = "ebmd_party_prev"
+			position = { x = 80 y = 334 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_party_prev
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_party_next"
+			position = { x = 316 y = 334 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_gui_party_next
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_apply_party_pop"
+			position = { x = 80 y = 374 }
+			quadTextureSprite = "GFX_button_359x34"
+			buttonText = ebmd_gui_apply_party_pop
 			buttonFont = "hoi_18mbs"
 		}
 	}

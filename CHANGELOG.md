@@ -30,6 +30,8 @@ Content:
  - Added Renewable Energy Infrastructure and Nuclear Enrichment Facility options that build in every owned state; the enrichment option also grants Nuclear Technology and switches reactor fuel production on
  - Power Grid construction options moved to a Power Construction sub-page to keep the page within the option limit
  - Main menu regrouped into Economy, Politics, Counter-Terrorism, Power Grid, Technology and Repair: money and inflation now sit under Economy, and factions, influence and events under a new Politics page
+ - Added a Ruling Party menu: install any of the 24 parties, shown with this country's own party names, or put the largest party in power
+ - Added party popularity to the Value Setter panel: choose any party and set its popularity to an exact percentage
  - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
  - Added idea slot icons for the four cheat columns
  - Repair politics now covers all 23 internal factions

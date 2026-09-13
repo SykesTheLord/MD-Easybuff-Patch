@@ -387,8 +387,271 @@ country_event = {
 		country_event = ebmd.22
 	}
 	option = {
+		name = ebmd.23.d
+		country_event = ebmd.24
+	}
+	option = {
 		name = ebmdback
 		country_event = ebmd.1
+	}
+}
+
+# Ruling party 24
+country_event = {
+	id = ebmd.24
+	title = ebmd.24.t
+	desc = ebmd.24.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.24.a
+		ebmd_largest_party_to_power = yes
+		country_event = ebmd.24
+	}
+	option = {
+		name = ebmd.24.b
+		country_event = ebmd.25
+	}
+	option = {
+		name = ebmd.24.c
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.24.d
+		country_event = ebmd.27
+	}
+	option = {
+		name = ebmd.24.e
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.24.f
+		country_event = ebmd.29
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.23
+	}
+}
+
+# Ruling party group 25
+country_event = {
+	id = ebmd.25
+	title = ebmd.25.t
+	desc = ebmd.25.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.25.a
+		set_temp_variable = { ebmd_party = 0 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.25
+	}
+	option = {
+		name = ebmd.25.b
+		set_temp_variable = { ebmd_party = 1 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.25
+	}
+	option = {
+		name = ebmd.25.c
+		set_temp_variable = { ebmd_party = 2 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.25
+	}
+	option = {
+		name = ebmd.25.d
+		set_temp_variable = { ebmd_party = 3 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.25
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.24
+	}
+}
+
+# Ruling party group 26
+country_event = {
+	id = ebmd.26
+	title = ebmd.26.t
+	desc = ebmd.26.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.26.a
+		set_temp_variable = { ebmd_party = 4 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.26.b
+		set_temp_variable = { ebmd_party = 5 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.26.c
+		set_temp_variable = { ebmd_party = 6 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.26.d
+		set_temp_variable = { ebmd_party = 7 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.26.e
+		set_temp_variable = { ebmd_party = 8 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmd.26.f
+		set_temp_variable = { ebmd_party = 9 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.26
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.24
+	}
+}
+
+# Ruling party group 27
+country_event = {
+	id = ebmd.27
+	title = ebmd.27.t
+	desc = ebmd.27.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.27.a
+		set_temp_variable = { ebmd_party = 10 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.27
+	}
+	option = {
+		name = ebmd.27.b
+		set_temp_variable = { ebmd_party = 11 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.27
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.24
+	}
+}
+
+# Ruling party group 28
+country_event = {
+	id = ebmd.28
+	title = ebmd.28.t
+	desc = ebmd.28.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.28.a
+		set_temp_variable = { ebmd_party = 12 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.b
+		set_temp_variable = { ebmd_party = 13 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.c
+		set_temp_variable = { ebmd_party = 14 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.d
+		set_temp_variable = { ebmd_party = 15 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.e
+		set_temp_variable = { ebmd_party = 16 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.f
+		set_temp_variable = { ebmd_party = 17 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.g
+		set_temp_variable = { ebmd_party = 18 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmd.28.h
+		set_temp_variable = { ebmd_party = 19 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.28
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.24
+	}
+}
+
+# Ruling party group 29
+country_event = {
+	id = ebmd.29
+	title = ebmd.29.t
+	desc = ebmd.29.desc
+	picture = GFX_report_event_german_inspect_troops
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 0 }
+
+	option = {
+		name = ebmd.29.a
+		set_temp_variable = { ebmd_party = 20 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.29
+	}
+	option = {
+		name = ebmd.29.b
+		set_temp_variable = { ebmd_party = 21 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.29
+	}
+	option = {
+		name = ebmd.29.c
+		set_temp_variable = { ebmd_party = 22 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.29
+	}
+	option = {
+		name = ebmd.29.d
+		set_temp_variable = { ebmd_party = 23 }
+		ebmd_set_ruling_party = yes
+		country_event = ebmd.29
+	}
+	option = {
+		name = ebmdback
+		country_event = ebmd.24
 	}
 }
 

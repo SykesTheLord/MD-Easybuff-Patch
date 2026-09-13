@@ -1,0 +1,105 @@
+# +Easybuff - MD Systems
+# The Value Setter's selected party (country variable ebmd_selected_party, 0-23) as this
+# country's own party name. Same index order and [<subideology>_L] names as MD's
+# party_name_by_index; that one keys on the dynamic-list variable v, which a plain panel
+# does not have, and MD's other index-based text reads party_index, which MD's effects use
+# as an input - so this reads a variable of our own.
+defined_text = {
+	name = ebmd_selected_party_name
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 0 } }
+		localization_key = "[Western_Autocracy_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 1 } }
+		localization_key = "[conservatism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 2 } }
+		localization_key = "[liberalism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 3 } }
+		localization_key = "[socialism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 4 } }
+		localization_key = "[Communist-State_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 5 } }
+		localization_key = "[anarchist_communism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 6 } }
+		localization_key = "[Conservative_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 7 } }
+		localization_key = "[Autocracy_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 8 } }
+		localization_key = "[Mod_Vilayat_e_Faqih_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 9 } }
+		localization_key = "[Vilayat_e_Faqih_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 10 } }
+		localization_key = "[Kingdom_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 11 } }
+		localization_key = "[Caliphate_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 12 } }
+		localization_key = "[Neutral_Muslim_Brotherhood_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 13 } }
+		localization_key = "[Neutral_Autocracy_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 14 } }
+		localization_key = "[Neutral_conservatism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 15 } }
+		localization_key = "[oligarchism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 16 } }
+		localization_key = "[Neutral_Libertarian_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 17 } }
+		localization_key = "[Neutral_green_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 18 } }
+		localization_key = "[neutral_Social_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 19 } }
+		localization_key = "[Neutral_Communism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 20 } }
+		localization_key = "[Nat_Populism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 21 } }
+		localization_key = "[Nat_Fascism_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 22 } }
+		localization_key = "[Nat_Autocracy_L]"
+	}
+	text = {
+		trigger = { check_variable = { ebmd_selected_party = 23 } }
+		localization_key = "[Monarchist_L]"
+	}
+}
