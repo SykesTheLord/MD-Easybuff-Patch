@@ -54,14 +54,43 @@ This exists because **HOI4 offers scripted GUIs no text input** — `editBoxType
 and scripted GUIs can bind only clicks and visibility. Stepping a value is the closest available
 equivalent, and is how Millennium Dawn drives its own rate controls.
 
+## Off-map buildings panel
+
+A second decision category, **Millennium Dawn - Off-Map Buildings**, uses the same stepper: set how
+many buildings one click adds (`±1 / ±5 / ±10 / ±100`), then click a building type. Buildings are
+added with the engine's `add_offsite_building`, so they need no slots and cannot be bombed or
+captured.
+
+Only eight types are offered, because off-map buildings have no state and Millennium Dawn counts
+buildings state by state:
+
+| Offered | Why it works off-map |
+|---|---|
+| Civilian / military factories, dockyards | engine production, not MD script |
+| Nuclear reactors, fossil power plants | MD's energy model reads their country modifier |
+| Synthetic refineries, agriculture districts, fuel silos | country-level fuel modifiers |
+
+Left out because they would do nothing: microchip and composite plants and offices (state-local
+output), renewables (MD reads a per-state variable), and enrichment facilities (gated on MD's
+per-state count). Off-map factories add production but **no GDP or tax income**.
+
 ## Generated technology list
 
 `common/scripted_effects/zz_ebmd_tech_generated.txt` is produced by
 `python3 tools/gen_tech_effect.py` from Millennium Dawn's own tech tree — HOI4 script cannot
 iterate technologies, so each of the 1395 dated techs is named explicitly and grouped by
-`start_year` behind a date trigger. Every block carries `popup = no`, so granting hundreds of
+`start_year` behind a date trigger. The same generator writes the microchip and composite option,
+selected by MD's `CAT_microchips` / `CAT_composites` categories rather than by date. Every block carries `popup = no`, so granting hundreds of
 technologies does not bury the screen in "technology researched" windows. Regenerate the list
 after an MD update; `package.sh` refuses to build a stale one.
+
+## Workshop cover image
+
+`thumbnail.png` (500x500, matching Millennium Dawn's) is drawn by
+`python3 tools/gen_thumbnail.py` rather than stored as an opaque binary — the wordmark is the
+mod's own name, so a rename is a re-run instead of a hunt for the source file. `descriptor.mod`
+and the launcher pointer both carry `picture="thumbnail.png"`, which is what the majority of
+installed mods use; Steam needs the file under 1 MB and the generator fails if it isn't.
 
 ## Packaging for the Steam Workshop
 
@@ -73,8 +102,8 @@ after an MD update; `package.sh` refuses to build a stale one.
 ```
 
 The package contains only what the game reads — `common/`, `events/`, `localisation/`,
-`descriptor.mod`, `thumbnail.png`. The README, install scripts, `.claude/` config and `.git/`
-are left out.
+`interface/`, `descriptor.mod`, `thumbnail.png`. The README, install scripts, `tools/`,
+`.claude/` config and `.git/` are left out.
 
 It validates before staging and **refuses to package** on a brace mismatch, a wrong BOM, a
 missing localisation key, or a call to an MD effect that doesn't exist in 2.0. All four are

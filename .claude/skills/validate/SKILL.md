@@ -39,13 +39,14 @@ grep -rhoE "^[[:space:]]+[a-z_][a-z_0-9]* = yes" common events \
 grep -rhoE "^[a-z_][a-z_0-9]* = \{" common/scripted_effects common/scripted_triggers \
   | sed 's/ = {//' | sort -u > /tmp/ebmd-validate/ours.txt
 comm -23 /tmp/ebmd-validate/calls.txt /tmp/ebmd-validate/ours.txt | while read -r e; do
-  case "$e" in always|is_major|is_triggered_only|is_ai|has_war|is_subject) continue;; esac
+  case "$e" in always|is_major|is_triggered_only|is_ai|has_war|is_subject|visible_when_empty|instant_build) continue;; esac
   grep -rqE "^$e = \{" "$MD/common/scripted_effects/" "$MD/common/scripted_triggers/" \
     || echo "  UNRESOLVED: $e"
 done; echo "calls ok"
 ```
 
-The `case` list skips vanilla triggers, which live in the engine rather than MD script. Add to it
+The `case` list skips vanilla triggers and engine keys (`visible_when_empty` is a decision-category
+key, `instant_build` a parameter of `add_building_construction`), which live in the engine rather than MD script. Add to it
 only when a name is genuinely vanilla — never to silence a real miss.
 
 ## 3. Modifier names resolve

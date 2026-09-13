@@ -1,0 +1,120 @@
+# +Easybuff - MD Systems
+# Drives interface/zz_ebmd_buildings_gui.gui. The step buttons set how many buildings one
+# click adds (ebmd_building_count); each building button then calls add_offsite_building
+# with that count.
+#
+# Only building types that still do something off-map are offered. Off-map buildings
+# have no state, so anything whose output is a state modifier (local_resources_*,
+# local_supplies) or that MD counts per state is inert there:
+#   offices, microchip_plant, composite_plant - output is state-local, MD counts per state
+#   renewable_energy_infra - MD's energy model reads a per-state variable, not the modifier
+#   enrichment_facility - its fuel output is gated on MD's per-state facility count
+# The eight below work through engine production or a country modifier MD reads.
+scripted_gui = {
+	ebmd_buildings_gui = {
+		context_type = decision_category
+		window_name = "ebmd_buildings_window"
+		dirty = ebmd_gui_dirty
+
+		visible = {
+			ebmd_md_active = yes
+		}
+
+		effects = {
+			ebmd_bld_sub_100_click = {
+				set_temp_variable = { ebmd_step = -100 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_sub_10_click = {
+				set_temp_variable = { ebmd_step = -10 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_sub_5_click = {
+				set_temp_variable = { ebmd_step = -5 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_sub_1_click = {
+				set_temp_variable = { ebmd_step = -1 }
+				ebmd_gui_building_step = yes
+			}
+
+			ebmd_bld_add_1_click = {
+				set_temp_variable = { ebmd_step = 1 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_add_5_click = {
+				set_temp_variable = { ebmd_step = 5 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_add_10_click = {
+				set_temp_variable = { ebmd_step = 10 }
+				ebmd_gui_building_step = yes
+			}
+			ebmd_bld_add_100_click = {
+				set_temp_variable = { ebmd_step = 100 }
+				ebmd_gui_building_step = yes
+			}
+
+			ebmd_bld_reset_click = {
+				set_variable = { ebmd_building_count = 0 }
+				ebmd_gui_refresh = yes
+			}
+
+			# add_offsite_building takes a variable level; MD passes a temp variable the
+			# same way (00_money_system.txt, UN IDO factory leases).
+			ebmd_bld_civ_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = industrial_complex level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_mil_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = arms_factory level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_dockyard_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = dockyard level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_nuclear_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = nuclear_reactor level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_fossil_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = fossil_powerplant level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_refinery_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = synthetic_refinery level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_agriculture_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = agriculture_district level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+			ebmd_bld_fuel_silo_click = {
+				set_temp_variable = { ebmd_build_level = ebmd_building_count }
+				add_offsite_building = { type = fuel_silo level = ebmd_build_level }
+				ebmd_offsite_built = yes
+			}
+		}
+
+		# Grey the building buttons out at a count of 0 rather than let a click silently
+		# add nothing.
+		triggers = {
+			ebmd_bld_civ_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_mil_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_dockyard_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_nuclear_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_fossil_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_refinery_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_agriculture_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+			ebmd_bld_fuel_silo_click_enabled = { check_variable = { ebmd_building_count > 0 } }
+		}
+	}
+}

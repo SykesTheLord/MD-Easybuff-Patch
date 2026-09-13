@@ -9,3 +9,15 @@ ebmd_systems_decision = {
 		always = yes
 	}
 }
+
+# Hosts the off-map buildings panel. It has no decisions of its own, so it needs
+# visible_when_empty - without it the engine hides an empty category, GUI and all.
+ebmd_buildings_decision = {
+	icon = generic_industry
+	scripted_gui = ebmd_buildings_gui
+	visible_when_empty = yes
+
+	allowed = {
+		always = yes
+	}
+}

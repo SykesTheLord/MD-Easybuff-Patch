@@ -32,34 +32,44 @@ HEADER = """# +Easybuff - MD Systems
 """
 
 
+# Resource-chain techs granted by their own option, whatever their date.
+RESOURCE_CATS = ("CAT_microchips", "CAT_composites")
+
+
 def extract(md):
-    """tech name -> start_year, walking brace depth inside `technologies = { }`."""
-    techs = {}
+    """(tech name -> start_year, tech name -> categories), walking brace depth inside
+    `technologies = { }`. Only techs with a start_year get a date; every tech gets its
+    categories, since the resource-chain option selects by category, not by date."""
+    techs, cats = {}, {}
     for f in sorted(glob.glob(os.path.join(md, "common/technologies/*.txt"))):
         src = re.sub(r"#[^\n]*", "", open(f, encoding="utf-8-sig", errors="replace").read())
         i = src.find("technologies")
         if i < 0:
             continue
         i = src.index("{", i)
-        depth, cur = 0, None
-        for m in re.finditer(r"([A-Za-z_@][\w.]*)\s*=\s*\{|\{|\}|start_year\s*=\s*(\d+)", src[i:]):
+        body = src[i:]
+        depth, cur, start = 0, None, 0
+        for m in re.finditer(r"([A-Za-z_@][\w.]*)\s*=\s*\{|\{|\}|start_year\s*=\s*(\d+)", body):
             if m.group(2):
                 if depth == 2 and cur:
                     techs.setdefault(cur, int(m.group(2)))
             elif m.group(1):
                 depth += 1
                 if depth == 2:
-                    cur = m.group(1)
+                    cur, start = m.group(1), m.start()
             elif m.group(0) == "{":
                 depth += 1
             else:
                 depth -= 1
                 if depth < 2:
+                    if cur:
+                        c = re.search(r"\bcategories\s*=\s*\{([^}]*)\}", body[start:m.end()])
+                        cats.setdefault(cur, set(c.group(1).split()) if c else set())
                     cur = None
-    return techs
+    return techs, cats
 
 
-def render(techs):
+def render(techs, cats):
     buckets = {}
     for name, year in sorted(techs.items()):
         buckets.setdefault(year, []).append(name)
@@ -96,6 +106,19 @@ def render(techs):
     for year in sorted(buckets):
         out.append(block(buckets[year], "\t") + "\n")
     out.append("}\n")
+
+    chain = sorted((n for n, c in cats.items() if c.intersection(RESOURCE_CATS)),
+                   key=lambda n: (techs.get(n, 0), n))
+    if not chain:
+        sys.exit("error: no %s technologies found - MD may have renamed the categories"
+                 % " / ".join(RESOURCE_CATS))
+    out.append("\n# Grants every %s technology, whatever its date (%d techs).\n"
+               % (" and ".join(RESOURCE_CATS), len(chain)))
+    out.append("# MD's allow blocks require the sp_microchip_production / sp_composite_production\n")
+    out.append("# special projects; set_technology ignores allow, so neither project is needed.\n")
+    out.append("ebmd_research_microchip_composite_techs = {\n")
+    out.append(block(chain, "\t") + "\n")
+    out.append("}\n")
     return "".join(out)
 
 
@@ -108,10 +131,10 @@ def main():
     if not os.path.isdir(os.path.join(a.md, "common/technologies")):
         sys.exit("error: no MD technologies at %s (pass --md PATH)" % a.md)
 
-    techs = extract(a.md)
+    techs, cats = extract(a.md)
     if not techs:
         sys.exit("error: parsed 0 technologies - MD's file format may have changed")
-    text = render(techs)
+    text = render(techs, cats)
 
     if a.check:
         cur = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""

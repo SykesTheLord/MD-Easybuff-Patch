@@ -997,3 +997,22 @@ ebmd_research_all_techs = {
 		popup = no
 	}
 }
+
+# Grants every CAT_microchips and CAT_composites technology, whatever its date (38 techs).
+# MD's allow blocks require the sp_microchip_production / sp_composite_production
+# special projects; set_technology ignores allow, so neither project is needed.
+ebmd_research_microchip_composite_techs = {
+	set_technology = {
+		improved_building_constructions_1 = 1 microchip_production_1 = 1 production_line_improvements_1 = 1 composite_production_1 = 1
+		improved_building_constructions_2 = 1 microchip_production_2 = 1 production_line_improvements_2 = 1 composite_production_2 = 1
+		composite_production_3 = 1 improved_building_constructions_3 = 1 microchip_production_3 = 1 production_line_improvements_3 = 1
+		composite_production_4 = 1 improved_building_constructions_4 = 1 microchip_production_4 = 1 production_line_improvements_4 = 1
+		improved_building_constructions_5 = 1 microchip_production_5 = 1 production_line_improvements_5 = 1 composite_production_5 = 1
+		improved_building_constructions_6 = 1 microchip_production_6 = 1 production_line_improvements_6 = 1 composite_production_6 = 1
+		improved_building_constructions_7 = 1 microchip_production_7 = 1 production_line_improvements_7 = 1 improved_building_constructions_8 = 1
+		microchip_production_8 = 1 production_line_improvements_8 = 1 composite_production_7 = 1 improved_building_constructions_9 = 1
+		microchip_production_9 = 1 production_line_improvements_9 = 1 composite_production_8 = 1 improved_building_constructions_10 = 1
+		microchip_production_10 = 1 production_line_improvements_10 = 1
+		popup = no
+	}
+}

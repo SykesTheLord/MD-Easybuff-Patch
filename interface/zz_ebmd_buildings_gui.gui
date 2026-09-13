@@ -1,0 +1,154 @@
+# +Easybuff - MD Systems
+# Off-map buildings panel, embedded in its own decision category.
+#
+# Same interaction as the Value Setter (zz_ebmd_input_gui.gui): HOI4 scripted GUIs have
+# no text input, so a per-click count is stepped with buttons and shown live, then each
+# building button adds that many off-map.
+guiTypes = {
+	containerWindowType = {
+		name = "ebmd_buildings_window"
+		position = { x = 0 y = 0 }
+		size = { width = 520 height = 352 }
+
+		instantTextBoxType = {
+			name = "ebmd_bld_title"
+			position = { x = 10 y = 6 }
+			font = "hoi_18mbs"
+			text = ebmd_bld_title
+			maxWidth = 500
+			format = center
+		}
+
+		instantTextBoxType = {
+			name = "ebmd_bld_readout"
+			position = { x = 10 y = 32 }
+			font = "hoi_18mbs"
+			text = ebmd_bld_readout
+			maxWidth = 500
+			format = center
+		}
+
+		buttonType = {
+			name = "ebmd_bld_sub_100"
+			position = { x = 10 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_sub_100
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_sub_10"
+			position = { x = 136 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_sub_10
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_sub_5"
+			position = { x = 262 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_sub_5
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_sub_1"
+			position = { x = 388 y = 62 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_sub_1
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_bld_add_1"
+			position = { x = 10 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_add_1
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_add_5"
+			position = { x = 136 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_add_5
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_add_10"
+			position = { x = 262 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_add_10
+			buttonFont = "hoi_18mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_add_100"
+			position = { x = 388 y = 100 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_add_100
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_bld_reset"
+			position = { x = 198 y = 140 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = ebmd_bld_txt_reset
+			buttonFont = "hoi_18mbs"
+		}
+
+		buttonType = {
+			name = "ebmd_bld_civ"
+			position = { x = 35 y = 186 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_civ
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_mil"
+			position = { x = 264 y = 186 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_mil
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_dockyard"
+			position = { x = 35 y = 224 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_dockyard
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_nuclear"
+			position = { x = 264 y = 224 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_nuclear
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_fossil"
+			position = { x = 35 y = 262 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_fossil
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_refinery"
+			position = { x = 264 y = 262 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_refinery
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_agriculture"
+			position = { x = 35 y = 300 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_agriculture
+			buttonFont = "hoi_16mbs"
+		}
+		buttonType = {
+			name = "ebmd_bld_fuel_silo"
+			position = { x = 264 y = 300 }
+			quadTextureSprite = "GFX_button_221x34"
+			buttonText = ebmd_bld_txt_fuel_silo
+			buttonFont = "hoi_16mbs"
+		}
+	}
+}

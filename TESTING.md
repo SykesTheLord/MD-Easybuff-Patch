@@ -125,12 +125,34 @@ decisions.
 
 The staged value persists while the panel is closed — it is a country variable, not scratch state.
 
+### Off-map buildings (scripted GUI)
+
+Open the **Millennium Dawn - Off-Map Buildings** decision tab.
+
+| Step | Confirm |
+|---|---|
+| Open the tab | the category shows even though it has no decisions - if it is missing, `visible_when_empty` is not taking effect |
+| Count at 0 | all eight building buttons are greyed out |
+| Click `+10`, then `-1` | readout reads 9, a whole number |
+| Click `-100` | readout stops at 0 |
+| Stage 5 → *Civilian Factories* | production screen shows 5 more civilian factories; no state gains one |
+| Stage 2 → *Nuclear Reactors* | energy panel generation rises straight away; nuclear fuel consumption rises too |
+| Stage 3 → *Military Factories* | 3 more military factories, and GDP does **not** move on the next weekly tick - expected, MD counts factories per state |
+
 ### Technology
 
 | Option | Confirm |
 |---|---|
 | Research everything available by date | research screen fills in up to the current era; technologies dated in the future are **still unresearched** |
 | Research every dated technology | the whole dated tree completes, future tiers included |
+| Research all microchip and composite technologies | in a 2000 start, all 38 unlock - including 2075 tiers - with neither special project completed; microchip and composite plants become buildable |
+| Microchip Plant (every state) | every owned state gains one microchip plant **and** one extra shared building slot, so its free slot count is unchanged; microchip output and tungsten/chromium use rise straight away |
+| Composite Plant (every state) | the same with composite plants; composite output and rubber/chromium/oil use rise straight away |
+
+Run *Microchip Plant* and *Composite Plant* once each **before** researching the matching tech:
+if no plants appear, the engine requires the tech for `instant_build` and the option needs to grant
+`microchip_production_1` / `composite_production_1` first. Then click it five more times on one state: the sixth click adds neither a plant nor a slot
+there (MD's cap is 5 per state).
 | Add a research slot | slot count rises by one |
 | Add 1,000 XP | army, navy and air XP each rise by 1,000 |
 

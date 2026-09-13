@@ -160,9 +160,12 @@
  # Technology
  ebmd.50: "Technology"
  ebmd.50.t: "Technology"
- ebmd.50.desc: "Millennium Dawn dates most technologies with a §Ystart_year§!. \"Available now\" grants each one the tree already considers reachable, leaving future tiers alone - which keeps the research screen looking like a plausible save rather than a finished one.\n\nBoth options cover the §Y1395§! dated technologies. Around 86 undated ones are skipped on purpose: they are unlocked by another country's national focuses, or are hidden special-project techs that should not simply be handed out."
+ ebmd.50.desc: "Millennium Dawn dates most technologies with a §Ystart_year§!. \"Available now\" grants each one the tree already considers reachable, leaving future tiers alone - which keeps the research screen looking like a plausible save rather than a finished one.\n\nBoth options cover the §Y1395§! dated technologies. Around 86 undated ones are skipped on purpose: they are unlocked by another country's national focuses, or are hidden special-project techs that should not simply be handed out.\n\n§YMicrochip Plant§! and §YComposite Plant§! add one plant and one extra building slot to every state you own, skipping states already at the 5-plant cap. Each microchip plant consumes §Y3 tungsten and 2 chromium§!, each composite plant §Y1 rubber, 1 chromium and 1 oil§!, and both draw energy - building dozens at once can put you into a resource deficit."
  ebmd.50.a: "Research everything available by the current date"
  ebmd.50.b: "Research every dated technology (including future ones)"
+ ebmd.50.e: "Research all microchip and composite technologies"
+ ebmd.50.f: "Microchip Plant (every state, +1 building slot each)"
+ ebmd.50.g: "Composite Plant (every state, +1 building slot each)"
  ebmd.50.c: "Add a research slot"
  ebmd.50.d: "Add 1,000 army, navy and air experience"
 

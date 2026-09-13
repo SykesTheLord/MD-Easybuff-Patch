@@ -727,6 +727,21 @@ country_event = {
 		country_event = ebmd.50
 	}
 	option = {
+		name = ebmd.50.e
+		ebmd_research_microchip_composite_techs = yes
+		country_event = ebmd.50
+	}
+	option = {
+		name = ebmd.50.f
+		ebmd_microchip_plant_every_state = yes
+		country_event = ebmd.50
+	}
+	option = {
+		name = ebmd.50.g
+		ebmd_composite_plant_every_state = yes
+		country_event = ebmd.50
+	}
+	option = {
 		name = ebmd.50.c
 		add_research_slot = 1
 		country_event = ebmd.50

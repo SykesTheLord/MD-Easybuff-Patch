@@ -21,6 +21,10 @@ Content:
  - Added a Value Setter panel in the decision tab: step a value with buttons and apply it as the inflation rate, corporate tax or central bank rate
  - Added a Technology page: research everything available by the current in-game date, the full dated tree, a research slot, or 1,000 army/navy/air experience
  - Research options no longer open a technology unlocked window for every technology they grant
+ - Added a Workshop cover image and wired it up as the launcher picture
+ - Added an Off-Map Buildings panel: step a count and add that many civilian or military factories, dockyards, nuclear reactors, fossil power plants, synthetic refineries, agriculture districts or fuel silos
+ - Added a Technology option to research every microchip and composite technology, without the special projects
+ - Added Microchip Plant and Composite Plant options that build one plant in every owned state, adding a matching building slot so no existing slot is used
  - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
  - Added idea slot icons for the four cheat columns
  - Repair politics now covers all 23 internal factions

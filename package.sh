@@ -80,7 +80,9 @@ if [ -d "$MD_SRC/common/scripted_effects" ]; then
 		| sed 's/ = {//' | sort -u > "$tmp/ours"
 	unresolved=0
 	while read -r e; do
-		case "$e" in always|is_major|is_triggered_only|is_ai|has_war|is_subject) continue;; esac
+		# Engine triggers and keys, not script: visible_when_empty is a decision-category key,
+		# instant_build a parameter of add_building_construction.
+		case "$e" in always|is_major|is_triggered_only|is_ai|has_war|is_subject|visible_when_empty|instant_build) continue;; esac
 		grep -rqE "^$e = \{" "$MD_SRC/common/scripted_effects/" "$MD_SRC/common/scripted_triggers/" \
 			|| { fail "calls an effect that does not exist in MD 2.0: $e"; unresolved=1; }
 	done < <(comm -23 "$tmp/calls" "$tmp/ours")
@@ -137,7 +139,15 @@ for g in interface/*.gui; do
 	while read -r n; do
 		[ -n "$n" ] && { fail "handler with no button: $n ($sg)"; guibad=1; }
 	done < <(comm -13 /tmp/ebmd-btn /tmp/ebmd-hdl)
-	rm -f /tmp/ebmd-btn /tmp/ebmd-hdl
+	# _click_enabled / _visible triggers are keyed by element name too; a typo leaves the
+	# button permanently enabled or visible, again with no error. `|| true`: a GUI with no
+	# triggers makes grep exit 1, which set -euo pipefail would turn into a silent abort.
+	grep -oE "^[[:space:]]+ebmd_[a-z_0-9]+_(click_enabled|visible) = \{" "$sg" \
+		| sed -E 's/^[[:space:]]+//; s/_(click_enabled|visible) = \{//' | sort -u > /tmp/ebmd-trg || true
+	while read -r n; do
+		[ -n "$n" ] && { fail "trigger for a missing button: $n ($sg)"; guibad=1; }
+	done < <(comm -23 /tmp/ebmd-trg /tmp/ebmd-btn)
+	rm -f /tmp/ebmd-btn /tmp/ebmd-hdl /tmp/ebmd-trg
 done
 [ "$guibad" -eq 0 ] && [ -d common/scripted_guis ] && ok "scripted GUI bindings"
 
