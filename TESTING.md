@@ -15,9 +15,13 @@ No automated harness exists for HOI4 script; everything below is an in-game chec
 
 ## Per-option checks
 
-The menu nests: the hub lists categories, and the larger categories open a sub-page
-(Economy -> Debt & Interest / Treasury & Costs / Tax & Corruption / GDP; Money & Inflation ->
-Monetary Expansion / Inflation & Central Bank; Internal Factions -> Individual Factions).
+The menu nests. The hub lists Economy, Politics, Counter-Terrorism, Power Grid, Technology and
+Repair, and the larger categories open sub-pages:
+- Economy -> Debt & Interest / Treasury & Costs / Tax & Corruption / GDP / Workforce /
+  Monetary Expansion / Inflation & Central Bank
+- Politics -> Internal Factions & Parties (-> Individual Factions) / Foreign Influence /
+  Fire / Suppress Events
+- Power Grid -> Power Construction
 Applying an option returns you to the page you were on, so several can be chained; Back steps
 up one level.
 
@@ -50,6 +54,23 @@ Use `tdebug` to read variables on hover, or
 | Double GDP | GDP widget doubles immediately; **after one weekly tick it has drifted back** — documented behaviour, not a bug |
 | Lv4 economy idea | GDP trends upward over several months instead of snapping back |
 | Double productivity | state productivity roughly doubles in the state view; GDP follows over following weeks |
+
+### Workforce
+
+Use a factory-heavy country with a labour shortage (unemployment at or near 0% in the economy view).
+
+| Option | Confirm |
+|---|---|
+| Staff every factory | population rises, mostly in the states with the most factories; unemployment settles between 2% and 5%; civilian and military factory fulfillment read 100% |
+| Run it again straight away | nothing changes - unemployment is already 2% or more, so no sector is short |
+| Country already above 2% unemployment | nothing is added |
+
+**Load-bearing:** if population does not rise at all, state `add_manpower` is not reflected
+until the next tick. The effect detects that and stops after one step by design, so it cannot
+loop - but the option would then need to spread its steps across days instead. Report it.
+
+It re-runs MD's economy calculation up to about 27 times in one click; a brief hitch on large
+countries is expected.
 
 ### Money and inflation
 
@@ -106,6 +127,14 @@ Use `tdebug` to read variables on hover, or
 | Build battery parks | storage capacity rises by the expected amount and **treasury does not drop** (free build path) |
 | Hydroelectric | the chosen state gains hydroelectric generation and storage |
 | 3 nuclear reactors | reactors appear and generation rises after the recalculation |
+| Renewable Energy Infrastructure (every state) | every owned state gains one level; states already at 20 are unchanged; renewable generation rises after the recalculation |
+| Nuclear Enrichment Facility (every state) | every owned state without one gains a facility; Nuclear Technology is researched; the energy view shows reactor fuel production switched on and net nuclear fuel rising |
+
+The battery park, hydroelectric, reactor and every-state options live on the **Power Construction**
+sub-page, opened from Power Grid.
+
+Run *Nuclear Enrichment Facility* a second time: no state gains another (cap of 1), and the fuel
+stockpile is **not** reset to 300.
 | Recalculate the grid | panel figures refresh without waiting for the daily tick |
 
 ### Value Setter (scripted GUI)

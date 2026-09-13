@@ -4,10 +4,7 @@
  ebmd.1.t: "Millennium Dawn - Economy & Politics"
  ebmd.1.desc: "Cheats for the Millennium Dawn simulation layers that the generic Easybuff menu does not reach.\n\nSelect a category."
  ebmd.1.a: "Economy"
- ebmd.1.b: "Money & Inflation"
- ebmd.1.c: "Internal Factions & Parties"
- ebmd.1.d: "Foreign Influence"
- ebmd.1.e: "Fire / Suppress Events"
+ ebmd.1.c: "Politics"
  ebmd.1.f: "Counter-Terrorism"
  ebmd.1.g: "Power Grid"
  ebmd.1.i: "Technology"
@@ -16,11 +13,18 @@
  # Economy
  ebmd.10: "Economy"
  ebmd.10.t: "Economy"
- ebmd.10.desc: "Debt, treasury, tax, corruption and GDP.\n\nEach option calls Millennium Dawn's own effect, so MD's clamps and refresh still apply."
+ ebmd.10.desc: "Debt, treasury, tax, corruption, GDP, workforce, money supply and inflation.\n\nEach option calls Millennium Dawn's own effect, so MD's clamps and refresh still apply."
  ebmd.10.a: "Debt & Interest Rate"
  ebmd.10.b: "Treasury & Costs"
  ebmd.10.c: "Tax & Corruption"
  ebmd.10.d: "GDP"
+ ebmd.10.e: "Workforce & Population"
+ ebmd.10.f: "Monetary Expansion & Printing"
+ ebmd.10.g: "Inflation & Central Bank"
+ ebmd.19: "Workforce & Population"
+ ebmd.19.t: "Workforce & Population"
+ ebmd.19.desc: "Millennium Dawn pools workers nationally. About §Y60%§! of your population is the workforce, and the resource sector, agriculture, power plants, military factories, dockyards, civilian factories, offices and resource plants hire from it in that order. When the pool runs dry, whatever is at the back of the queue runs under-staffed and loses output.\n\n§YStaff every factory§! adds population to the states that have factories, offices and plants - in proportion to how many each has - re-running Millennium Dawn's own economy calculation after each step. It stops once §Y2-5%§! unemployment is left over, below the §Y6%§! point where high-unemployment penalties begin.\n\nThe new people are real: they add manpower, and raise healthcare and bureaucracy costs like any population. If unemployment is already above 2%, no sector is short of workers and nothing is added."
+ ebmd.19.a: "Staff every factory (add population where workers are short)"
 
  # Debt and interest rate
  ebmd.13: "Debt & Interest Rate"
@@ -59,11 +63,6 @@
  ebmd.11.e: "Persistent: roughly double productivity in every controlled state"
 
  # Money and inflation
- ebmd.12: "Money & Inflation"
- ebmd.12.t: "Money & Inflation"
- ebmd.12.desc: "Monetary expansion normally costs currency strength plus a long cooldown, and printing money feeds next quarter's inflation. These options grant the benefit and skip the price."
- ebmd.12.a: "Monetary Expansion & Printing"
- ebmd.12.b: "Inflation & Central Bank"
 
  # Monetary expansion and printing
  ebmd.16: "Monetary Expansion & Printing"
@@ -87,6 +86,13 @@
  ebmd.17.e: "Set central bank rate to 0%"
 
  # Internal factions
+ ebmd.23: "Politics"
+ ebmd.23.t: "Politics"
+ ebmd.23.desc: "Internal factions and party popularity, foreign influence, and Millennium Dawn's internal-politics and terror event chains."
+ ebmd.23.a: "Internal Factions & Parties"
+ ebmd.23.b: "Foreign Influence"
+ ebmd.23.c: "Fire / Suppress Events"
+
  ebmd.20: "Internal Factions & Parties"
  ebmd.20.t: "Internal Factions & Parties"
  ebmd.20.desc: "Faction opinions run 0-100 and are clamped by MD. Options for a faction your country does not have are silently ignored, which is MD's own behaviour, not a failure."
@@ -151,11 +157,17 @@
  ebmd.40.desc: "Generation and consumption are rebuilt from scratch every recalculation, so the grid is moved through MD's energy modifiers rather than by writing the totals directly."
  ebmd.40.a: "Add the Lv3 Power Grid idea"
  ebmd.40.b: "Add the Insane Power Grid idea"
- ebmd.40.c: "Build 5 battery parks (free)"
- ebmd.40.d: "Build 25 battery parks (free)"
- ebmd.40.e: "Add hydroelectric capacity to a random state"
- ebmd.40.f: "Build 3 nuclear reactors"
  ebmd.40.g: "Recalculate the grid now"
+ ebmd.40.h: "Power Construction..."
+ ebmd.41: "Power Construction"
+ ebmd.41.t: "Power Construction"
+ ebmd.41.desc: "Free power buildings, recalculated into the grid straight away.\n\n§YRenewable Energy Infrastructure§! adds one level in every state you own, skipping states at the 20-level cap. Output depends on each state's renewable capacity factor, which Millennium Dawn re-rolls monthly.\n\n§YNuclear Enrichment Facility§! builds one in every state you own that lacks one. It does what Millennium Dawn's nuclear energy project does on completion: grants §YNuclear Technology§!, registers you as an enrichment country, seeds a starting fuel stockpile and switches reactor fuel production on - without that switch the facilities produce nothing."
+ ebmd.41.a: "Build 5 battery parks (free)"
+ ebmd.41.b: "Build 25 battery parks (free)"
+ ebmd.41.c: "Add hydroelectric capacity to a random state"
+ ebmd.41.d: "Build 3 nuclear reactors"
+ ebmd.41.e: "Renewable Energy Infrastructure (every state)"
+ ebmd.41.f: "Nuclear Enrichment Facility (every state, enables reactor fuel)"
 
  # Technology
  ebmd.50: "Technology"

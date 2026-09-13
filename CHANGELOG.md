@@ -25,6 +25,11 @@ Content:
  - Added an Off-Map Buildings panel: step a count and add that many civilian or military factories, dockyards, nuclear reactors, fossil power plants, synthetic refineries, agriculture districts or fuel silos
  - Added a Technology option to research every microchip and composite technology, without the special projects
  - Added Microchip Plant and Composite Plant options that build one plant in every owned state, adding a matching building slot so no existing slot is used
+ - Foreign Influence, Events, Counter-Terrorism, Power Grid and Repair options now reopen their own page instead of returning to the main menu, so an option can be used repeatedly
+ - Added a Workforce & Population page with an option that adds population to factory states until no sector is short of workers, leaving 2-5% unemployment
+ - Added Renewable Energy Infrastructure and Nuclear Enrichment Facility options that build in every owned state; the enrichment option also grants Nuclear Technology and switches reactor fuel production on
+ - Power Grid construction options moved to a Power Construction sub-page to keep the page within the option limit
+ - Main menu regrouped into Economy, Politics, Counter-Terrorism, Power Grid, Technology and Repair: money and inflation now sit under Economy, and factions, influence and events under a new Politics page
  - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
  - Added idea slot icons for the four cheat columns
  - Repair politics now covers all 23 internal factions

@@ -498,3 +498,223 @@ ebmd_composite_plant_every_state = {
 	ingame_update_setup = yes
 	ebmd_refresh_energy = yes
 }
+
+# ---------------------------------------------------------------------------
+# Workforce
+# ---------------------------------------------------------------------------
+
+# Required input: ebmd_pop_delta_m - population to add (negative removes), in millions.
+# Split across the states ebmd_staff_factories weighted, in proportion to ebmd_staff_weight.
+# add_manpower is chunked at 1,000,000 people: HOI4 variables overflow a little above
+# 2 million, and MD itself caps script maths at 1,000,000 (@math_expressions_max).
+# In state scope add_manpower changes the state's population, which is what MD sums
+# into population_total_m.
+ebmd_apply_population_delta = {
+	every_owned_state = {
+		limit = {
+			is_controlled_by = ROOT
+			check_variable = { ebmd_staff_weight > 0 }
+		}
+		set_temp_variable = { ebmd_share_m = ebmd_pop_delta_m }
+		multiply_temp_variable = { ebmd_share_m = ebmd_staff_weight }
+		divide_temp_variable = { ebmd_share_m = ebmd_staff_weight_total }
+		set_temp_variable = { ebmd_chunk_guard = 0 }
+		while_loop_effect = {
+			limit = {
+				check_variable = { ebmd_share_m > 1 }
+				check_variable = { ebmd_chunk_guard < 5000 }
+			}
+			add_manpower = 1000000
+			subtract_from_temp_variable = { ebmd_share_m = 1 }
+			add_to_temp_variable = { ebmd_chunk_guard = 1 }
+		}
+		while_loop_effect = {
+			limit = {
+				check_variable = { ebmd_share_m < -1 }
+				check_variable = { ebmd_chunk_guard < 5000 }
+			}
+			add_manpower = -1000000
+			add_to_temp_variable = { ebmd_share_m = 1 }
+			add_to_temp_variable = { ebmd_chunk_guard = 1 }
+		}
+		multiply_temp_variable = { ebmd_share_m = 1000000 }
+		add_manpower = ebmd_share_m
+	}
+	add_to_temp_variable = { ebmd_pop_added_m = ebmd_pop_delta_m }
+}
+
+# Adds population to factory states until no sector is short of workers.
+#
+# MD pools workers nationally (calculate_gdp): 60% of population is the workforce, and each
+# sector hires in a fixed order, capped by what is left. total_unemployed is the leftover
+# after the last sector, so unemployment near zero means a sector ran out of workers.
+# Several sectors scale with population themselves (subsistence agriculture, healthcare,
+# bureaucracy, the resource-sector cap), so the shortfall is not computed in closed form -
+# MD's own ingame_update_setup is re-run after each step and its unemployment is the oracle.
+#
+# Grow in doubling steps until unemployment reaches 2%, then, if that overshot past 5%,
+# bisect back into 2-5%. 6% is where MD's high-unemployment penalties begin.
+ebmd_staff_factories = {
+	# Weight each owned, controlled state by the buildings that employ MD's workforce, so
+	# the people land where the jobs are.
+	set_temp_variable = { ebmd_staff_weight_total = 0 }
+	every_owned_state = {
+		limit = { is_controlled_by = ROOT }
+		set_variable = {
+			ebmd_staff_weight = {
+				value = building_level@industrial_complex
+				add = building_level@arms_factory
+				add = building_level@dockyard
+				add = building_level@offices
+				add = building_level@microchip_plant
+				add = building_level@composite_plant
+			}
+		}
+		add_to_temp_variable = { ebmd_staff_weight_total = ebmd_staff_weight }
+	}
+	if = {
+		limit = { check_variable = { ebmd_staff_weight_total = 0 } }
+		capital_scope = { set_variable = { ebmd_staff_weight = 1 } }
+		set_temp_variable = { ebmd_staff_weight_total = 1 }
+	}
+
+	ingame_update_setup = yes
+	set_temp_variable = { ebmd_pop_added_m = 0 }
+	set_temp_variable = { ebmd_pop_lo_m = 0 }
+	set_temp_variable = { ebmd_staff_failed = 0 }
+	set_temp_variable = { ebmd_pop_step_m = population_total_m }
+	multiply_temp_variable = { ebmd_pop_step_m = 0.05 }
+	clamp_temp_variable = { var = ebmd_pop_step_m min = 0.01 }
+
+	# Grow.
+	set_temp_variable = { ebmd_guard = 0 }
+	while_loop_effect = {
+		limit = {
+			check_variable = { total_unemployed_percentage_display < 0.02 }
+			check_variable = { ebmd_guard < 16 }
+		}
+		set_temp_variable = { ebmd_pop_before_m = population_total_m }
+		set_temp_variable = { ebmd_pop_lo_m = ebmd_pop_added_m }
+		set_temp_variable = { ebmd_pop_delta_m = ebmd_pop_step_m }
+		ebmd_apply_population_delta = yes
+		ingame_update_setup = yes
+		# If population did not move, the loop would add people forever without effect.
+		if = {
+			limit = { NOT = { check_variable = { population_total_m > ebmd_pop_before_m } } }
+			set_temp_variable = { ebmd_staff_failed = 1 }
+			set_temp_variable = { ebmd_guard = 99 }
+		}
+		multiply_temp_variable = { ebmd_pop_step_m = 2 }
+		add_to_temp_variable = { ebmd_guard = 1 }
+	}
+
+	# Trim an overshoot by bisecting between the last short amount (lo) and the first
+	# sufficient one (hi).
+	if = {
+		limit = {
+			check_variable = { ebmd_staff_failed = 0 }
+			check_variable = { total_unemployed_percentage_display > 0.05 }
+		}
+		set_temp_variable = { ebmd_pop_hi_m = ebmd_pop_added_m }
+		set_temp_variable = { ebmd_guard = 0 }
+		while_loop_effect = {
+			limit = {
+				OR = {
+					check_variable = { total_unemployed_percentage_display < 0.02 }
+					check_variable = { total_unemployed_percentage_display > 0.05 }
+				}
+				check_variable = { ebmd_guard < 10 }
+			}
+			set_temp_variable = { ebmd_pop_mid_m = ebmd_pop_lo_m }
+			add_to_temp_variable = { ebmd_pop_mid_m = ebmd_pop_hi_m }
+			multiply_temp_variable = { ebmd_pop_mid_m = 0.5 }
+			set_temp_variable = { ebmd_pop_delta_m = ebmd_pop_mid_m }
+			subtract_from_temp_variable = { ebmd_pop_delta_m = ebmd_pop_added_m }
+			ebmd_apply_population_delta = yes
+			ingame_update_setup = yes
+			if = {
+				limit = { check_variable = { total_unemployed_percentage_display < 0.02 } }
+				set_temp_variable = { ebmd_pop_lo_m = ebmd_pop_mid_m }
+			}
+			else = {
+				set_temp_variable = { ebmd_pop_hi_m = ebmd_pop_mid_m }
+			}
+			add_to_temp_variable = { ebmd_guard = 1 }
+		}
+		# Never finish short: if bisection ran out below 2%, return to the last sufficient amount.
+		if = {
+			limit = { check_variable = { total_unemployed_percentage_display < 0.02 } }
+			set_temp_variable = { ebmd_pop_delta_m = ebmd_pop_hi_m }
+			subtract_from_temp_variable = { ebmd_pop_delta_m = ebmd_pop_added_m }
+			ebmd_apply_population_delta = yes
+			ingame_update_setup = yes
+		}
+	}
+
+	every_owned_state = {
+		clear_variable = ebmd_staff_weight
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Power construction (every state)
+# ---------------------------------------------------------------------------
+
+# +1 Renewable Energy Infrastructure in every owned, controlled state. The building has
+# its own slots (shares_slots = no, state_max = 20), so no shared slot is added; the
+# free_building_slots check is MD's own (renewable_energy_infra_random_build_loc) and
+# skips states already at the cap.
+ebmd_renewables_every_state = {
+	every_controlled_state = {
+		limit = {
+			is_owned_by = ROOT
+			free_building_slots = { building = renewable_energy_infra size > 0 }
+		}
+		add_building_construction = {
+			type = renewable_energy_infra
+			level = 1
+			instant_build = yes
+		}
+	}
+	# state_renewable_energy_var is summed per state on ingame_update_setup.
+	ingame_update_setup = yes
+	ebmd_refresh_energy = yes
+}
+
+# One Nuclear Enrichment Facility in every owned, controlled state that lacks one
+# (state_max = 1), plus what MD's own sp_nuclear_energy project does on completion
+# (special_projects/projects/nuclear_projects.txt) - without it the facilities are inert:
+#   nuclear_technology - enables the building; MD's one_random_enrichment_facility requires it
+#   global.enrichment_countries - lists you as a reactor-material seller in MD's
+#     purchase_reactor_grade_material diplomatic action; nothing else reads it
+#   enabled_nuclear_reactor_fuel_production - energy_calc only produces fuel while it is set
+#     (the player's own energy-view toggle clears it; this switches it back on)
+#   var_reactor_material_stockpile - the project seeds 300; raised to 300, never lowered
+# A shared slot is added before each build, as MD's one_random_enrichment_facility does.
+ebmd_enrichment_every_state = {
+	set_technology = {
+		nuclear_technology = 1
+		popup = no
+	}
+	if = {
+		limit = { NOT = { is_in_array = { global.enrichment_countries = THIS.id } } }
+		add_to_array = { global.enrichment_countries = THIS.id }
+	}
+	clamp_variable = { var = var_reactor_material_stockpile min = 300 }
+	set_country_flag = enabled_nuclear_reactor_fuel_production
+	every_controlled_state = {
+		limit = {
+			is_owned_by = ROOT
+			enrichment_facility < 1
+		}
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = enrichment_facility
+			level = 1
+			instant_build = yes
+		}
+	}
+	# total_enrichment_facilities is summed per state on ingame_update_setup, and gates fuel output.
+	ingame_update_setup = yes
+	ebmd_refresh_energy = yes
+}
