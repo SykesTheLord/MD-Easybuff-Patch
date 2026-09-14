@@ -139,6 +139,7 @@ Politics -> Ruling Party.
 | Hydroelectric | the chosen state gains hydroelectric generation and storage |
 | 3 nuclear reactors | reactors appear and generation rises after the recalculation |
 | Renewable Energy Infrastructure (every state) | every owned state gains one level; states already at 20 are unchanged; renewable generation rises after the recalculation |
+| Any every-state build option (renewables, enrichment, microchip or composite plants) | the page **reopens** after the click. If it closes instead, copy the last lines of `error.log` from that moment - the reopen is queued before the build, so a close means the option itself failed to load |
 | Nuclear Enrichment Facility (every state) | every owned state without one gains a facility; Nuclear Technology is researched; the energy view shows reactor fuel production switched on and net nuclear fuel rising |
 
 The battery park, hydroelectric, reactor and every-state options live on the **Power Construction**

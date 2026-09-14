@@ -1009,13 +1009,17 @@ country_event = {
 	}
 	option = {
 		name = ebmd.41.e
-		ebmd_renewables_every_state = yes
+		# Reopen first: the page is queued before the every-state build and economy
+		# refresh run, so nothing they do can stop the menu coming back.
 		country_event = ebmd.41
+		ebmd_renewables_every_state = yes
 	}
 	option = {
 		name = ebmd.41.f
-		ebmd_enrichment_every_state = yes
+		# Reopen first: the page is queued before the every-state build and economy
+		# refresh run, so nothing they do can stop the menu coming back.
 		country_event = ebmd.41
+		ebmd_enrichment_every_state = yes
 	}
 	option = {
 		name = ebmdback
@@ -1049,13 +1053,17 @@ country_event = {
 	}
 	option = {
 		name = ebmd.50.f
-		ebmd_microchip_plant_every_state = yes
+		# Reopen first: the page is queued before the every-state build and economy
+		# refresh run, so nothing they do can stop the menu coming back.
 		country_event = ebmd.50
+		ebmd_microchip_plant_every_state = yes
 	}
 	option = {
 		name = ebmd.50.g
-		ebmd_composite_plant_every_state = yes
+		# Reopen first: the page is queued before the every-state build and economy
+		# refresh run, so nothing they do can stop the menu coming back.
 		country_event = ebmd.50
+		ebmd_composite_plant_every_state = yes
 	}
 	option = {
 		name = ebmd.50.c
