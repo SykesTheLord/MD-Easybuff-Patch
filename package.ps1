@@ -92,6 +92,7 @@ if (-not (Test-Path 'descriptor.mod')) {
 }
 
 $OutRoot = $Output.TrimEnd('\', '/')
+if (-not [System.IO.Path]::IsPathRooted($OutRoot)) { $OutRoot = Join-Path $Src $OutRoot }
 $Stage = Join-Path $OutRoot $ModDirName
 
 if ($Clean) {
