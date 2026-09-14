@@ -8,7 +8,7 @@
 #   ./install.sh                          link into the default path (edits stay live)
 #   ./install.sh -p /some/hoi4/userdir    link into a path you choose
 #   ./install.sh --copy                   copy instead of symlink
-#   ./install.sh --uninstall              remove it again
+#   ./install.sh --uninstall              remove it again (runs uninstall.sh)
 set -euo pipefail
 
 MOD_DIR_NAME="MD-Easybuff-Patch"
@@ -74,13 +74,10 @@ MODROOT="$USERDIR/mod"
 DEST="$MODROOT/$MOD_DIR_NAME"
 DESCRIPTOR="$MODROOT/$MOD_FILE"
 
+# One uninstall implementation: uninstall.sh also cleans the enabled-mods list and refuses
+# to delete a folder that is not this mod.
 if [ "$ACTION" = "uninstall" ]; then
-	removed=0
-	if [ -L "$DEST" ]; then rm -f "$DEST"; ok "removed link $DEST"; removed=1
-	elif [ -d "$DEST" ]; then rm -rf "$DEST"; ok "removed folder $DEST"; removed=1; fi
-	if [ -f "$DESCRIPTOR" ]; then rm -f "$DESCRIPTOR"; ok "removed $DESCRIPTOR"; removed=1; fi
-	[ "$removed" -eq 0 ] && note "nothing installed at $MODROOT"
-	exit 0
+	exec "$SRC/uninstall.sh" -p "$USERDIR"
 fi
 
 mkdir -p "$MODROOT"

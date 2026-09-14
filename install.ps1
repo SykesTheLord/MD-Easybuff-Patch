@@ -24,7 +24,7 @@
 
 .EXAMPLE
     .\install.ps1 -Uninstall
-    Remove it again.
+    Remove it again (runs uninstall.ps1).
 #>
 [CmdletBinding()]
 param(
@@ -78,27 +78,11 @@ $ModRoot    = Join-Path $Path 'mod'
 $Dest       = Join-Path $ModRoot $ModDirName
 $Descriptor = Join-Path $ModRoot $ModFile
 
+# One uninstall implementation: uninstall.ps1 also cleans the enabled-mods list and refuses
+# to delete a folder that is not this mod.
 if ($Uninstall) {
-    $removed = $false
-    if (Test-Path -LiteralPath $Dest) {
-        $item = Get-Item -LiteralPath $Dest -Force
-        if ($item.LinkType) {
-            # Remove the junction itself, never follow into the target.
-            $item.Delete()
-            Write-Ok "removed link $Dest"
-        } else {
-            Remove-Item -LiteralPath $Dest -Recurse -Force
-            Write-Ok "removed folder $Dest"
-        }
-        $removed = $true
-    }
-    if (Test-Path -LiteralPath $Descriptor) {
-        Remove-Item -LiteralPath $Descriptor -Force
-        Write-Ok "removed $Descriptor"
-        $removed = $true
-    }
-    if (-not $removed) { Write-Note "nothing installed at $ModRoot" }
-    exit 0
+    & (Join-Path $Src 'uninstall.ps1') -Path $Path
+    exit $LASTEXITCODE
 }
 
 New-Item -ItemType Directory -Path $ModRoot -Force | Out-Null

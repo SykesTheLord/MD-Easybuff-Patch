@@ -46,7 +46,34 @@ standalone install that doesn't depend on this folder staying put. The Windows s
 the junction actually resolves and falls back to copying if it doesn't, which matters on
 OneDrive-redirected Documents folders and non-NTFS drives.
 
-Uninstalling removes the link, never the files it points at.
+### Uninstall
+
+```bash
+./uninstall.sh                      # remove from the default path
+./uninstall.sh -p /path/to/userdir  # or a path you choose
+./uninstall.sh --dry-run            # list what would be removed, change nothing
+```
+
+```powershell
+.\uninstall.ps1
+.\uninstall.ps1 -Path "D:\...\Hearts of Iron IV"
+.\uninstall.ps1 -DryRun
+```
+
+This removes the local (Beta) install and nothing else:
+
+| Removed | Notes |
+|---|---|
+| `mod/MD-Easybuff-Patch` | a link is only unlinked — the repo it points at is never touched; a copied folder is deleted only if its `descriptor.mod` names this mod |
+| `mod/+Easybuff-MD-Systems.mod` | the launcher pointer, deleted only if it points at `mod/MD-Easybuff-Patch` |
+| the entry in `dlc_load.json` | the game's enabled-mods list, so it stops asking for a mod that is gone; backed up to `dlc_load.json.bak` first |
+
+A Steam Workshop subscription of this mod is safe: Workshop copies live in `mod/ugc_<id>.mod`
+and are never matched. If something at those paths does not identify itself as this mod, the
+script stops rather than deleting it; `--force` / `-Force` overrides that. The launcher's own
+database is not edited — restart the launcher if it still lists the mod.
+
+`./install.sh --uninstall` and `.\install.ps1 -Uninstall` still work; they run these scripts.
 
 After installing, enable the mod in the launcher and set the load order below.
 
@@ -73,15 +100,24 @@ and neither mod works. That constraint comes from MD and Easybuff, not from this
 |---|---|
 | Millennium Dawn | **2.0.x only** |
 | Hearts of Iron IV | 1.19.\* |
-| +Easybuff | 1.18 |
+| +Easybuff | 1.19 (the current Workshop version) |
+
+**Use Millennium Dawn's main Workshop release.** This mod depends on *Millennium Dawn: A Modern Day
+Mod* (Workshop item 2777392649), which is 2.0 as of its September 2026 update. Millennium Dawn's
+beta, *Millennium Dawn: A Beta Test Mod* (3374271790), is also 2.0, so the cheats should work with it (untested), but
+the launcher matches dependencies by exact name, so with only the beta enabled it reports this mod
+as missing a dependency. That warning is expected in that setup. Both names cannot be listed: the
+launcher treats every listed dependency as required, so anyone without both would get the warning
+instead.
 
 **MD 1.12.x is not supported.** MD 2.0 renamed the party-popularity effect
 (`add_relative_party_popularity` → `change_relative_party_popularity`) and rewrote
 counter-terrorism around a terror-organisation array system that does not exist in 1.12.x, so
 the faction, party and counter-terror options would fail there.
 
-Easybuff still tags itself `supported_version="1.18.*"` while MD targets `1.19.*`. That is
-Easybuff's lag; this patch follows MD.
+Easybuff 1.19 targets `1.19.*`, the same game version as Millennium Dawn. Its 1.19 update changed
+only its version number; the menus, idea category and event window this patch mirrors are
+unchanged from 1.18.
 
 ### Running alongside `+++Easybuff - Millennium Dawn`
 
@@ -472,7 +508,7 @@ installed mods use; Steam needs the file under 1 MB and the generator fails if i
 ```
 
 The package contains only what the game reads — `common/`, `events/`, `localisation/`,
-`interface/`, `descriptor.mod`, `thumbnail.png`. The README, install scripts, `tools/`,
+`interface/`, `descriptor.mod`, `thumbnail.png`. The README, install and uninstall scripts, `tools/`,
 `.claude/` config and `.git/` are left out.
 
 It validates before staging and **refuses to package** on a brace mismatch, a wrong BOM, a

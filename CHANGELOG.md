@@ -32,6 +32,8 @@ Content:
  - Main menu regrouped into Economy, Politics, Counter-Terrorism, Power Grid, Technology and Repair: money and inflation now sit under Economy, and factions, influence and events under a new Politics page
  - Added a Ruling Party menu: install any of the 24 parties, shown with this country's own party names, or put the largest party in power
  - Added party popularity to the Value Setter panel: choose any party and set its popularity to an exact percentage
+ - Added uninstall scripts for the local install (uninstall.sh and uninstall.ps1) that also remove the mod from the game's enabled-mods list, support a dry run, and refuse to delete anything that is not this mod
+ - Added a description to descriptor.mod summarising the mod and naming its required mods and load order
  - Larger cheat pages are split into sub-pages so no option is cut off by the event window's 11-option limit
  - Added idea slot icons for the four cheat columns
  - Repair politics now covers all 23 internal factions

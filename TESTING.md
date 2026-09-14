@@ -13,6 +13,17 @@ No automated harness exists for HOI4 script; everything below is an in-game chec
 4. Disable Millennium Dawn and reload: the decision tab and the menu idea must be hidden.
    Unknown-effect lines in `error.log` are expected here; a crash is not.
 
+## Uninstall
+
+Run against the local install, after quitting the game and launcher.
+
+| Step | Confirm |
+|---|---|
+| `./uninstall.sh --dry-run` (or `-DryRun`) | lists the link or folder, the `.mod` pointer and the `dlc_load.json` entry; nothing changes on disk |
+| `./uninstall.sh` (or `.\uninstall.ps1`) | `mod/MD-Easybuff-Patch` and `mod/+Easybuff-MD-Systems.mod` are gone; **the repo is intact**; `dlc_load.json` no longer lists the mod but still lists your other enabled mods; `dlc_load.json.bak` exists |
+| Launch the launcher | the mod is no longer listed (restart it once if it is); the game starts without complaining about a missing mod |
+| Run it again | reports nothing installed |
+
 ## Per-option checks
 
 The menu nests. The hub lists Economy, Politics, Counter-Terrorism, Power Grid, Technology and
